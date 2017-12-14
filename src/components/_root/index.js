@@ -6,7 +6,7 @@ import createHistory from 'history/createBrowserHistory';
 import '../../index.scss';
 import '../../index.less';
 
-import Home from '../home';
+import Home from '../_home';
 
 //
 ReactGA.initialize('MUHAJAHSG');
@@ -19,7 +19,7 @@ history.listen((location, action) => {
 //
 const FallBack = (props) => {
   return (
-    <div>Not Found</div>
+    <div>404</div>
   );
 };
 

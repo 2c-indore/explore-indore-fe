@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import WebFont from 'webfontloader';
 
-import Root from './components/root';
+import Root from './components/_root';
 import reducers from './reducers';
 
 import './index.scss';
@@ -25,7 +25,7 @@ const store = createStore(reducers, {}, compose(
 
 WebFont.load({
   google: {
-    families: ['Noto Sans', 'Roboto:300,400,700', 'Source Sans Pro:600'],
+    families: ['Montserrat:300,400,700,900', 'Roboto:300,400,700'],
   },
 });
 
