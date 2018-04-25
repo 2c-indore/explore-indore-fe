@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import WebFont from 'webfontloader';
 
-import Root from './components/_root';
+import Routes from './components/_routes';
 import reducers from './reducers';
 
 import './index.scss';
@@ -32,7 +32,7 @@ WebFont.load({
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={muiTheme}>
-      <Root />
+      <Routes />
     </MuiThemeProvider>
   </Provider>,
   document.getElementById('root'),

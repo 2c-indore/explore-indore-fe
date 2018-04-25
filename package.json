@@ -1,7 +1,7 @@
 {
-  "name": "nhrp-web-client",
+  "name": "explore-pokhara-web",
   "version": "1.0.0",
-  "description": "Official front-end code for the NHRP Open Data Portal",
+  "description": "Official front-end code for the Explore Pokhara Web Application",
   "main": "index.js",
   "scripts": {
     "build": "shx rm -rf public/** && NODE_ENV=production webpack -p --progress",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://code.kathmandulivinglabs.org/arkoblog/nhrp-web-client.git"
+    "url": "https://code.kathmandulivinglabs.org/explore-pokhara/explore-pokhara-web.git"
   },
   "keywords": [
     "opendata",

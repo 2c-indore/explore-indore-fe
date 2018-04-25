@@ -16,19 +16,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home m-3">
-        <h1> Redux Boilerplate </h1>
-        <hr />
-        <p> Standard react and redux based boilerplate code for use in projects across KLL. Includes:</p>
-        <ol>
-          <li className="example">Webpack, with seperate build configs for Dev and Prod</li>
-          <li>Eslint Configuration</li>
-          <li>Material UI</li>
-          <li>Webfont Loader</li>
-          <li>React GA</li>
-          <li>Bootstrap</li>
-          <li>Procfile and deployment configs for Heroku</li>
-        </ol>
-
+        <h1>Explore Pokhara</h1>
       </div>
     );
   }
