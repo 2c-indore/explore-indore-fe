@@ -7,15 +7,21 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import WebFont from 'webfontloader';
 
-import Routes from './components/_routes';
-import reducers from './reducers';
+import Routes from './routes';
+import reducers from './global-reducers';
 
 import './index.scss';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#00bcd4',
+    primary1Color: '#3590F3',
+    accent1Color: '#3590F3',
   },
+  appBar: {
+    color: "#fff",
+    textColor: "#333"
+  },
+  fontFamily: 'Roboto',
 });
 
 const store = createStore(reducers, {}, compose(
@@ -25,7 +31,7 @@ const store = createStore(reducers, {}, compose(
 
 WebFont.load({
   google: {
-    families: ['Montserrat:300,400,700,900', 'Roboto:300,400,700'],
+    families: ['Noto+Sans:300,400,700,900', 'Roboto:300,400,700'],
   },
 });
 

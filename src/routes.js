@@ -3,10 +3,12 @@ import { Route, Switch, HashRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import createHistory from 'history/createBrowserHistory';
 
-import '../../index.scss';
-import '../../index.less';
+import './index.scss';
+import './index.less';
 
-import Home from '../_home';
+import Home from './views/home';
+import Amenity from './views/amenity';
+import Nav from './views/common/nav';
 
 //
 ReactGA.initialize('MUHAJAHSG');
@@ -35,10 +37,14 @@ class Root extends Component {
   render() {
     return (
       <HashRouter history={history}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={FallBack} />
-        </Switch>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/:amenity" component={Amenity} />
+            <Route component={FallBack} />
+          </Switch>
+        </div>
       </HashRouter>
     );
   }
