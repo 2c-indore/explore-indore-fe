@@ -65,7 +65,7 @@ export const sidebarMenuItems = [
       {
         type: 'atm',
         route: '/atm',
-        label: 'Restaurants',
+        label: 'ATMs',
       },
     ],
   },
