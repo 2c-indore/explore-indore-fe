@@ -42,6 +42,7 @@ class Root extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/:amenity" component={Amenity} />
+            <Route exact path="/share/:initparams" component={Amenity} />
             <Route component={FallBack} />
           </Switch>
         </div>

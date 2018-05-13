@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import Timeline from 'material-ui/svg-icons/action/timeline';
+import Share from 'material-ui/svg-icons/social/share';
+import IconButton from 'material-ui/IconButton';
 import Chart from './chart';
 
 import './styles.scss';
@@ -29,7 +31,14 @@ class Insights extends Component {
     super(props);
     this.state = {
 
+
     };
+
+    this.onShareClick = this.onShareClick.bind(this);
+  }
+
+  onShareClick() {
+    console.log(this.props.currentState);
   }
 
   render() {
@@ -39,7 +48,19 @@ class Insights extends Component {
       const { data } = insights;
       return (
         <div className=" pt-4">
-          <h5 className=" px-3" style={{ marginBottom: '20px' }}><Timeline style={{ marginBottom: '-5px' }} /> Insights</h5>
+          <h5
+            className=" px-3"
+            style={{ marginBottom: '20px' }}
+          >
+            <Timeline style={{ marginBottom: '-5px' }} /> Insights
+            <IconButton
+              onClick={this.onShareClick}
+              style={{ marginTop: '-10px' }}
+              className="float-right"
+            ><Share />
+            </IconButton>
+          </h5>
+
           <div className="insights p-3">
             {Object.keys(data).map((item) => {
             // console.log('item', item);

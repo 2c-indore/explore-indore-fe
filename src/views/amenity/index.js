@@ -21,7 +21,11 @@ class Amenity extends Component {
 
   componentWillMount() {
     // initializeView()
-    this.props.initializeView(this.props.match.params.amenity);
+    if (this.props.match.params.amenity) {
+      this.props.initializeView(this.props.match.params.amenity);
+    } else {
+      console.log('inside share view');
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -50,7 +54,7 @@ class Amenity extends Component {
           <Map geometries={geometries} />
         </div>
         <div className="col-md-3 p-0 controls">
-          <Insights insights={insights} />
+          <Insights currentState={this.props.amenity.state} insights={insights} />
           <Filters parameters={parameters} currentState={this.props.amenity.state} onChange={this.onFilterChange} />
         </div>
       </div>
