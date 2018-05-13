@@ -57,10 +57,8 @@ class Map extends Component {
 
       this.map.eachLayer((layer) => {
         if (!layer._url && (layer.name === 'markers')) {
-          console.log(layer.name);
           this.map.removeLayer(layer);
         } else if (layer.name === 'overlay') {
-          console.log('overlay>>>>>>>>>>>>>>', layer);
           this.map.removeLayer(layer);
         }
       });
@@ -93,7 +91,6 @@ class Map extends Component {
 
   addBaseLayer(data) { //eslint-disable-line
 
-    console.log('baseLayerData', data);
     const baseLayer = L.TileLayer.boundaryCanvas(osmURL, {
       boundary: data,
       attribution: '<div class="p-1"><span style="font-size: 0.9rem">दोस्रो नगर सभाबाट पारित नयाँ परियोजनाहरूको नक्सांकन बाँकी छ |</span>' +

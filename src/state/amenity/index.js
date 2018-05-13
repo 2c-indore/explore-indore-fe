@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const initialState = {
+  loading: true,
+  type: '',
   insights: null,
   state: null,
   geometries: null,
@@ -39,9 +41,11 @@ const getStateFromParameters = (parameters) => {
 
 // Actions
 const LOAD_STATE = 'LOAD_STATE';
+const UPDATE_TYPE = 'UPDATE_TYPE';
 const LOAD_INSIGHTS = 'LOAD_INSIGHTS';
 const LOAD_GEOMETRIES = 'LOAD_GEOMETRIES';
 const LOAD_PARAMETERS = 'LOAD_PARAMETERS';
+const IS_LOADING = 'IS_LOADING';
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
@@ -49,6 +53,10 @@ const LOAD_PARAMETERS = 'LOAD_PARAMETERS';
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     // do reducer stuff
+    case IS_LOADING:
+      return Object.assign({}, state, { ...state, loading: false });
+    case UPDATE_TYPE:
+      return Object.assign({}, state, { ...state, type: action.payload });
     case LOAD_STATE:
       return Object.assign({}, state, { ...state, state: action.payload });
     case LOAD_PARAMETERS:
@@ -96,10 +104,24 @@ export function updateState(newState) {
   };
 }
 
+export function updateType(newState) {
+  return {
+    type: UPDATE_TYPE,
+    payload: newState,
+  };
+}
+
+export function isLoading() {
+  return {
+    type: IS_LOADING,
+  };
+}
 export function initializeView(type) {
   return (dispatch) => {
+    dispatch(isLoading());
     axios.get(`http://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
       // console.log(response.data);
+      dispatch(updateType(type));
       dispatch(loadState(response.data));
       dispatch(loadParameters(response.data));
       dispatch(loadInsights(response.data));
@@ -108,8 +130,10 @@ export function initializeView(type) {
   };
 }
 
+
 export function updateView(parameters) {
   return (dispatch) => {
+    dispatch(isLoading());
     axios.get('http://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
       // dispatch(loadState(response.data));
       dispatch(loadInsights(response.data));

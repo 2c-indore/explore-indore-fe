@@ -25,8 +25,8 @@ class RangeSlider extends Component {
     const { config, currentState } = this.props;
 
     this.setState({
-      minValue: currentState[config.parameter_name].min,
-      maxValue: currentState[config.parameter_name].max,
+      minValue: Number(currentState[config.parameter_name].min),
+      maxValue: Number(currentState[config.parameter_name].max),
     });
   }
 
@@ -36,12 +36,13 @@ class RangeSlider extends Component {
   //
   onChange(newValue) {
     const { config } = this.props;
+    console.log(newValue, 'newValue');
     this.props.onChange(config.parameter_name, newValue);
   }
 
   render() {
     const { config, currentState } = this.props;
-    const defaultValue = [currentState[config.parameter_name].low, currentState[config.parameter_name].high];
+    const defaultValue = [Number(currentState[config.parameter_name].low), Number(currentState[config.parameter_name].high)];
     const marks = {
       [this.state.minValue]: this.state.minValue,
       [this.state.maxValue]: this.state.maxValue,
@@ -75,7 +76,7 @@ class RangeSlider extends Component {
             tipFormatter={value => `${value}`}
           // trackStyle={{ backgroundColor: 'red' }}
           // handle={handle}
-            step={currentState[config.parameter_name].step}
+            // step={Number(currentState[config.parameter_name].step)}
             marks={marks}
           />
         </div>

@@ -27,7 +27,7 @@ class MultiSelect extends Component {
         {config.options.map((item) => {
           // console.log(item.value);
           return (<Toggle
-            toggled={currentState[config.parameter_name][item.value]}
+            toggled={Boolean(currentState[config.parameter_name][item.value])}
             onToggle={(e, value) => { this.onChange(item.value, value); }}
             key={shortid.generate()}
             label={item.label}
