@@ -55,13 +55,16 @@ class Map extends Component {
     if (this.props.geometries !== null && this.props.geometries.success === 1) {
       // console.log(this.props.geometries);
 
-      if (this.markers && this.baseLayer) {
-        this.map.eachLayer((layer) => {
-          if (!layer._url) {
-            this.map.removeLayer(layer);
-          }
-        });
-      }
+      this.map.eachLayer((layer) => {
+        if (!layer._url && (layer.name === 'markers')) {
+          console.log(layer.name);
+          this.map.removeLayer(layer);
+        } else if (layer.name === 'overlay') {
+          console.log('overlay>>>>>>>>>>>>>>', layer);
+          this.map.removeLayer(layer);
+        }
+      });
+
       // console.log(this.props.geometries.data);
       this.addBaseLayer(this.props.geometries.data.boundary);
       this.addPois(this.props.geometries.data.pois);
@@ -89,8 +92,10 @@ class Map extends Component {
 
 
   addBaseLayer(data) { //eslint-disable-line
+
+    console.log('baseLayerData', data);
     const baseLayer = L.TileLayer.boundaryCanvas(osmURL, {
-      boundary,
+      boundary: data,
       attribution: '<div class="p-1"><span style="font-size: 0.9rem">दोस्रो नगर सभाबाट पारित नयाँ परियोजनाहरूको नक्सांकन बाँकी छ |</span>' +
   ' <br /> <span>Map developed by <a target = "_blank" href="http://kathmandulivinglabs.org">' +
   'Kathmandu Living Labs</a> using <a href = "http://leafletjs.com" >Leaflet</a>' +
@@ -98,7 +103,10 @@ class Map extends Component {
     });
 
     baseLayer.addTo(this.map);
-    this.baseLayer = baseLayer;
+
+
+    baseLayer.name = 'overlay';
+    this.map.fitBounds(L.geoJson(data).getBounds());
   }
 
 
@@ -144,12 +152,7 @@ class Map extends Component {
     dataLayer.addData(data);
     markers.addLayer(dataLayer);
     this.map.addLayer(markers);
-
-    this.markers = markers;
-  }
-
-  clearLayers() {
-    this.markers.clearLayers();
+    markers.name = 'markers';
   }
 
   render() {

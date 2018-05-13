@@ -25,7 +25,6 @@ class Amenity extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('updated', nextProps);
     this.setState({
       ...nextProps.amenity.state,
     });
@@ -52,7 +51,7 @@ class Amenity extends Component {
         </div>
         <div className="col-md-3 p-0 controls">
           <Insights insights={insights} />
-          <Filters parameters={parameters} currentState={this.state} onChange={this.onFilterChange} />
+          <Filters parameters={parameters} currentState={this.props.amenity.state} onChange={this.onFilterChange} />
         </div>
       </div>
     );

@@ -26,7 +26,7 @@ const getStateFromParameters = (parameters) => {
       // console.log(parameters[item]);
       const subObject = {};
       parameters[item].options.forEach((option) => {
-        subObject[option.value] = true;
+        subObject[option.value] = false;
       });
 
       stateObject[parameters[item].parameter_name] = subObject;
@@ -41,6 +41,7 @@ const getStateFromParameters = (parameters) => {
 const LOAD_STATE = 'LOAD_STATE';
 const LOAD_INSIGHTS = 'LOAD_INSIGHTS';
 const LOAD_GEOMETRIES = 'LOAD_GEOMETRIES';
+const LOAD_PARAMETERS = 'LOAD_PARAMETERS';
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
@@ -49,7 +50,9 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     // do reducer stuff
     case LOAD_STATE:
-      return Object.assign({}, state, { ...state, state: getStateFromParameters(action.payload.parameters), parameters: { success: 1, data: action.payload.parameters } });
+      return Object.assign({}, state, { ...state, state: action.payload });
+    case LOAD_PARAMETERS:
+      return Object.assign({}, state, { ...state, parameters: { success: 1, data: action.payload.parameters } });
     case LOAD_INSIGHTS:
       return Object.assign({}, state, { ...state, insights: { success: 1, data: action.payload.insights } });
     case LOAD_GEOMETRIES:
@@ -62,6 +65,13 @@ export default function reducer(state = initialState, action = {}) {
 export function loadState(parameters) {
   return {
     type: LOAD_STATE,
+    payload: getStateFromParameters(parameters.parameters),
+  };
+}
+
+export function loadParameters(parameters) {
+  return {
+    type: LOAD_PARAMETERS,
     payload: parameters,
   };
 }
@@ -79,11 +89,19 @@ export function loadGeometries(parameters) {
   };
 }
 
+export function updateState(newState) {
+  return {
+    type: LOAD_STATE,
+    payload: newState,
+  };
+}
+
 export function initializeView(type) {
   return (dispatch) => {
     axios.get(`http://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
       // console.log(response.data);
       dispatch(loadState(response.data));
+      dispatch(loadParameters(response.data));
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
     });
@@ -93,10 +111,9 @@ export function initializeView(type) {
 export function updateView(parameters) {
   return (dispatch) => {
     axios.get('http://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
-      console.log(response.data);
       // dispatch(loadState(response.data));
-      // dispatch(loadInsights(response.data));
-      // dispatch(loadGeometries(response.data));
+      dispatch(loadInsights(response.data));
+      dispatch(loadGeometries(response.data));
     });
   };
 }
