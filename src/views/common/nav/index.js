@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import AppBar from 'material-ui/AppBar';
+import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import Hamburger from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
 import { withRouter } from 'react-router-dom';
 import { sidebarMenuItems } from '../../../static/constants';
+
+import { initializeView } from '../../../state/amenity';
+
 // import './styles.scss';
 
 const HamburgerIcon = ({ onClick }) => {
@@ -14,7 +18,7 @@ const HamburgerIcon = ({ onClick }) => {
 };
 
 const DrawerMenu = ({
-  open, onRequestChange, menuItems, history,
+  open, onRequestChange, menuItems, history, initView,
 }) => {
   // console.log(history);
   return (
@@ -24,7 +28,7 @@ const DrawerMenu = ({
           const subItems = [];
           category.children.forEach((item) => {
             subItems.push(<ListItem
-              onClick={() => { history.push(item.route); onRequestChange(); }}
+              onClick={() => { history.push(item.route); onRequestChange(item.type); initView(item.type); }}
               style={history.location.pathname === item.route ? { color: 'red' } : {}}
               key={shortid.generate()}
               primaryText={item.label}
@@ -57,10 +61,12 @@ class Nav extends Component {
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
 
-  toggleDrawer() {
+  toggleDrawer(type) {
     this.setState({
       isDrawerOpen: !this.state.isDrawerOpen,
     });
+
+    // this.props.initializeView(type);
   }
 
   render() {
@@ -76,10 +82,20 @@ class Nav extends Component {
           onRequestChange={this.toggleDrawer}
           menuItems={sidebarMenuItems}
           history={this.props.history}
+          initView={this.props.initializeView}
         />
       </div>
     );
   }
 }
 
-export default withRouter(Nav);
+const mapStateToProps = state => ({
+  amenity: state.amenity,
+});
+
+
+export default withRouter(connect(mapStateToProps, {
+  initializeView,
+})((Nav)));
+
+// export default withRouter(Nav);

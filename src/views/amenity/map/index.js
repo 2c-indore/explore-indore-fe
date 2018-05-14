@@ -51,6 +51,23 @@ class Map extends Component {
 
   componentDidMount() {
     this.addMap();
+    if (this.props.geometries !== null && this.props.geometries.success === 1) {
+      // console.log(this.props.geometries);
+
+      this.map.eachLayer((layer) => {
+        if (!layer._url && (layer.name === 'markers')) {
+          this.map.removeLayer(layer);
+        } else if (layer.name === 'overlay') {
+          this.map.removeLayer(layer);
+        }
+      });
+
+      // console.log(this.props.geometries.data);
+      this.addBaseLayer(this.props.geometries.data.boundary);
+      this.addPois(this.props.geometries.data.pois);
+      // this.addWardBoundaries(this.props.geometries.data.boundary);
+    // this.addBoundaries();
+    }
   }
 
   componentDidUpdate() {
@@ -113,7 +130,7 @@ class Map extends Component {
     const addIcon = (type) => { //eslint-disable-line
     // console.log('addIcon', type, mapProjectToIcon[type]);
       const icon = new L.LeafIcon({
-        iconUrl: '/assets/hospital.png',
+        iconUrl: `/assets/${this.props.type}.png`,
       });
 
       return icon;

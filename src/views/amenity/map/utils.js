@@ -789,22 +789,26 @@ const tagMapper = {
 export const tagToPopup = (type, tags) => {
   const currentAmenityKeys = tagMapper[type];
 
-  function toTitleCase(str) {
-    return str.replace(/\w\S*/g, (txt) => { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
-  }
-
-  let str = '';
-  let newString = '';
-  currentAmenityKeys.forEach((item) => {
-    if (item.keyName === 'name') {
-      console.log('namedetect');
-      newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
-    } else {
-      newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? 'Not Available' : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`;
+  if (currentAmenityKeys !== undefined) {
+    function toTitleCase(str) {
+      return str.replace(/\w\S*/g, (txt) => { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
     }
-    str += newString;
-  });
 
-  str += '</div><div><button class="popup-btn"><i class="fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>';
-  return str;
+    let str = '';
+    let newString = '';
+    currentAmenityKeys.forEach((item) => {
+      if (item.keyName === 'name') {
+        console.log('namedetect');
+        newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
+      } else {
+        newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? 'Not Available' : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`;
+      }
+      str += newString;
+    });
+
+    str += '</div><div><button class="popup-btn"><i class="fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>';
+    return str;
+  } else {
+    return '<span>Details coming soon</span>';
+  }
 };

@@ -46,6 +46,7 @@ const LOAD_INSIGHTS = 'LOAD_INSIGHTS';
 const LOAD_GEOMETRIES = 'LOAD_GEOMETRIES';
 const LOAD_PARAMETERS = 'LOAD_PARAMETERS';
 const IS_LOADING = 'IS_LOADING';
+const HAS_LOADED = 'HAS_LOADED';
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
@@ -54,6 +55,8 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     // do reducer stuff
     case IS_LOADING:
+      return Object.assign({}, state, { ...state, loading: true });
+    case HAS_LOADED:
       return Object.assign({}, state, { ...state, loading: false });
     case UPDATE_TYPE:
       return Object.assign({}, state, { ...state, type: action.payload });
@@ -116,6 +119,12 @@ export function isLoading() {
     type: IS_LOADING,
   };
 }
+
+export function hasLoaded() {
+  return {
+    type: HAS_LOADED,
+  };
+}
 export function initializeView(type) {
   return (dispatch) => {
     dispatch(isLoading());
@@ -126,6 +135,9 @@ export function initializeView(type) {
       dispatch(loadParameters(response.data));
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
+      dispatch(hasLoaded());
+      setTimeout(() => {
+      }, 100);
     });
   };
 }
@@ -133,11 +145,11 @@ export function initializeView(type) {
 
 export function updateView(parameters) {
   return (dispatch) => {
-    dispatch(isLoading());
     axios.get('http://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
       // dispatch(loadState(response.data));
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
+      // dispatch(hasLoaded());
     });
   };
 }

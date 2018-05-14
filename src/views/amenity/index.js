@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import qs from 'qs';
 import objectWalk from 'object-walk';
 import cloneDeep from 'lodash.clonedeep';
+import ReactLoading from 'react-loading';
 import { initializeView, updateView, updateState, updateType } from '../../state/amenity';
 import Filters from './filters';
 import Insights from './insights';
@@ -11,6 +12,7 @@ import Map from './map';
 
 
 import './styles.scss';
+
 
 class Amenity extends Component {
   constructor(props) {
@@ -22,8 +24,39 @@ class Amenity extends Component {
     this.onFilterChange = this.onFilterChange.bind(this);
   }
 
+
   componentWillMount() {
     // initializeView()
+    this.onLoadView();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log('nextProps', nextProps);
+    // if (nextProps.match.params.amenity !== this.props.match.params.amenity) {
+    this.setState({
+      ...nextProps.amenity.state,
+    });
+    // }
+  }
+
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return true;
+  //   // nextProps.match.params.amenity !== this.props.match.params.amenity;
+  // }
+
+
+  onFilterChange(parameterName,value) { //eslint-disable-line
+
+    this.props.updateView({ ...this.state, [parameterName]: value, type: this.props.amenity.type });
+    this.props.updateState({ ...this.state, [parameterName]: value });
+    // do something
+    this.setState({
+      [parameterName]: value,
+    });
+  }
+
+  onLoadView() {
     if (this.props.match.params.amenity) {
       this.props.initializeView(this.props.match.params.amenity);
     } else {
@@ -37,11 +70,11 @@ class Amenity extends Component {
       const descentionFn = (val, prop, obj) => {
         // console.log('val', val, 'prop', prop, 'obj', obj);
         if (obj[prop] === 'true') {
-          obj[prop] = true;
+          obj[prop] = true; //eslint-disable-line
         }
 
         if (obj[prop] === 'false') {
-          obj[prop] = false;
+          obj[prop] = false; //eslint-disable-line
         }
       };
 
@@ -57,22 +90,6 @@ class Amenity extends Component {
         this.props.updateView({ ...stateObj });
       }, 3000);
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      ...nextProps.amenity.state,
-    });
-  }
-
-  onFilterChange(parameterName,value) { //eslint-disable-line
-
-    this.props.updateView({ ...this.state, [parameterName]: value, type: this.props.amenity.type });
-    this.props.updateState({ ...this.state, [parameterName]: value });
-    // do something
-    this.setState({
-      [parameterName]: value,
-    });
   }
 
   render() {
@@ -94,7 +111,7 @@ class Amenity extends Component {
         </div>
       );
     } else {
-      return <div />;
+      return <div className="d-flex justify-content-center m-5"> <ReactLoading type="bars" color="#3590F3" /></div>;
     }
   }
 }
