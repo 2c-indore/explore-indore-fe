@@ -85,7 +85,7 @@ class Amenity extends Component {
       return (
         <div className="amenity row m-0">
           <div className="col-md-9 p-0 map">
-            <Map geometries={geometries} />
+            <Map geometries={geometries} type={this.props.amenity.type} />
           </div>
           <div className="col-md-3 p-0 controls">
             <Insights type={this.props.amenity.type} currentState={this.props.amenity.state} insights={insights} />

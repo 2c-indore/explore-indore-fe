@@ -1,11 +1,40 @@
+$color: #3590F3;
+
 // 123, 182, 247 -border
 // 53, 144, 243 -circle
+.custom-popup-header {
+  color: $color;
+  padding-right: 20px;
+}
+
+.custom-popup-content {
+  max-height:250;
+  overflow-y: scroll;
+
+  br {
+    margin-bottom: 0.5em !important;
+  }
+}
 
 .leaflet-container {
   background-color: #001518;
 }
 
 
+/* css to customize Leaflet default styles  */
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #fff;
+    // color: #ffffff;
+    border-radius: 0;
+    font-family: 'Roboto';
+    font-size: 1rem;
+}
+
+
+.custom .leaflet-popup-scrolled {
+  border:none;
+}
 
 .leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
 	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
@@ -91,3 +120,88 @@
 	line-height: 30px;
 
 	}
+
+
+//materia style IconButton
+.popup-btn {
+  position: relative;
+  font-family: 'Roboto';
+
+  display: block;
+  margin: 20px auto;
+  padding: 5px;
+
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 0px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+  background-color: $color;
+  color: #ecf0f1;
+
+  transition: background-color .3s;
+  width:100%;
+}
+
+.popup-btn:hover, .popup-btn:focus {
+  background-color: darken($color, 5%);
+}
+
+.popup-btn > * {
+  position: relative;
+}
+
+.popup-btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.popup-btn:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, .3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.popup-btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+
+// popup close button style
+.leaflet-container a.leaflet-popup-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 4px 0 0;
+    border: none;
+    text-align: center;
+    width: 30px;
+    height: 14px;
+    font: 20px/14px Roboto, Verdana, sans-serif;
+    color: #c3c3c3;
+    text-decoration: none;
+    font-weight: bold;
+    background: transparent;
+}

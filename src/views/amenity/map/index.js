@@ -4,13 +4,15 @@ import 'leaflet-boundary-canvas';
 import 'leaflet.markercluster';
 import * as topojson from 'topojson-client';
 import boundary from './boundary';
+import { tagToPopup } from './utils';
 
 import './styles.scss';
+
+// console.log('nested', JSON.stringify(nester(amenityParameters)));
 
 const color = '#3590F3';
 
 const osmURL = 'https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=52ce8b5b94d44030a0c6208707611a06';
-// const osmURL = 'https://api.mapbox.com/styles/v1/arkoblog/cjh0bqsmw00172rrsbt7caf2e/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJrb2Jsb2ciLCJhIjoiY2pmZ2RsNGpqNDE1OTJxazdrNzVxNnl2ZSJ9.Qj1ryjt2_OWUmlTKlcEmtA'; //eslint-disable-line
 
 class Map extends Component {
   constructor(props) {
@@ -125,11 +127,26 @@ class Map extends Component {
     };
 
     // const wardboundary = topojson.feature(data, data.objects.pokhara_boundary);
+    const { type } = this.props;
+
 
     const dataLayer = L.geoJson(null, {
       style: geoJsonStyle,
       pointToLayer(feature, latlng) {
         return L.marker(latlng, { icon: addIcon(feature.properties.projectSubtitle) });
+      },
+      onEachFeature(feature, layer) {
+        const { tags } = layer.feature.properties;
+
+        const popupOptions = {
+          className: 'custom',
+          minWidth: 250,
+          maxWidth: 250,
+          maxHeight: 400,
+          border: 'none',
+        };
+        const str = tagToPopup(type, tags);
+        layer.bindPopup(str, popupOptions);
       },
     });
 
