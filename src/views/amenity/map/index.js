@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import L from 'leaflet';
+import $ from 'jquery';
+import { withRouter } from 'react-router-dom';
 import 'leaflet-boundary-canvas';
 import 'leaflet.markercluster';
 import * as topojson from 'topojson-client';
-import boundary from './boundary';
-import { tagToPopup } from './utils';
+import boundary from '../../../static/boundary';
+import { tagToPopup } from '../../../static/map-utils';
 
 import './styles.scss';
+
 
 // console.log('nested', JSON.stringify(nester(amenityParameters)));
 
@@ -22,6 +25,7 @@ class Map extends Component {
     };
 
     this.addMap = this.addMap.bind(this);
+    this.onEdit = this.onEdit.bind(this);
     // this.addMap = this.addMap.bind(this);
     // this.addMap = this.addMap.bind(this);
   }
@@ -70,10 +74,9 @@ class Map extends Component {
     }
   }
 
+
   componentDidUpdate() {
     if (this.props.geometries !== null && this.props.geometries.success === 1) {
-      // console.log(this.props.geometries);
-
       this.map.eachLayer((layer) => {
         if (!layer._url && (layer.name === 'markers')) {
           this.map.removeLayer(layer);
@@ -82,12 +85,15 @@ class Map extends Component {
         }
       });
 
-      // console.log(this.props.geometries.data);
       this.addBaseLayer(this.props.geometries.data.boundary);
       this.addPois(this.props.geometries.data.pois);
-      // this.addWardBoundaries(this.props.geometries.data.boundary);
-    // this.addBoundaries();
     }
+  }
+
+  onEdit(data) {
+    // console.log(this.props);
+
+    this.props.history.push({ pathname: '/edit', state: { amenityData: data, type: this.props.type } });
   }
 
   addMap() {
@@ -145,7 +151,7 @@ class Map extends Component {
 
     // const wardboundary = topojson.feature(data, data.objects.pokhara_boundary);
     const { type } = this.props;
-
+    const { onEdit } = this;
 
     const dataLayer = L.geoJson(null, {
       style: geoJsonStyle,
@@ -154,7 +160,7 @@ class Map extends Component {
       },
       onEachFeature(feature, layer) {
         const { tags } = layer.feature.properties;
-
+        const id = layer.feature.id.split('/')[1];
         const popupOptions = {
           className: 'custom',
           minWidth: 250,
@@ -162,8 +168,9 @@ class Map extends Component {
           maxHeight: 400,
           border: 'none',
         };
-        const str = tagToPopup(type, tags);
+        const str = tagToPopup(type, tags, id);
         layer.bindPopup(str, popupOptions);
+        $('body').on('click', `#popup-btn-${id}`, () => { onEdit(layer.feature); });
       },
     });
 
@@ -194,4 +201,4 @@ class Map extends Component {
   }
 }
 
-export default Map;
+export default withRouter(Map);

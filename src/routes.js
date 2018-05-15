@@ -6,8 +6,8 @@ import createHistory from 'history/createBrowserHistory';
 import './index.scss';
 import './index.less';
 
-import Home from './views/home';
 import Amenity from './views/amenity';
+import Edit from './views/edit';
 import Nav from './views/common/nav';
 
 //
@@ -40,8 +40,9 @@ class Root extends Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" render={() => { return <Redirect to="/hospital" />; }} />
-            <Route exact path="/:amenity" component={Amenity} />
+            <Route exact path="/" render={() => { return <Redirect to="/amenities/hospital" />; }} />
+            <Route exact path="/amenities/:amenity" component={Amenity} />
+            <Route exact path="/edit" component={Edit} />
             <Route exact path="/share/:initState" component={Amenity} />
             <Route component={FallBack} />
           </Switch>

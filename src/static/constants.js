@@ -170,22 +170,52 @@ export const sidebarMenuItems = [
       {
         type: 'hindu',
         route: '/hindu',
-        label: 'Temples',
+        label: 'Hinduism',
       },
       {
         type: 'muslim',
         route: '/muslim',
-        label: 'Masjids',
+        label: 'Islam',
       },
       {
         type: 'buddhist',
         route: '/buddhist',
-        label: 'Monasteries',
+        label: 'Buddhism',
       },
       {
         type: 'christian',
         route: '/christian',
-        label: 'Churches',
+        label: 'Christianity',
+      },
+      {
+        type: 'kirat',
+        route: '/kirat',
+        label: 'Kirat',
+      },
+      {
+        type: 'sikh',
+        route: '/sikh',
+        label: 'Sikhism',
+      },
+      {
+        type: 'judaism',
+        route: '/judaism',
+        label: 'Judaism',
+      },
+      {
+        type: 'other-religion',
+        route: '/other-religion',
+        label: 'Other Religions',
+      },
+    ],
+  },
+  {
+    category: 'Security',
+    children: [
+      {
+        type: 'police',
+        route: '/police',
+        label: 'Police Stations',
       },
     ],
   },

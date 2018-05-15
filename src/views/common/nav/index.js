@@ -28,7 +28,7 @@ const DrawerMenu = ({
           const subItems = [];
           category.children.forEach((item) => {
             subItems.push(<ListItem
-              onClick={() => { history.push(item.route); onRequestChange(item.type); initView(item.type); }}
+              onClick={() => { history.push(`/amenities${item.route}`); onRequestChange(item.type); initView(item.type); }}
               style={history.location.pathname === item.route ? { color: 'red' } : {}}
               key={shortid.generate()}
               primaryText={item.label}
