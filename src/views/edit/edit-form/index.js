@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
 import TextField from 'material-ui/TextField';
 import cloneDeep from 'lodash.clonedeep';
 
