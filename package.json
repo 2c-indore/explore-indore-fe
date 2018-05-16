@@ -4,7 +4,7 @@
   "description": "Official front-end code for the Explore Pokhara Web Application",
   "main": "index.js",
   "scripts": {
-    "build": "shx rm -rf public/** && NODE_ENV=production webpack -p --progress",
+    "build": "shx rm -rf public/** && NODE_ENV=production webpack -p --progress && cp ./src/land.html ./public/land.html",
     "start": "webpack-dev-server --colors",
     "deploy": "npm run build; gh-pages -d public; npm run clean",
     "test": "echo \"Error: no test specified\" && exit 1",
