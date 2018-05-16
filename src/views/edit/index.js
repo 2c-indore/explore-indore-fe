@@ -32,7 +32,18 @@ class Edit extends Component {
         </div>
       );
     } else {
-      return <div />;
+      return (
+        <div className="col-6 m-5 ">
+          <br />
+          <br />
+          <img src="/assets/oops.png" alt="error" height="200" />
+          <br />
+          <br />
+          <p className="pl-2 light-text">
+          Looks like you refreshed your browser. The edit functionality is only accessible through the map-based view. Please press the back button.
+          </p>
+        </div>
+      );
     }
   }
 }

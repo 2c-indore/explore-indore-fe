@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import cloneDeep from 'lodash.clonedeep';
-
-
 import RaisedButton from 'material-ui/RaisedButton';
+
+import ConfirmationDialog from '../../common/confirmation-dialog';
+
 import { tagMapper } from '../../../static/map-utils';
 
 import OsmAuth from './utils/OAuth';
@@ -15,12 +16,14 @@ class EditForm extends Component {
     super(props);
     this.state = {
       disabled: true,
-      changesetComment: '#kll',
+      changesetComment: '#preparepokhara ',
+      isConfirmationOpen: false,
     };
 
     this.onTextFieldChange = this.onTextFieldChange.bind(this);
     this.checkForDisabled = this.checkForDisabled.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onBeforeSubmit = this.onBeforeSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -65,6 +68,20 @@ class EditForm extends Component {
     });
   }
 
+  onBeforeSubmit(isTrue) {
+    this.setState((oldState) => {
+      return {
+        isConfirmationOpen: !oldState.isConfirmationOpen,
+      };
+    });
+
+    if (isTrue !== undefined) {
+      if (isTrue) {
+        this.onSubmit();
+      }
+    }
+  }
+
 
   onSubmit() {
     // console.log(this.state);
@@ -74,6 +91,7 @@ class EditForm extends Component {
     delete stateClone.disabled;
     delete stateClone.amenityId;
     delete stateClone.amenityType;
+    delete stateClone.isConfirmationOpen;
 
     const finalObj = {
       amenityId: this.state.amenityId, amenityType: this.state.amenityType, data: stateClone, changesetComment: this.state.changesetComment,
@@ -124,7 +142,13 @@ class EditForm extends Component {
           <TextField onChange={this.onTextFieldChange} name="changesetComment" value={this.state.changesetComment} fullWidth floatingLabelText="Comments (if any)" />
         </div>
         <div className="pr-2">
-          <RaisedButton disabled={this.state.disabled} className="my-2 " label="Submit changes" fullWidth primary onClick={this.onSubmit} />
+          <RaisedButton disabled={this.state.disabled} className="my-2 " label="Submit changes" fullWidth primary onClick={() => this.onBeforeSubmit()} />
+          <ConfirmationDialog
+            title="Confirm data submission"
+            message="Are you sure you want to upload these changes to OpenStreetMap?"
+            open={this.state.isConfirmationOpen}
+            handleRequest={this.onBeforeSubmit}
+          />
         </div>
       </div>
     );

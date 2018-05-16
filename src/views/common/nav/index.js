@@ -7,7 +7,8 @@ import Hamburger from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
 import { withRouter } from 'react-router-dom';
-import { sidebarMenuItems } from '../../../static/constants';
+import { sidebarMenuItems, varToTitle } from '../../../static/constants';
+
 
 import { initializeView } from '../../../state/amenity';
 
@@ -70,11 +71,15 @@ class Nav extends Component {
   }
 
   render() {
+    const currentPathName = this.props.history.location.pathname.split('/');
+    const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? `${varToTitle[currentPathName[2]]}` : 'Prepare Pokhara';
+    // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
+
     return (
       <div>
         <AppBar
           // zDepth={0}
-          title="Prepare Pokhara"
+          title={navbarTitle}
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
         />
         <DrawerMenu

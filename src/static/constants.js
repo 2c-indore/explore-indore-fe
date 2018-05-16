@@ -1,3 +1,33 @@
+export const varToTitle = {
+  school: 'Schools',
+  hindu: 'Places of Worship (Hinduism)',
+  police: 'Police Stations',
+  hospital: 'Hospitals',
+  clinic: 'Clinics',
+  health_post: 'Health Posts',
+  pharmacy: 'Pharmacies',
+  dentist: 'Dental Clinics',
+  government: 'Government Offices',
+  ngo: 'NGOs',
+  bank: 'Banks',
+  fuel: 'Fuel Stations',
+  radio: 'FM Stations',
+  television: 'TV Stations',
+  newspaper: 'Newspapers',
+  college: 'Colleges',
+  university: 'Universities',
+  kindergarten: 'Kindergartens',
+  buddhist: 'Places of Worship (Buddhism)',
+  christian: 'Places of Worship (Christianity)',
+  muslim: 'Places of Worship (Islam)',
+  atm: 'ATMs',
+  restaurant: 'Restaurants',
+  museum: 'Museums',
+  storage_tank: 'Public Water Tanks',
+  water_tap: 'Public Water Taps',
+  water_well: 'Wells',
+};
+
 export const sidebarMenuItems = [
   {
     category: 'Education',
