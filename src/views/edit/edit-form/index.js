@@ -6,6 +6,7 @@ import cloneDeep from 'lodash.clonedeep';
 import RaisedButton from 'material-ui/RaisedButton';
 import { tagMapper } from '../../../static/map-utils';
 
+import OsmAuth from './utils/OAuth';
 
 // import './styles.scss';
 
@@ -28,6 +29,12 @@ class EditForm extends Component {
       this.setState({
         [item]: tags[item],
       });
+    });
+
+    // set Amenity type and its Id on state variables
+    this.setState({
+      amenityType: this.props.data.properties.type,
+      amenityId: this.props.data.properties.id,
     });
 
     const filteredState = {};
@@ -60,14 +67,37 @@ class EditForm extends Component {
 
 
   onSubmit() {
-    console.log(this.state);
-
+    // console.log(this.state);
     const stateClone = cloneDeep(this.state);
+
     delete stateClone.changesetComment;
     delete stateClone.disabled;
-    const finalObj = { data: stateClone, changesetComment: this.state.changesetComment };
+    delete stateClone.amenityId;
+    delete stateClone.amenityType;
 
+    const finalObj = {
+      amenityId: this.state.amenityId, amenityType: this.state.amenityType, data: stateClone, changesetComment: this.state.changesetComment,
+    };
     console.log(finalObj);
+
+    // code to call the OSM API for editing.
+    const auth = new OsmAuth();
+    auth.getFeature(finalObj.amenityType, finalObj.amenityId)
+      .then((response) => {
+        const cleanedResponse = auth.cleanseData(response, finalObj.amenityType);
+        const appliedChanges = auth.applyChanges(finalObj.data, cleanedResponse, finalObj.amenityType);
+        return auth.createChangeset(appliedChanges, finalObj.changeSetComment);
+      })
+      .then((response) => {
+        const xml = auth.applyChangeset(response.changeset, response.appliedChanges, finalObj.amenityType);
+        return auth.applyEdit(xml, finalObj.amenityType, finalObj.amenityId);
+      })
+      .then((edited) => {
+        alert('Successfully edited !');
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 
   render() {
