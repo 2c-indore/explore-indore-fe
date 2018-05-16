@@ -14,7 +14,7 @@ import Chart from './chart';
 import './styles.scss';
 
 const InsightItem = ({ config }) => {
-  const chartValue = ((Number(config.value) / Number(config.max_value)) * 100).toFixed(0);
+  const chartValue = isNaN(((Number(config.value) / Number(config.max_value)) * 100).toFixed(0)) ? 0 : ((Number(config.value) / Number(config.max_value)) * 100).toFixed(0);
   return (
     <div className="pt-3">
       <p className="insight-title" >{config.insight_title}</p>

@@ -74,7 +74,7 @@ class Nav extends Component {
       <div>
         <AppBar
           // zDepth={0}
-          title="Explore Pokhara"
+          title="Prepare Pokhara"
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
         />
         <DrawerMenu

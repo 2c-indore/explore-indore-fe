@@ -102,11 +102,11 @@ export const sidebarMenuItems = [
         route: '/museum',
         label: 'Museums',
       },
-      {
-        type: 'park',
-        route: '/park',
-        label: 'Parks',
-      },
+      // {
+      //   type: 'park',
+      //   route: '/park',
+      //   label: 'Parks',
+      // },
     ],
   },
   {
@@ -137,11 +137,11 @@ export const sidebarMenuItems = [
         route: '/fuel',
         label: 'Petrol Station',
       },
-      {
-        type: 'gas',
-        route: '/gas',
-        label: 'LPG Shops',
-      },
+      // {
+      //   type: 'gas',
+      //   route: '/gas',
+      //   label: 'LPG Shops',
+      // },
     ],
   },
   {

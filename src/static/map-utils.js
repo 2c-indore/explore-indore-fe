@@ -394,6 +394,13 @@ export const amenityParameters = [
     isEditable: 'TRUE',
   },
   {
+    section: 'health_post',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+  },
+  {
     section: 'pharmacy',
     keyName: 'amenity',
     isVisibleOnPopup: 'FALSE',
@@ -1451,6 +1458,99 @@ export const tagMapper = {
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
   }],
+  storage_tank: [{
+    section: 'storage_tank',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: 'Water Storage Tank',
+    isEditable: 'FALSE',
+  }, {
+    section: 'storage_tank',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+  }, {
+    section: 'storage_tank',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+  }, {
+    section: 'storage_tank',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+  }, {
+    section: 'storage_tank',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+  }],
+  water_tap: [{
+    section: 'water_tap',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: 'Water Storage Tank',
+    isEditable: 'FALSE',
+  }, {
+    section: 'water_tap',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+  }, {
+    section: 'water_tap',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+  }, {
+    section: 'water_tap',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+  }, {
+    section: 'water_tap',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+  }],
+  water_well: [{
+    section: 'water_well',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: 'Water Storage Tank',
+    isEditable: 'FALSE',
+  }, {
+    section: 'water_well',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+  }, {
+    section: 'water_well',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+  }, {
+    section: 'water_well',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+  }, {
+    section: 'water_well',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+  }],
   police: [{
     section: 'police',
     keyName: 'amenity',
@@ -1663,6 +1763,12 @@ export const tagMapper = {
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+  }, {
+    section: 'health_post',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
     isEditable: 'TRUE',
   }],
   pharmacy: [{
@@ -1888,6 +1994,12 @@ export const tagMapper = {
     isEditable: 'TRUE',
   }, {
     section: 'bank',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+  }, {
+    section: 'bank',
     keyName: 'nrb_class',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Bank Classfication',
@@ -1944,6 +2056,12 @@ export const tagMapper = {
     isEditable: 'FALSE',
   }, {
     section: 'radio',
+    keyName: 'studio',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: '',
+    isEditable: 'FALSE',
+  }, {
+    section: 'radio',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
@@ -1982,6 +2100,12 @@ export const tagMapper = {
   television: [{
     section: 'television',
     keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: '',
+    isEditable: 'FALSE',
+  }, {
+    section: 'television',
+    keyName: 'studio',
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
@@ -2511,9 +2635,9 @@ export const tagToPopup = (type, tags, id) => {
     currentAmenityKeys.forEach((item) => {
       if (item.isVisibleOnPopup === 'TRUE') {
         if (item.keyName === 'name') {
-          newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
+          newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName] === undefined ? '-' : tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
         } else {
-          newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? '-' : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`;
+          newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? '-' : item === 'contact:email' ? tags[item.keyName] : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`;
         }
       }
       str += newString;
