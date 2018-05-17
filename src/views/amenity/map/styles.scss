@@ -1,13 +1,15 @@
 $color: #3590F3;
-
+$font: 'Roboto';
 // 123, 182, 247 -border
 // 53, 144, 243 -circle
 .custom-popup-header {
+  font-family: $font;
   color: $color;
   padding-right: 20px;
 }
 
 .custom-popup-content {
+  font-family: $font;
   max-height:250;
   overflow-y: scroll;
 
