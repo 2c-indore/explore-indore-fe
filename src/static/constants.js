@@ -26,6 +26,8 @@ export const varToTitle = {
   storage_tank: 'Public Water Tanks',
   water_tap: 'Public Water Taps',
   water_well: 'Wells',
+  hotel: 'Hotels',
+  veterinary: 'Veterinaries',
 };
 
 export const sidebarMenuItems = [
@@ -81,6 +83,11 @@ export const sidebarMenuItems = [
         type: 'dentist',
         route: '/dentist',
         label: 'Dentist',
+      },
+      {
+        type: 'veterinary',
+        route: '/veterinary',
+        label: 'Veterinaries',
       },
     ],
   },

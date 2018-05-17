@@ -8,6 +8,7 @@ import './index.less';
 
 import Amenity from './views/amenity';
 import Edit from './views/edit';
+import About from './views/about';
 import Nav from './views/common/nav';
 
 //
@@ -43,6 +44,7 @@ class Root extends Component {
             <Route exact path="/" render={() => { return <Redirect to="/amenities/hospital" />; }} />
             <Route exact path="/amenities/:amenity" component={Amenity} />
             <Route exact path="/edit" component={Edit} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/share/:initState" component={Amenity} />
             <Route component={FallBack} />
           </Switch>

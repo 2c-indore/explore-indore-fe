@@ -3,6 +3,7 @@ import shortid from 'shortid';
 import AppBar from 'material-ui/AppBar';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
 import Hamburger from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
@@ -12,7 +13,7 @@ import { sidebarMenuItems, varToTitle } from '../../../static/constants';
 
 import { initializeView } from '../../../state/amenity';
 
-// import './styles.scss';
+import './styles.scss';
 
 const HamburgerIcon = ({ onClick }) => {
   return <IconButton onClick={onClick} ><Hamburger color="#333" /></IconButton>;
@@ -72,15 +73,17 @@ class Nav extends Component {
 
   render() {
     const currentPathName = this.props.history.location.pathname.split('/');
-    const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? `${varToTitle[currentPathName[2]]}` : 'Prepare Pokhara';
+    const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in'] : ['Prepare', ''];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
 
     return (
       <div>
         <AppBar
-          // zDepth={0}
-          title={navbarTitle}
+          zDepth={1}
+          titleStyle={{ fontSize: '1.2rem' }}
+          title={<span><b>{navbarTitle[0]}</b> {navbarTitle[1]} Pokhara</span>}
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
+          iconElementRight={<FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />}
         />
         <DrawerMenu
           open={this.state.isDrawerOpen}
