@@ -4,6 +4,7 @@ import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 import 'leaflet-boundary-canvas';
 import 'leaflet.markercluster';
+import 'leaflet-easybutton';
 import * as topojson from 'topojson-client';
 import boundary from '../../../static/boundary';
 import { tagToPopup } from '../../../static/map-utils';
@@ -97,6 +98,8 @@ class Map extends Component {
   }
 
   addMap() {
+    const { onDownload } = this.props;
+
     const map = L.map(this.node, {    //eslint-disable-line
       zoomSnap: 0.25,
       attributionControl: false,
@@ -110,7 +113,10 @@ class Map extends Component {
     L.tileLayer(osmURL, { opacity: 0.3 }).addTo(this.map);
     L.control.scale().addTo(map);
 
-    map.addControl(L.control.zoom({ position: 'topright' }));
+    map.addControl(L.control.zoom({ position: 'topleft' }));
+    L.easyButton('<div class="download-icon"><i class="fas fa-download"></i></div>', () => {
+      onDownload();
+    }, 'Download this data').addTo(map);
   }
 
 

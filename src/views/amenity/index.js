@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
 import qs from 'qs';
 import objectWalk from 'object-walk';
 import cloneDeep from 'lodash.clonedeep';
 import ReactLoading from 'react-loading';
-import { initializeView, updateView, updateState, updateType } from '../../state/amenity';
+import { initializeView, updateView, updateState, updateType, downloadData } from '../../state/amenity';
 import Filters from './filters';
 import Insights from './insights';
 import Map from './map';
@@ -18,10 +20,12 @@ class Amenity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      isDialogOpen: false,
     };
 
+
     this.onFilterChange = this.onFilterChange.bind(this);
+    this.onDownloadClick = this.onDownloadClick.bind(this);
   }
 
 
@@ -48,12 +52,28 @@ class Amenity extends Component {
 
   onFilterChange(parameterName,value) { //eslint-disable-line
 
-    this.props.updateView({ ...this.state, [parameterName]: value, type: this.props.amenity.type });
-    this.props.updateState({ ...this.state, [parameterName]: value });
+    const stateClone = cloneDeep(this.state);
+
+    delete stateClone.isDialogOpen;
+
+    this.props.updateView({ ...stateClone, [parameterName]: value, type: this.props.amenity.type });
+    this.props.updateState({ ...stateClone, [parameterName]: value });
     // do something
     this.setState({
       [parameterName]: value,
     });
+  }
+
+  onDownloadClick() {
+    this.setState({
+      isDialogOpen: true,
+    });
+    // console.log({ ...this.state, type: this.props.amenity.type });
+    const stateClone = cloneDeep(this.state);
+
+    delete stateClone.isDialogOpen;
+
+    this.props.downloadData({ ...stateClone, type: this.props.amenity.type });
   }
 
   onLoadView() {
@@ -94,20 +114,42 @@ class Amenity extends Component {
 
   render() {
     const {
-      insights, parameters, geometries, loading,
+      insights, parameters, geometries, loading, downloads,
     } = this.props.amenity;
+
+    const actions = [
+
+      <FlatButton
+        label="close"
+        primary
+        onClick={() => { this.setState({ isDialogOpen: false }); }}
+      />,
+    ];
 
     // const { amenity } = this.props.match.params;
     if (!loading) {
       return (
         <div className="amenity row m-0">
           <div className="col-md-9 p-0 map">
-            <Map geometries={geometries} type={this.props.amenity.type} />
+            <Map geometries={geometries} type={this.props.amenity.type} onDownload={this.onDownloadClick} />
           </div>
           <div className="col-md-3 p-0 controls">
             <Insights type={this.props.amenity.type} currentState={this.props.amenity.state} insights={insights} />
             <Filters parameters={parameters} currentState={this.props.amenity.state} onChange={this.onFilterChange} />
           </div>
+          <Dialog actions={actions} open={this.state.isDialogOpen} onRequestClose={() => { this.setState({ isDialogOpen: false }); }} title="Download Data" >
+            {downloads.success === 0 &&
+            <div className="m-0"> Please wait, generating download links.. <br /> <br />  <ReactLoading type="bars" color="#3590F3" /></div>}
+            {downloads.success === 1 &&
+
+              <div>
+                <p>Please use the links below to download data in the format that you want:</p>
+                <br />
+                <a href={`http://preparepokhara.org/${downloads.data.csvlink}`} target="_blank">Download as CSV</a> <br />
+                <a href={`http://preparepokhara.org/${downloads.data.geojsonlink}`} target="_blank">Download as GeoJSON</a> <br />
+              </div>
+            }
+          </Dialog>
         </div>
       );
     } else {
@@ -122,5 +164,5 @@ const mapStateToProps = state => ({
 
 
 export default withRouter(connect(mapStateToProps, {
-  initializeView, updateView, updateState, updateType,
+  initializeView, updateView, updateState, updateType, downloadData,
 })((Amenity)));

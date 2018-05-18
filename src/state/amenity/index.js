@@ -7,6 +7,7 @@ const initialState = {
   state: null,
   geometries: null,
   parameters: null,
+  downloads: { success: 0 },
 };
 
 
@@ -47,6 +48,9 @@ const LOAD_GEOMETRIES = 'LOAD_GEOMETRIES';
 const LOAD_PARAMETERS = 'LOAD_PARAMETERS';
 const IS_LOADING = 'IS_LOADING';
 const HAS_LOADED = 'HAS_LOADED';
+const DOWNLOAD_LINKS_GENERATED = 'DOWNLOAD_LINKS_GENERATED';
+const DOWNLOAD_LINKS_GENERATING = 'DOWNLOAD_LINKS_GENERATING';
+
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
@@ -68,6 +72,11 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, { ...state, insights: { success: 1, data: action.payload.insights } });
     case LOAD_GEOMETRIES:
       return Object.assign({}, state, { ...state, geometries: { success: 1, data: action.payload.geometries } });
+    case DOWNLOAD_LINKS_GENERATING:
+      return Object.assign({}, state, { ...state, downloads: { success: 0 } });
+    case DOWNLOAD_LINKS_GENERATED:
+      return Object.assign({}, state, { ...state, downloads: { success: 1, data: { csvlink: action.payload.csvlink, geojsonlink: action.payload.geojsonlink } } });
+
     default: return state;
   }
 }
@@ -125,6 +134,7 @@ export function hasLoaded() {
     type: HAS_LOADED,
   };
 }
+
 export function initializeView(type) {
   return (dispatch) => {
     dispatch(isLoading());
@@ -143,13 +153,35 @@ export function initializeView(type) {
 }
 
 
+export function loadedLinks(payload) {
+  return {
+    type: DOWNLOAD_LINKS_GENERATED,
+    payload,
+  };
+}
+
+export function loadingLinks() {
+  return {
+    type: DOWNLOAD_LINKS_GENERATING,
+  };
+}
+
+
 export function updateView(parameters) {
   return (dispatch) => {
     axios.get('http://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
-      // dispatch(loadState(response.data));
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
-      // dispatch(hasLoaded());
+    });
+  };
+}
+
+
+export function downloadData(parameters) {
+  return (dispatch) => {
+    dispatch(loadingLinks());
+    axios.get('http://preparepokhara.org/api/v2/features/download', { params: parameters }).then((response) => {
+      dispatch(loadedLinks(response.data));
     });
   };
 }
