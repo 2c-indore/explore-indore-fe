@@ -159,7 +159,7 @@ class EditForm extends Component {
           />
           <Snackbar
             open={this.state.isDataSubmitted}
-            message="Successfully edited OSM data! Your changes will be live in OSM within the next two hours."
+            message="Successfully edited OSM data! Your change will be visible in the next two hours."
             autoHideDuration={4000}
             onRequestClose={() => { this.setState({ isDataSubmitted: false }); }}
           />
