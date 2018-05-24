@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import cloneDeep from 'lodash.clonedeep';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 
 import ConfirmationDialog from '../../common/confirmation-dialog';
 
@@ -18,6 +19,7 @@ class EditForm extends Component {
       disabled: true,
       changesetComment: '#preparepokhara ',
       isConfirmationOpen: false,
+      isDataSubmitted: false,
     };
 
     this.onTextFieldChange = this.onTextFieldChange.bind(this);
@@ -92,6 +94,7 @@ class EditForm extends Component {
     delete stateClone.amenityId;
     delete stateClone.amenityType;
     delete stateClone.isConfirmationOpen;
+    delete stateClone.isDataSubmitted;
 
     const finalObj = {
       amenityId: this.state.amenityId, amenityType: this.state.amenityType, data: stateClone, changesetComment: this.state.changesetComment,
@@ -111,7 +114,10 @@ class EditForm extends Component {
         return auth.applyEdit(xml, finalObj.amenityType, finalObj.amenityId);
       })
       .then((edited) => {
-        alert('Successfully edited OSM data! your changes will be reflected in this app within the next two hours.');
+        this.setState({
+          isDataSubmitted: true,
+        });
+        // alert('');
       })
       .catch((err) => {
         throw err;
@@ -150,6 +156,12 @@ class EditForm extends Component {
             message="Are you sure you want to upload these changes to OpenStreetMap?"
             open={this.state.isConfirmationOpen}
             handleRequest={this.onBeforeSubmit}
+          />
+          <Snackbar
+            open={this.state.isDataSubmitted}
+            message="Successfully edited OSM data! Your changes will be live in OSM within the next two hours."
+            autoHideDuration={4000}
+            onRequestClose={() => { this.setState({ isDataSubmitted: false }); }}
           />
         </div>
       </div>
