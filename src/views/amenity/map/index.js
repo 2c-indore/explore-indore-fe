@@ -4,15 +4,19 @@ import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 import 'leaflet-boundary-canvas';
 import 'leaflet.markercluster';
+import 'leaflet-search';
 import 'leaflet-easybutton';
 import * as topojson from 'topojson-client';
-import boundary from '../../../static/boundary';
+// import boundary from '../../../static/boundary';
 import { tagToPopup } from '../../../static/map-utils';
+import SearchAmenity from './search-amenity';
 
 import './styles.scss';
+import './leaflet-search.scss';
 
 
 // console.log('nested', JSON.stringify(nester(amenityParameters)));
+
 
 const color = '#3590F3';
 
@@ -22,16 +26,25 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      suggestions: [],
     };
+
+    this.suggestions = [];
 
     this.addMap = this.addMap.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.onSearchSelect = this.onSearchSelect.bind(this);
+    this.onUpdateDimensions = this.onUpdateDimensions.bind(this);
     // this.addMap = this.addMap.bind(this);
     // this.addMap = this.addMap.bind(this);
   }
 
   componentWillMount() {
+    window.addEventListener('resize', this.onUpdateDimensions);
+    const maxWindowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 65;
+    this.setState({ height: maxWindowHeight });
+
+
     L.TopoJSON = L.GeoJSON.extend({
       addData(jsonData) {
         if (jsonData.type === 'Topology') {
@@ -47,15 +60,16 @@ class Map extends Component {
 
     L.LeafIcon = L.Icon.extend({
       options: {
-        iconSize: [50, 50],
+        iconSize: [40, 40],
         // popupAnchor: [-1000, -76], // point from which the popup should open relative to the iconAnchor
         // iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
       },
     });
   }
 
+
   componentDidMount() {
-    this.addMap();
+    this.addMap(this.props.geometries.data.boundary);
     if (this.props.geometries !== null && this.props.geometries.success === 1) {
       // console.log(this.props.geometries);
 
@@ -70,13 +84,15 @@ class Map extends Component {
       // console.log(this.props.geometries.data);
       this.addBaseLayer(this.props.geometries.data.boundary);
       this.addPois(this.props.geometries.data.pois);
+      this.addSearchControl(this.props.geometries.data.pois);
       // this.addWardBoundaries(this.props.geometries.data.boundary);
     // this.addBoundaries();
     }
   }
 
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('prevProps', prevProps);
     if (this.props.geometries !== null && this.props.geometries.success === 1) {
       this.map.eachLayer((layer) => {
         if (!layer._url && (layer.name === 'markers')) {
@@ -88,7 +104,15 @@ class Map extends Component {
 
       this.addBaseLayer(this.props.geometries.data.boundary);
       this.addPois(this.props.geometries.data.pois);
+      if (prevProps.geometries.data.pois.features.length !== this.props.geometries.data.pois.features.length) {
+        this.addSearchControl(this.props.geometries.data.pois);
+      }
     }
+  }
+
+  onUpdateDimensions() {
+    const maxWindowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 65;
+    this.setState({ height: maxWindowHeight });
   }
 
   onEdit(data) {
@@ -97,18 +121,47 @@ class Map extends Component {
     this.props.history.push({ pathname: '/edit', state: { amenityData: data, type: this.props.type } });
   }
 
-  addMap() {
+  onSearchSelect(coordinates, name) {
+    // c(onsole.log(coordinates);
+
+    if (this.highlighLayer) {
+      this.map.removeLayer(this.highlightLayer);
+    } else {
+      const highlight = L.circle(L.latLng(coordinates[1], coordinates[0]), { radius: 30, fillColor: color, weight: 0 }).addTo(this.map);
+      this.highlightLayer = L.layerGroup([highlight]).addTo(this.map);
+    }
+    // this.map.setZoom(16);
+    setTimeout(() => {
+      this.map.flyTo(L.latLng(coordinates[1], coordinates[0]), 18);
+    }, 0);
+  }
+
+  addSearchControl(data) {
+    const suggestions = [];
+    data.features.forEach((item) => {
+      suggestions.push({ name: item.properties.tags.name, coordinates: item.geometry.coordinates });
+    });
+
+    this.setState({ suggestions });
+  }
+
+
+  addMap(data) {
     const { onDownload } = this.props;
 
     const map = L.map(this.node, {    //eslint-disable-line
       zoomSnap: 0.25,
       attributionControl: false,
-      scrollWheelZoom: false,
+      maxBounds: L.geoJson(data).getBounds().pad(0.4),
+      minZoom: 9,
+      // maxZoom: 14,
+      // scrollWheelZoom: false,oo
       zoomControl: false,
     });
     this.map = map;
 
-    this.map.fitBounds(L.geoJson(boundary).getBounds());
+    this.map.fitBounds(L.geoJson(data).getBounds());
+    this.map.setZoom(11.5);
 
     L.tileLayer(osmURL, { opacity: 0.3 }).addTo(this.map);
     L.control.scale().addTo(map);
@@ -117,6 +170,7 @@ class Map extends Component {
     L.easyButton('<div class="download-icon"><i class="fas fa-download"></i></div>', () => {
       onDownload();
     }, 'Download this data').addTo(map);
+    L.control.attribution({ prefix: 'Map designed by <a href="www.kathmandulivinglabs.org" target="_blank" rel="noopener noreferrer">Kathmandu Living Labs</a> | &copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> Contributors' }).addTo(this.map); //eslint-disable-line
   }
 
 
@@ -124,14 +178,9 @@ class Map extends Component {
 
     const baseLayer = L.TileLayer.boundaryCanvas(osmURL, {
       boundary: data,
-      attribution: '<div class="p-1"><span style="font-size: 0.9rem">दोस्रो नगर सभाबाट पारित नयाँ परियोजनाहरूको नक्सांकन बाँकी छ |</span>' +
-  ' <br /> <span>Map developed by <a target = "_blank" href="http://kathmandulivinglabs.org">' +
-  'Kathmandu Living Labs</a> using <a href = "http://leafletjs.com" >Leaflet</a>' +
-  ' | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors </span></div>',
     });
 
     baseLayer.addTo(this.map);
-
 
     baseLayer.name = 'overlay';
     this.map.fitBounds(L.geoJson(data).getBounds());
@@ -139,6 +188,7 @@ class Map extends Component {
 
 
   addPois(data) {
+    // const { map } = this;
     const addIcon = (type) => { //eslint-disable-line
     // console.log('addIcon', type, mapProjectToIcon[type]);
       const icon = new L.LeafIcon({
@@ -148,6 +198,7 @@ class Map extends Component {
       return icon;
     };
 
+
     const geoJsonStyle = {
       color: '#888',
       weight: 1,
@@ -155,9 +206,10 @@ class Map extends Component {
       // fillColor: '#fff',
     };
 
+
     // const wardboundary = topojson.feature(data, data.objects.pokhara_boundary);
     const { type } = this.props;
-    const { onEdit } = this;
+    const { onEdit, map } = this;
 
     const dataLayer = L.geoJson(null, {
       style: geoJsonStyle,
@@ -171,21 +223,26 @@ class Map extends Component {
           className: 'custom',
           minWidth: 250,
           maxWidth: 250,
-          maxHeight: 400,
+          maxHeight: 275,
           border: 'none',
+          autopan: true,
         };
         const str = tagToPopup(type, tags, id);
         layer.bindPopup(str, popupOptions);
+        layer.on('click', () => {
+          layer.openPopup();
+          map.panTo(layer._latlng);
+        });
+        layer.on('mouseover', () => {
+          layer.bindTooltip(tags.name === undefined ? '<i>(name unavailable)</i><br/><span class="leaflet-tooltip-text">Click icon for more details</span>' : `${tags.name}<br/><span class="leaflet-tooltip-text">Click icon for more details</span>`, { direction: 'top' }).openTooltip(); //eslint-disable-line
+        });
         $('body').on('click', `#popup-btn-${id}`, () => { onEdit(layer.feature); });
       },
     });
 
 
     const markers = L.markerClusterGroup({
-      // disableClusteringAtZoom: 16,
-      // maxClusterRadius: 70,
-      // spiderfyDistanceMultiplier: 3,
-      // spiderfyOnMaxZoom: true,
+      disableClusteringAtZoom: 18,
       polygonOptions: {
         fillColor: color,
         color,
@@ -197,13 +254,24 @@ class Map extends Component {
     markers.addLayer(dataLayer);
     this.map.addLayer(markers);
     markers.name = 'markers';
+    this.markers = markers;
+
+
+    // this.setState({ suggestions: suggestionsArray });
+
+    // const searchLayer = L.geoJson(data);
   }
 
   render() {
-    return (<div
+    return (
+      <div
       ref={node => this.node = node} //eslint-disable-line
-      style={{ minHeight: '91vh' }}
-    />);
+        style={{ maxHeight: this.state.height, minHeight: this.state.height }}
+      >
+
+        {this.state.suggestions.length !== 0 && <SearchAmenity data={this.state.suggestions} onNewRequest={this.onSearchSelect} />}
+      </div>
+    );
   }
 }
 

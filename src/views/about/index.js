@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
 import { withRouter } from 'react-router-dom';
 
 
@@ -28,7 +27,7 @@ class About extends Component {
           <p className="light-text ">
             Do you know where the closest hospital is from your home? Do you know
             where you can easily access cash during an emergency situation?
-            Are you prepared!
+            Are you prepared?
           </p>
 
           <p className="light-text ">

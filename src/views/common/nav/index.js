@@ -4,6 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
+import Subheader from 'material-ui/Subheader';
 import Hamburger from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
@@ -26,6 +27,7 @@ const DrawerMenu = ({
   return (
     <Drawer docked={false} open={open} onRequestChange={onRequestChange}>
       <List>
+        <Subheader>Select an amenity</Subheader>
         {menuItems.map((category) => {
           const subItems = [];
           category.children.forEach((item) => {
@@ -73,7 +75,7 @@ class Nav extends Component {
 
   render() {
     const currentPathName = this.props.history.location.pathname.split('/');
-    const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in'] : ['Prepare', ''];
+    const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
 
     return (
@@ -81,9 +83,14 @@ class Nav extends Component {
         <AppBar
           zDepth={1}
           titleStyle={{ fontSize: '1.2rem' }}
-          title={<span><b>{navbarTitle[0]}</b> {navbarTitle[1]} Pokhara</span>}
+          title={<span><b>{navbarTitle[0]}</b> {navbarTitle[1]} {navbarTitle[2]}</span>}
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
-          iconElementRight={<FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />}
+          iconElementRight={
+            <div style={{ paddingTop: '5px' }}>
+              {currentPathName[1] === 'edit' && <FlatButton onClick={() => { this.props.history.goBack(); }} label="Go Back" />}
+              <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />
+            </div>
+          }
         />
         <DrawerMenu
           open={this.state.isDrawerOpen}

@@ -45,6 +45,7 @@ const LOAD_STATE = 'LOAD_STATE';
 const UPDATE_TYPE = 'UPDATE_TYPE';
 const LOAD_INSIGHTS = 'LOAD_INSIGHTS';
 const LOAD_GEOMETRIES = 'LOAD_GEOMETRIES';
+const LOADING_GEOMETRIES = 'LOADING_GEOMETRIES';
 const LOAD_PARAMETERS = 'LOAD_PARAMETERS';
 const IS_LOADING = 'IS_LOADING';
 const HAS_LOADED = 'HAS_LOADED';
@@ -70,6 +71,9 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, { ...state, parameters: { success: 1, data: action.payload.parameters } });
     case LOAD_INSIGHTS:
       return Object.assign({}, state, { ...state, insights: { success: 1, data: action.payload.insights } });
+    case LOADING_GEOMETRIES:
+      return Object.assign({}, state, { ...state, geometries: { success: 0 } });
+
     case LOAD_GEOMETRIES:
       return Object.assign({}, state, { ...state, geometries: { success: 1, data: action.payload.geometries } });
     case DOWNLOAD_LINKS_GENERATING:
@@ -166,9 +170,16 @@ export function loadingLinks() {
   };
 }
 
+export function loadingGeometries() {
+  return {
+    type: LOADING_GEOMETRIES,
+  };
+}
+
 
 export function updateView(parameters) {
   return (dispatch) => {
+    dispatch(loadingGeometries());
     axios.get('http://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));

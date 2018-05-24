@@ -20,6 +20,9 @@ export const varToTitle = {
   buddhist: 'Places of Worship (Buddhism)',
   christian: 'Places of Worship (Christianity)',
   muslim: 'Places of Worship (Islam)',
+  kirat: 'Places of Worship (Kirat)',
+  sikh: 'Places of Worship (Sikhism)',
+  judaism: 'Places of Worship (Judaism)',
   atm: 'ATMs',
   restaurant: 'Restaurants',
   museum: 'Museums',
@@ -172,7 +175,7 @@ export const sidebarMenuItems = [
       {
         type: 'fuel',
         route: '/fuel',
-        label: 'Petrol Station',
+        label: 'Fuel Station',
       },
       // {
       //   type: 'gas',

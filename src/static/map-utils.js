@@ -2729,7 +2729,7 @@ export const tagToPopup = (type, tags, id) => {
         if (item.keyName === 'name') {
           newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName] === undefined ? '-' : tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
         } else {
-          newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? '-' : item === 'contact:email' ? tags[item.keyName] : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`;
+          newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? '-' : item === 'contact:email' ? tags[item.keyName] : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`; //eslint-disable-line
         }
       }
       str += newString;

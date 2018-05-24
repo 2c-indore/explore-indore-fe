@@ -20,7 +20,7 @@ class EditMap extends Component {
   componentWillMount() {
     L.LeafIcon = L.Icon.extend({
       options: {
-        iconSize: [50, 50],
+        iconSize: [40, 40],
         // popupAnchor: [-1000, -76], // point from which the popup should open relative to the iconAnchor
         // iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
       },
@@ -45,7 +45,7 @@ class EditMap extends Component {
     L.tileLayer(osmURL, { opacity: 1 }).addTo(this.map);
     L.control.scale().addTo(map);
 
-    map.addControl(L.control.zoom({ position: 'topright' }));
+    map.addControl(L.control.zoom({ position: 'topleft' }));
 
     const addIcon = (type) => { //eslint-disable-line
     // console.log('addIcon', type, mapProjectToIcon[type]);
@@ -56,8 +56,24 @@ class EditMap extends Component {
       return icon;
     };
 
-    L.marker([this.props.data.geometry.coordinates[1], this.props.data.geometry.coordinates[0]], { icon: addIcon(this.props.type) }).addTo(map);
+    const marker = L.marker([this.props.data.geometry.coordinates[1], this.props.data.geometry.coordinates[0]], { icon: addIcon(this.props.type) })
+      .addTo(map);
+
+    const popupOptions = {
+      className: 'custom',
+      minWidth: 250,
+      maxWidth: 250,
+      maxHeight: 275,
+      border: 'none',
+      autopan: true,
+      offset: [0, -15],
+    };
+
+    marker.bindPopup(this.props.data.properties.tags.name, popupOptions).openPopup();
+
+    L.control.attribution({ prefix: 'Map designed by <a href="www.kathmandulivinglabs.org" target="_blank" rel="noopener noreferrer">Kathmandu Living Labs</a> | &copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> Contributors' }).addTo(this.map); //eslint-disable-line
   }
+
 
   render() {
     return (<div

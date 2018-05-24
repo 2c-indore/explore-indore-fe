@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import Snackbar from 'material-ui/Snackbar';
 import { connect } from 'react-redux';
 import qs from 'qs';
 import objectWalk from 'object-walk';
@@ -26,28 +27,35 @@ class Amenity extends Component {
 
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onDownloadClick = this.onDownloadClick.bind(this);
+    this.onUpdateDimensions = this.onUpdateDimensions.bind(this);
   }
 
 
   componentWillMount() {
-    // initializeView()
+    window.addEventListener('resize', this.onUpdateDimensions);
     this.onLoadView();
+    const maxWindowHeight = Math.min(document.documentElement.clientHeight, window.innerHeight || 0) - 70;
+    this.setState({ height: maxWindowHeight });
   }
 
+  componentDidMount() {
+  }
+
+  // shouldComponentUpdate() {}
+
   componentWillReceiveProps(nextProps) {
-    // console.log('nextProps', nextProps);
-    // if (nextProps.match.params.amenity !== this.props.match.params.amenity) {
     this.setState({
       ...nextProps.amenity.state,
     });
     // }
   }
 
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return true;
-  //   // nextProps.match.params.amenity !== this.props.match.params.amenity;
-  // }
+  onUpdateDimensions() {
+    const maxWindowHeight = Math.min(document.documentElement.clientHeight, window.innerHeight || 0) - 70;
+    this.setState({
+      height: maxWindowHeight,
+    });
+  }
 
 
   onFilterChange(parameterName,value) { //eslint-disable-line
@@ -55,6 +63,7 @@ class Amenity extends Component {
     const stateClone = cloneDeep(this.state);
 
     delete stateClone.isDialogOpen;
+    delete stateClone.height;
 
     this.props.updateView({ ...stateClone, [parameterName]: value, type: this.props.amenity.type });
     this.props.updateState({ ...stateClone, [parameterName]: value });
@@ -72,6 +81,7 @@ class Amenity extends Component {
     const stateClone = cloneDeep(this.state);
 
     delete stateClone.isDialogOpen;
+    delete stateClone.height;
 
     this.props.downloadData({ ...stateClone, type: this.props.amenity.type });
   }
@@ -131,9 +141,23 @@ class Amenity extends Component {
       return (
         <div className="amenity row m-0">
           <div className="col-md-9 p-0 map">
-            <Map geometries={geometries} type={this.props.amenity.type} onDownload={this.onDownloadClick} />
+            {geometries.success === 1 && <Map geometries={geometries} height={`${this.state.height}`} type={this.props.amenity.type} onDownload={this.onDownloadClick} />}
+            {geometries.success === 0 &&
+              <div
+                style={{
+                minHeight: this.state.height,
+                maxHeight: this.state.height,
+                minWidth: '100%',
+                backgroundColor: '#000',
+                color: '#fff',
+                width: '100%',
+              }}
+                className="d-flex flex-column align-items-center p-5"
+              >Updating map, please wait...<br /> <ReactLoading type="bars" color="#3590F3" />
+              </div>
+                                       }
           </div>
-          <div className="col-md-3 p-0 controls">
+          <div className="col-md-3 p-0 controls" style={{ minHeight: this.state.height, maxHeight: this.state.height }}>
             <Insights type={this.props.amenity.type} currentState={this.props.amenity.state} insights={insights} />
             <Filters parameters={parameters} currentState={this.props.amenity.state} onChange={this.onFilterChange} />
           </div>
@@ -150,6 +174,11 @@ class Amenity extends Component {
               </div>
             }
           </Dialog>
+          {geometries.success === 1 && geometries.data.pois.features.length === 0 && <Snackbar
+            open
+            message="Sorry, there were no results for the filters applied."
+            autoHideDuration={3000}
+          />}
         </div>
       );
     } else {

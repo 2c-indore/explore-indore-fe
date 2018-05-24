@@ -111,7 +111,7 @@ class EditForm extends Component {
         return auth.applyEdit(xml, finalObj.amenityType, finalObj.amenityId);
       })
       .then((edited) => {
-        alert('Successfully edited !');
+        alert('Successfully edited OSM data! your changes will be reflected in this app within the next two hours.');
       })
       .catch((err) => {
         throw err;
@@ -120,10 +120,11 @@ class EditForm extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ minHeight: '90vh', maxHeight: '90vh', overflowY: 'auto' }}>
 
-        <div style={{ minHeight: '85vh', maxHeight: '85vh', overflowY: 'auto' }}>
+        <div >
           {Object.keys(this.filteredState).map((item) => {
+          const label = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].keyLabel;
           if (item !== 'changesetComment' && item !== 'disabled') {
           return (
             <TextField
@@ -133,7 +134,8 @@ class EditForm extends Component {
               name={item}
               value={this.state[item]}
               fullWidth
-              floatingLabelText={item}
+              floatingLabelText={label === '-' ? 'amenity' : label}
+              floatingLabelStyle={{ color: '#888' }}
             />);
         } else {
           return null;
