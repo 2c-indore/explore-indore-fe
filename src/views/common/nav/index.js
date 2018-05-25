@@ -42,6 +42,7 @@ const DrawerMenu = ({
           <div key={shortid.generate()}>
             <ListItem primaryText={category.category}
               initiallyOpen={false}
+              innerDivStyle={{ fontWeight: 600 }}
               primaryTogglesNestedList
               nestedItems={subItems}
             />

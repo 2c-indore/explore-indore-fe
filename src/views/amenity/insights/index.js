@@ -19,10 +19,10 @@ const InsightItem = ({ config }) => {
     <div className="pt-3">
       <p className="insight-title" >{config.insight_title}</p>
       <div className="row">
-        <div className="col-10">
+        <div className="col-9">
           <Chart value={chartValue} />
         </div>
-        <div className="col-2 percentage">
+        <div className="col-3 percentage">
           {chartValue}%
         </div>
       </div>

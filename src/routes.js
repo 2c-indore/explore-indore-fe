@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, HashRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, HashRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import createHistory from 'history/createBrowserHistory';
 
@@ -41,7 +41,7 @@ class Root extends Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" render={() => { return <Redirect to="/amenities/hospital" />; }} />
+            <Route exact path="/" render={() => { return <About />; }} />
             <Route exact path="/amenities/:amenity" component={Amenity} />
             <Route exact path="/edit" component={Edit} />
             <Route exact path="/about" component={About} />

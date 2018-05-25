@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 import './styles.scss'; //eslint-disable-line
@@ -16,7 +17,7 @@ class About extends Component {
   render() {
     return (
       <div className="home m-5 row m-0">
-        <div className="col-lg-6">
+        <div className="col-lg-6 my-3">
 
           <h1><b>Prepare</b> Pokhara</h1>
           <h5>Bringing data, people and technology together.</h5>
@@ -40,14 +41,32 @@ class About extends Component {
 
           <br />
 
+          <NavLink to="/amenities/hospital"><RaisedButton primary label="Get Started" /></NavLink>
+
 
         </div>
         <div className="col-lg-6 px-4 hidden-md-down">
-          <img src="/assets/home.png" width="70%" alt="Screenshots of the web and mobile version" className="img-fluid float-right" />
+          <img src="/assets/home.png" width="70%" alt="Screenshots of the web app" className="img-fluid float-right" />
         </div>
 
         <div className="col-lg-4 col-md-6 col-sm-12 my-3">
-          <img src="/assets/kll_logo.png" style={{ maxWidth: '300px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5 " />
+          <a href="http://pokharalekhnathmun.gov.np/" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/gon_logo.png" style={{ maxWidth: '300px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5" />
+          </a>
+          <br />
+
+          <p className="light-text">
+          Government of Nepal <br />
+          Ministry of Federal Affairs and Local Development <br />
+          Pokhara Lekhnath Metropolitan<br />
+          New Road, Pokhara 9, Kaski<br />
+          </p>
+        </div>
+
+        <div className="col-lg-4 col-md-6 col-sm-12 my-3">
+          <a href="http://kathmandulivinglabs.org" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/kll_logo.png" style={{ maxWidth: '300px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5 " />
+          </a>
           <br />
           <p className="light-text">
         Kathmandu Living Labs <br />
@@ -58,7 +77,9 @@ class About extends Component {
         </div>
 
         <div className="col-lg-4 col-md-6 col-sm-12 my-3">
-          <img src="/assets/2c_logo.png" style={{ maxWidth: '300px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5" />
+          <a href="https://secondarycities.state.gov/" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/2c_logo.png" style={{ maxWidth: '300px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5" />
+          </a>
           <br />
 
           <p className="light-text">
@@ -68,6 +89,8 @@ class About extends Component {
           hiu_info@state.gov
           </p>
         </div>
+
+
       </div>
     );
   }

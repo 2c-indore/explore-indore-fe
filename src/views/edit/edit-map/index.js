@@ -20,7 +20,7 @@ class EditMap extends Component {
   componentWillMount() {
     L.LeafIcon = L.Icon.extend({
       options: {
-        iconSize: [40, 40],
+        iconSize: [45, 45],
         // popupAnchor: [-1000, -76], // point from which the popup should open relative to the iconAnchor
         // iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
       },
@@ -37,6 +37,8 @@ class EditMap extends Component {
       attributionControl: false,
       scrollWheelZoom: false,
       zoomControl: false,
+      dragging: false,
+      minZoom: 17,
     });
     this.map = map;
 

@@ -1712,7 +1712,7 @@ export const tagMapper = {
     isEditable: 'TRUE',
   }, {
     section: 'hospital',
-    keyName: 'contact:phone',
+    keyName: 'phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
@@ -2726,6 +2726,7 @@ export const tagToPopup = (type, tags, id) => {
     let newString = '';
     currentAmenityKeys.forEach((item) => {
       if (item.isVisibleOnPopup === 'TRUE') {
+        // console.log(item.keyName, tags[item.keyName]);
         if (item.keyName === 'name') {
           newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName] === undefined ? '-' : tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
         } else {
@@ -2735,7 +2736,7 @@ export const tagToPopup = (type, tags, id) => {
       str += newString;
     });
 
-    str += `</div><div><button id="popup-btn-${id}" class="popup-btn"><i class="fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
+    str += `</div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
     return str;
   } else {
     return '<span>Details coming soon</span>';

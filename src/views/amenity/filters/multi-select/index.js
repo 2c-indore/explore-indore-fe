@@ -23,7 +23,7 @@ class MultiSelect extends Component {
     // console.log(config, currentState);
     return (
       <div className="multi-select">
-        <p className="filter-label">{config.label}</p>
+        <p className="filter-label pt-3">{config.label}</p>
         {config.options.map((item) => {
           // console.log(item.value);
           return (<Toggle

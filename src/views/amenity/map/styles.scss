@@ -5,6 +5,7 @@ $font: 'Roboto';
   font-family: $font;
   margin-bottom: 10px;
   color: $color;
+  font-size: 0.9rem;
   font-weight: 600;
   background-color: #fff;
   border: none;
@@ -172,6 +173,7 @@ $font: 'Roboto';
   background-color: $color;
   color: #ecf0f1;
   font-weight: 300;
+  font-size: 0.9rem;
 
   transition: background-color .8s;
   width:100%;
