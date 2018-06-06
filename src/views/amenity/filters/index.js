@@ -37,7 +37,7 @@ class Filters extends Component {
     if (parameters !== null && parameters.success === 1) {
       const { data } = parameters;
       return (
-        <div className="p-3">
+        <div className="p-3 filters">
           <h5 className="mb-4">
             <FilterIcon style={{ marginBottom: '-5px', marginRight: '7px' }} />
             Filters

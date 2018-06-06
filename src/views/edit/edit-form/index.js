@@ -116,6 +116,7 @@ class EditForm extends Component {
       .then((edited) => {
         this.setState({
           isDataSubmitted: true,
+          disabled: true,
         });
         // alert('');
       })

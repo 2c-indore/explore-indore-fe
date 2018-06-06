@@ -17,7 +17,7 @@ import { initializeView } from '../../../state/amenity';
 import './styles.scss';
 
 const HamburgerIcon = ({ onClick }) => {
-  return <IconButton onClick={onClick} ><Hamburger color="#333" /></IconButton>;
+  return <IconButton onClick={onClick} className="hamburger" ><Hamburger color="#333" /></IconButton>;
 };
 
 const DrawerMenu = ({
@@ -84,7 +84,7 @@ class Nav extends Component {
         <AppBar
           zDepth={1}
           titleStyle={{ fontSize: '1.2rem' }}
-          title={<span><b>{navbarTitle[0]}</b> {navbarTitle[1]} {navbarTitle[2]}</span>}
+          title={<span className="currentAmenity"><b>{navbarTitle[0]}</b> {navbarTitle[1]} {navbarTitle[2]}</span>}
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
           iconElementRight={
             <div style={{ paddingTop: '5px' }}>
@@ -107,6 +107,7 @@ class Nav extends Component {
 
 const mapStateToProps = state => ({
   amenity: state.amenity,
+
 });
 
 

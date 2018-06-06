@@ -1,8 +1,12 @@
-.home {
+.about {
 
   // background-color: #4ead51;
   // color: #fff;
   // color:#f00;
+
+  overflow-y: scroll;
+  max-height: 91vh;
+
   h1 {
     font-weight: 300;
   }

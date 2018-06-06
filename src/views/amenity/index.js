@@ -8,13 +8,57 @@ import qs from 'qs';
 import objectWalk from 'object-walk';
 import cloneDeep from 'lodash.clonedeep';
 import ReactLoading from 'react-loading';
+import { Steps } from 'intro.js-react';
 import { initializeView, updateView, updateState, updateType, downloadData } from '../../state/amenity';
 import Filters from './filters';
 import Insights from './insights';
 import Map from './map';
 
-
 import './styles.scss';
+import './introjs.scss';
+
+const steps = [
+  {
+    element: '.hamburger',
+    intro: 'You can choose an amenity of your choice from the menu provided.',
+    position: 'right',
+    disableInteraction: true,
+  },
+  {
+    element: '.currentAmenity',
+    position: 'left',
+    intro: 'The title will reflect the amenity you select.',
+    disableInteraction: true,
+  },
+  {
+    element: '.map',
+    position: 'top',
+    intro: 'Choosing an amenity will cause the map to populate those amenities within Pokhara',
+    disableInteraction: true,
+  },
+  {
+    element: '.insights',
+    intro: 'View statistics for that amenity in the insights section.',
+    position: 'right',
+    disableInteraction: true,
+
+  },
+  {
+    element: '.filters',
+    intro: 'Play around with the data using controls provided in the filter section ',
+    position: 'right',
+    disableInteraction: true,
+
+  },
+
+  {
+    element: '.shareButton',
+    intro: 'Found an interesting insight? You can also share your results using the share button.',
+    position: 'right',
+    disableInteraction: true,
+
+  },
+];
 
 
 class Amenity extends Component {
@@ -22,10 +66,12 @@ class Amenity extends Component {
     super(props);
     this.state = {
       isDialogOpen: false,
+      isHelpOpen: false,
     };
 
 
     this.onFilterChange = this.onFilterChange.bind(this);
+    this.onExit = this.onExit.bind(this);
     this.onDownloadClick = this.onDownloadClick.bind(this);
     this.onUpdateDimensions = this.onUpdateDimensions.bind(this);
   }
@@ -86,6 +132,12 @@ class Amenity extends Component {
     this.props.downloadData({ ...stateClone, type: this.props.amenity.type });
   }
 
+  onExit() {
+    this.setState({
+      isHelpOpen: false,
+    });
+  }
+
   onLoadView() {
     if (this.props.match.params.amenity) {
       this.props.initializeView(this.props.match.params.amenity);
@@ -140,6 +192,20 @@ class Amenity extends Component {
     if (!loading) {
       return (
         <div className="amenity row m-0">
+          <div style={{
+             position: 'absolute', zIndex: '1000000000000000', top: '13px', right: '100px',
+            }}
+          >
+            <FlatButton label="how to use" onClick={() => this.setState((oldState) => { return { isHelpOpen: true }; })} />
+          </div>
+          <Steps
+            enabled={this.state.isHelpOpen}
+            steps={steps}
+            initialStep={0}
+            onExit={this.onExit}
+          />
+
+
           <div className="col-md-9 p-0 map">
             {geometries.success === 1 && <Map geometries={geometries} height={`${this.state.height}`} type={this.props.amenity.type} onDownload={this.onDownloadClick} />}
             {geometries.success === 0 &&

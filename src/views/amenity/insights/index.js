@@ -99,7 +99,7 @@ class Insights extends Component {
             <IconButton
               onClick={this.onShareClick}
               style={{ marginTop: '-10px' }}
-              className="float-right"
+              className="float-right shareButton"
             ><Share />
             </IconButton>
           </h5>

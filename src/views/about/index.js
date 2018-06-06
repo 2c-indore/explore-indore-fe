@@ -16,7 +16,7 @@ class About extends Component {
 
   render() {
     return (
-      <div className="home m-5 row m-0">
+      <div className="about p-5 row m-0">
         <div className="col-lg-6 my-3">
 
           <h1><b>Prepare</b> Pokhara</h1>
