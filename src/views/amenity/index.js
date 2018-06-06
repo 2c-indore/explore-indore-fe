@@ -9,7 +9,7 @@ import objectWalk from 'object-walk';
 import cloneDeep from 'lodash.clonedeep';
 import ReactLoading from 'react-loading';
 import { Steps } from 'intro.js-react';
-import { initializeView, updateView, updateState, updateType, downloadData } from '../../state/amenity';
+import { initializeView, updateView, updateState, updateType, downloadData, saveEditState } from '../../state/amenity';
 import Filters from './filters';
 import Insights from './insights';
 import Map from './map';
@@ -207,7 +207,14 @@ class Amenity extends Component {
 
 
           <div className="col-md-9 p-0 map">
-            {geometries.success === 1 && <Map geometries={geometries} height={`${this.state.height}`} type={this.props.amenity.type} onDownload={this.onDownloadClick} />}
+            {geometries.success === 1 && <Map
+              saveEditState={this.props.saveEditState}
+              stateBeforeEdit={this.props.amenity.stateBeforeEdit}
+              geometries={geometries}
+              height={`${this.state.height}`}
+              type={this.props.amenity.type}
+              onDownload={this.onDownloadClick}
+            />}
             {geometries.success === 0 &&
               <div
                 style={{
@@ -259,5 +266,5 @@ const mapStateToProps = state => ({
 
 
 export default withRouter(connect(mapStateToProps, {
-  initializeView, updateView, updateState, updateType, downloadData,
+  initializeView, updateView, updateState, updateType, downloadData, saveEditState,
 })((Amenity)));

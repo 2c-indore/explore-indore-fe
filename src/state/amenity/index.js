@@ -8,6 +8,7 @@ const initialState = {
   geometries: null,
   parameters: null,
   downloads: { success: 0 },
+  stateBeforeEdit: undefined,
 };
 
 
@@ -51,6 +52,7 @@ const IS_LOADING = 'IS_LOADING';
 const HAS_LOADED = 'HAS_LOADED';
 const DOWNLOAD_LINKS_GENERATED = 'DOWNLOAD_LINKS_GENERATED';
 const DOWNLOAD_LINKS_GENERATING = 'DOWNLOAD_LINKS_GENERATING';
+const EDIT_LOCATION = 'EDIT_LOCATION';
 
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
@@ -80,7 +82,8 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, { ...state, downloads: { success: 0 } });
     case DOWNLOAD_LINKS_GENERATED:
       return Object.assign({}, state, { ...state, downloads: { success: 1, data: { csvlink: action.payload.csvlink, geojsonlink: action.payload.geojsonlink } } });
-
+    case EDIT_LOCATION:
+      return Object.assign({}, state, { ...state, stateBeforeEdit: action.payload });
     default: return state;
   }
 }
@@ -90,6 +93,13 @@ export function loadState(parameters) {
   return {
     type: LOAD_STATE,
     payload: getStateFromParameters(parameters.parameters),
+  };
+}
+
+export function saveEditState(editState) {
+  return {
+    type: EDIT_LOCATION,
+    payload: editState,
   };
 }
 

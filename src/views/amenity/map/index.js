@@ -117,6 +117,7 @@ class Map extends Component {
 
   onEdit(data) {
     // console.log(this.props);
+    this.props.saveEditState({ amenityData: data, type: this.props.type });
 
     this.props.history.push({ pathname: '/edit', state: { amenityData: data, type: this.props.type } });
   }
@@ -255,6 +256,15 @@ class Map extends Component {
     this.map.addLayer(markers);
     markers.name = 'markers';
     this.markers = markers;
+
+    if (this.props.stateBeforeEdit !== undefined) {
+      const { coordinates } = this.props.stateBeforeEdit.amenityData.geometry;
+
+      setTimeout(() => {
+        this.map.flyTo(L.latLng(coordinates[1], coordinates[0]), 18);
+      }, 100);
+      // this.map.flyTo()
+    }
 
 
     // this.setState({ suggestions: suggestionsArray });

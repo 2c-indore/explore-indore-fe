@@ -88,7 +88,7 @@ class Nav extends Component {
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
           iconElementRight={
             <div style={{ paddingTop: '5px' }}>
-              {currentPathName[1] === 'edit' && <FlatButton onClick={() => { this.props.history.goBack(); }} label="Go Back" />}
+              {currentPathName[1] === 'edit' && <FlatButton onClick={() => { console.log('props at navbar', this.props); this.props.history.push(`/amenities/${this.props.amenity.type}`); }} label="Go Back" />}
               <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />
             </div>
           }
