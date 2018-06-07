@@ -66,6 +66,7 @@ class EditMap extends Component {
       minWidth: 250,
       maxWidth: 250,
       maxHeight: 275,
+      paddingRight: '50px',
       border: 'none',
       autopan: true,
       offset: [0, -15],

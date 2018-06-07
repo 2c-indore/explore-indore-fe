@@ -20,3 +20,17 @@ body {
 .larger {
   font-size: 1.2rem;
 }
+
+
+.help-icon {
+  z-index: 11099;
+  cursor:pointer;
+  position: relative;
+  bottom: -35px;
+  color:#ccc;
+  right: 10px;
+}
+
+.help-icon:hover {
+  color:#3590F3;
+}

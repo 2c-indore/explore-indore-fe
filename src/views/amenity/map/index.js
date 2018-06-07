@@ -8,13 +8,13 @@ import 'leaflet-search';
 import 'leaflet-easybutton';
 import * as topojson from 'topojson-client';
 // import boundary from '../../../static/boundary';
-import { tagToPopup } from '../../../static/map-utils';
+import { tagToPopup, nester, amenityParameters } from '../../../static/map-utils';
 import SearchAmenity from './search-amenity';
 
 import './styles.scss';
 import './leaflet-search.scss';
 
-
+console.log(JSON.stringify(nester(amenityParameters)));
 // console.log('nested', JSON.stringify(nester(amenityParameters)));
 
 
@@ -224,7 +224,7 @@ class Map extends Component {
           className: 'custom',
           minWidth: 250,
           maxWidth: 250,
-          maxHeight: 275,
+          maxHeight: 350,
           border: 'none',
           autopan: true,
         };
@@ -232,7 +232,12 @@ class Map extends Component {
         layer.bindPopup(str, popupOptions);
         layer.on('click', () => {
           layer.openPopup();
-          map.panTo(layer._latlng);
+
+          const point = map.latLngToContainerPoint(layer._latlng);
+          const newPoint = L.point([point.x - 10, point.y - 100]);
+          const newLatLng = map.containerPointToLatLng(newPoint);
+
+          map.panTo(newLatLng);
         });
         layer.on('mouseover', () => {
           layer.bindTooltip(tags.name === undefined ? '<i>(name unavailable)</i><br/><span class="leaflet-tooltip-text">Click icon for more details</span>' : `${tags.name}<br/><span class="leaflet-tooltip-text">Click icon for more details</span>`, { direction: 'top' }).openTooltip(); //eslint-disable-line

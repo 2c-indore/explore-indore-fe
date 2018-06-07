@@ -10,7 +10,7 @@ import { tagMapper } from '../../../static/map-utils';
 
 import OsmAuth from './utils/OAuth';
 
-// import './styles.scss';
+import './styles.scss';
 
 class EditForm extends Component {
   constructor(props) {
@@ -131,19 +131,25 @@ class EditForm extends Component {
 
         <div >
           {Object.keys(this.filteredState).map((item) => {
-          const label = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].keyLabel;
+            const label = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].keyLabel;
+          const hint = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].helpText;
           if (item !== 'changesetComment' && item !== 'disabled') {
           return (
-            <TextField
-              key={item}
-              disabled={this.checkForDisabled(this.props.type, item)}
-              onChange={this.onTextFieldChange}
-              name={item}
-              value={this.state[item]}
-              fullWidth
-              floatingLabelText={label === '-' ? 'amenity' : label}
-              floatingLabelStyle={{ color: '#888' }}
-            />);
+            <div>
+              <i className="fas float-right help-icon fa-question-circle" title={hint === '' ? 'No description available' : hint} />
+              <TextField
+                key={item}
+                disabled={this.checkForDisabled(this.props.type, item)}
+                onChange={this.onTextFieldChange}
+                name={item}
+                value={this.state[item]}
+                fullWidth
+                // errorText={hint}
+                floatingLabelText={label === '-' ? 'amenity' : label}
+                floatingLabelStyle={{ color: '#888' }}
+              />
+            </div>
+        );
         } else {
           return null;
         }

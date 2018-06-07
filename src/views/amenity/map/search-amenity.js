@@ -20,7 +20,7 @@ class SearchAmenity extends Component {
     return (
       <div
         style={{
-           zIndex: 10000,
+           zIndex: 1199,
           position: 'absolute',
           top: '15px',
           right: '15px',

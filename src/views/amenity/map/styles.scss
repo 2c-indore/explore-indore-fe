@@ -33,19 +33,58 @@ $font: 'Roboto';
 // 53, 144, 243 -circle
 .custom-popup-header {
   font-family: $font;
-  color: $color;
+  color:$color;
+  // background-color: $color;
+  border-bottom: 1px solid #ccc;
   padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.amenity-name{
+  // color: #c3c3c3
+  margin: 0;
+}
+
+.amenity-nepali-name {
+
+margin: 0;
+color: #888;
+}
+
+.leaflet-popup-content {
+    padding-right: 10px;
 }
 
 .custom-popup-content {
   font-family: $font;
-  max-height:125;
+  max-height:200;
   overflow-y: scroll;
+
+  td {
+    padding: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .td-hoverable {
+    cursor:pointer;
+  }
+
+
+    .td-hoverable:hover {
+      text-decoration: underline;
+      color: $color;
+    }
+
+  p {
+    margin:0 !important
+  }
 
   br {
     margin-bottom: 0.5em !important;
   }
 }
+
+
 
 .leaflet-container {
   background-color: #001518;
@@ -56,6 +95,7 @@ $font: 'Roboto';
 .custom .leaflet-popup-tip,
 .custom .leaflet-popup-content-wrapper {
     background: #fff;
+    // padding: 0;
     // color: #ffffff;
     border-radius: 0;
     font-family: 'Roboto';
@@ -155,11 +195,11 @@ $font: 'Roboto';
 
 //materia style IconButton
 .popup-btn {
-  position: relative;
+  // position: relative;
   font-family: 'Roboto';
 
   display: block;
-  margin: 20px auto;
+  margin: 20px 0px;
   padding: 5px;
 
 
@@ -173,7 +213,7 @@ $font: 'Roboto';
   background-color: $color;
   color: #ecf0f1;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 
   transition: background-color .8s;
   width:100%;

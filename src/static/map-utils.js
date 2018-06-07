@@ -1,6 +1,5 @@
 import * as d3 from 'd3-collection';
 
-export const a = 'a';
 // Helpers
 export const nester = (data) => {
   const nested = d3.nest()
@@ -28,6 +27,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'school',
@@ -35,6 +35,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the school',
   },
   {
     section: 'school',
@@ -42,6 +43,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'school',
@@ -49,6 +51,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'school',
@@ -56,6 +59,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: 'Number of students at last count enrolled in this school.',
   },
   {
     section: 'school',
@@ -63,6 +67,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: 'Number of staff (full-time and part-time) working in this school.',
   },
   {
     section: 'school',
@@ -70,6 +75,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'school',
@@ -77,6 +83,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'school',
@@ -84,6 +91,127 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
+  },
+  {
+    section: 'hotel',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: '-',
+    isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'hotel',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+    helpText: 'Name of the hotel',
+  },
+  {
+    section: 'hotel',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
+  },
+  {
+    section: 'hotel',
+    keyName: 'stars',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Stars',
+    isEditable: 'TRUE',
+    helpText: '',
+  },
+  {
+    section: 'hotel',
+    keyName: 'beds',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Number of beds',
+    isEditable: 'TRUE',
+    helpText: '',
+  },
+  {
+    section: 'hotel',
+    keyName: 'rooms',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Number of rooms',
+    isEditable: 'TRUE',
+    helpText: '',
+  },
+  {
+    section: 'hotel',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+  },
+  {
+    section: 'hotel',
+    keyName: 'contact:phone',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Phone Number',
+    isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
+  },
+  {
+    section: 'hotel',
+    keyName: 'contact:email',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Email Address',
+    isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
+  },
+  {
+    section: 'veterinary',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: '-',
+    isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'veterinary',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+    helpText: 'Name of the facility',
+  },
+  {
+    section: 'veterinary',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
+  },
+  {
+    section: 'veterinary',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+  },
+  {
+    section: 'veterinary',
+    keyName: 'contact:phone',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Phone Number',
+    isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
+  },
+  {
+    section: 'veterinary',
+    keyName: 'contact:email',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Email Address',
+    isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'hindu',
@@ -91,6 +219,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'hindu',
@@ -98,6 +227,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the temple',
   },
   {
     section: 'hindu',
@@ -105,6 +235,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'hindu',
@@ -112,6 +243,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hindu',
@@ -119,6 +251,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'hindu',
@@ -126,6 +259,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'hindu',
@@ -133,6 +267,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'hindu',
@@ -140,6 +275,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hindu',
@@ -147,6 +283,127 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
+  },
+  {
+    section: 'storage_tank',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: 'Water Storage Tank',
+    isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'storage_tank',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+    helpText: 'Name of the storage tank',
+  },
+  {
+    section: 'storage_tank',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
+  },
+  {
+    section: 'storage_tank',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+  },
+  {
+    section: 'storage_tank',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
+  },
+  {
+    section: 'water_tap',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: 'Water Storage Tank',
+    isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'water_tap',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+    helpText: 'Name of the tap (if any)',
+  },
+  {
+    section: 'water_tap',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
+  },
+  {
+    section: 'water_tap',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+  },
+  {
+    section: 'water_tap',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
+  },
+  {
+    section: 'water_well',
+    keyName: 'amenity',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: 'Water Storage Tank',
+    isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'water_well',
+    keyName: 'name',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Name',
+    isEditable: 'TRUE',
+    helpText: 'Name of the well (if any)',
+  },
+  {
+    section: 'water_well',
+    keyName: 'name:ne',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'नाम',
+    isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
+  },
+  {
+    section: 'water_well',
+    keyName: 'opening_hours',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Opening Hours',
+    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+  },
+  {
+    section: 'water_well',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'police',
@@ -154,6 +411,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: 'Police',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'police',
@@ -161,6 +419,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the police station',
   },
   {
     section: 'police',
@@ -168,6 +427,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'police',
@@ -175,6 +435,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'police',
@@ -182,6 +443,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'police',
@@ -189,6 +451,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'hospital',
@@ -196,6 +459,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -203,6 +467,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the hospital',
   },
   {
     section: 'hospital',
@@ -210,6 +475,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'hospital',
@@ -217,6 +483,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'hospital',
@@ -224,13 +491,15 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'hospital',
-    keyName: 'contact:phone',
+    keyName: 'phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'hospital',
@@ -238,6 +507,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'hospital',
@@ -245,6 +515,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Emergency Service',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -252,6 +523,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'ICU',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -259,6 +531,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'NICU',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -266,6 +539,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operating Theatre',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -273,6 +547,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'X-Ray',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -280,6 +555,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Ambulance Service',
     isEditable: 'TRUE',
+    helpText: 'Does the hospital have its own ambulance that can be used during emergencies?',
   },
   {
     section: 'hospital',
@@ -287,6 +563,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of Staff',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'hospital',
@@ -294,6 +571,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of Beds',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'clinic',
@@ -301,6 +579,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'clinic',
@@ -308,6 +587,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'clinic',
@@ -315,6 +595,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the clinic',
   },
   {
     section: 'clinic',
@@ -322,6 +603,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'clinic',
@@ -329,6 +611,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'clinic',
@@ -336,6 +619,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'clinic',
@@ -343,6 +627,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'clinic',
@@ -350,6 +635,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Specialisation',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'health_post',
@@ -357,6 +643,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'health_post',
@@ -364,6 +651,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the health post',
   },
   {
     section: 'health_post',
@@ -371,6 +659,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'health_post',
@@ -378,6 +667,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'health_post',
@@ -385,6 +675,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'health_post',
@@ -392,6 +683,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'health_post',
@@ -399,6 +691,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'pharmacy',
@@ -406,6 +699,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'pharmacy',
@@ -413,6 +707,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the pharmacy',
   },
   {
     section: 'pharmacy',
@@ -420,6 +715,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'pharmacy',
@@ -427,6 +723,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'pharmacy',
@@ -434,6 +731,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'pharmacy',
@@ -441,6 +739,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'dentist',
@@ -448,6 +747,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'dentist',
@@ -455,6 +755,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the dental clinic',
   },
   {
     section: 'dentist',
@@ -462,6 +763,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'dentist',
@@ -469,6 +771,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'dentist',
@@ -476,6 +779,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'dentist',
@@ -483,48 +787,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
-  },
-  {
-    section: 'Veterinarians',
-    keyName: 'amenity',
-    isVisibleOnPopup: 'FALSE',
-    keyLabel: '',
-    isEditable: 'FALSE',
-  },
-  {
-    section: 'Veterinarians',
-    keyName: 'name',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Name',
-    isEditable: 'TRUE',
-  },
-  {
-    section: 'Veterinarians',
-    keyName: 'name:ne',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'नाम',
-    isEditable: 'TRUE',
-  },
-  {
-    section: 'Veterinarians',
-    keyName: 'contact:phone',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Phone',
-    isEditable: 'TRUE',
-  },
-  {
-    section: 'Veterinarians',
-    keyName: 'contact:email',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Email Address',
-    isEditable: 'TRUE',
-  },
-  {
-    section: 'Veterinarians',
-    keyName: 'opening_hours',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Opening Hours',
-    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'government',
@@ -532,6 +795,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'government',
@@ -539,6 +803,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the facility',
   },
   {
     section: 'government',
@@ -546,6 +811,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'government',
@@ -553,6 +819,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'government',
@@ -560,6 +827,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'government',
@@ -567,6 +835,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'ngo',
@@ -574,6 +843,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'ngo',
@@ -581,6 +851,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the NGO',
   },
   {
     section: 'ngo',
@@ -588,6 +859,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'ngo',
@@ -595,6 +867,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'ngo',
@@ -602,6 +875,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'ngo',
@@ -609,6 +883,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'bank',
@@ -616,6 +891,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'bank',
@@ -623,6 +899,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the bank',
   },
   {
     section: 'bank',
@@ -630,6 +907,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'bank',
@@ -637,6 +915,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'bank',
@@ -644,6 +923,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'bank',
@@ -651,6 +931,15 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+  },
+  {
+    section: 'bank',
+    keyName: 'operator:type',
+    isVisibleOnPopup: 'TRUE',
+    keyLabel: 'Operator Type',
+    isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'bank',
@@ -658,6 +947,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Bank Classfication',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'bank',
@@ -665,6 +955,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'ATM Available',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'fuel',
@@ -672,6 +963,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'fuel',
@@ -679,6 +971,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the fuel station',
   },
   {
     section: 'fuel',
@@ -686,6 +979,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'fuel',
@@ -693,6 +987,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'fuel',
@@ -700,6 +995,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'fuel',
@@ -707,6 +1003,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'radio',
@@ -714,6 +1011,15 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'radio',
+    keyName: 'studio',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: '',
+    isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'radio',
@@ -721,6 +1027,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the radio station',
   },
   {
     section: 'radio',
@@ -728,6 +1035,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'radio',
@@ -735,6 +1043,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'radio',
@@ -742,6 +1051,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'radio',
@@ -749,6 +1059,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'radio',
@@ -756,6 +1067,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Frequency',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'television',
@@ -763,6 +1075,15 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
+  },
+  {
+    section: 'television',
+    keyName: 'studio',
+    isVisibleOnPopup: 'FALSE',
+    keyLabel: '',
+    isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'television',
@@ -770,6 +1091,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the TV station',
   },
   {
     section: 'television',
@@ -777,6 +1099,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'television',
@@ -784,6 +1107,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'television',
@@ -791,6 +1115,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'television',
@@ -798,6 +1123,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'newspaper',
@@ -805,6 +1131,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'newspaper',
@@ -812,6 +1139,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the newspaper',
   },
   {
     section: 'newspaper',
@@ -819,6 +1147,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'newspaper',
@@ -826,6 +1155,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'newspaper',
@@ -833,6 +1163,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'newspaper',
@@ -840,6 +1171,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'college',
@@ -847,6 +1179,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'college',
@@ -854,6 +1187,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the college',
   },
   {
     section: 'college',
@@ -861,6 +1195,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'college',
@@ -868,6 +1203,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'college',
@@ -875,6 +1211,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'college',
@@ -882,6 +1219,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'college',
@@ -889,6 +1227,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'college',
@@ -896,6 +1235,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'college',
@@ -903,6 +1243,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'university',
@@ -910,6 +1251,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'university',
@@ -917,6 +1259,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the university',
   },
   {
     section: 'university',
@@ -924,6 +1267,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'university',
@@ -931,6 +1275,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'university',
@@ -938,6 +1283,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'university',
@@ -945,6 +1291,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'university',
@@ -952,6 +1299,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'university',
@@ -959,6 +1307,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'university',
@@ -966,6 +1315,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'kindergarten',
@@ -973,6 +1323,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'kindergarten',
@@ -980,6 +1331,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the kindergarten',
   },
   {
     section: 'kindergarten',
@@ -987,6 +1339,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'kindergarten',
@@ -994,6 +1347,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   },
   {
     section: 'kindergarten',
@@ -1001,6 +1355,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'kindergarten',
@@ -1008,6 +1363,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'kindergarten',
@@ -1015,6 +1371,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'kindergarten',
@@ -1022,6 +1379,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'kindergarten',
@@ -1029,6 +1387,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'buddhist',
@@ -1036,6 +1395,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'buddhist',
@@ -1043,6 +1403,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the monastery',
   },
   {
     section: 'buddhist',
@@ -1050,6 +1411,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'buddhist',
@@ -1057,6 +1419,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'buddhist',
@@ -1064,6 +1427,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'buddhist',
@@ -1071,6 +1435,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'buddhist',
@@ -1078,6 +1443,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'buddhist',
@@ -1085,6 +1451,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'buddhist',
@@ -1092,6 +1459,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'christian',
@@ -1099,6 +1467,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'christian',
@@ -1106,6 +1475,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the church',
   },
   {
     section: 'christian',
@@ -1113,6 +1483,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'christian',
@@ -1120,6 +1491,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'christian',
@@ -1127,6 +1499,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'christian',
@@ -1134,6 +1507,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'christian',
@@ -1141,6 +1515,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'christian',
@@ -1148,6 +1523,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'christian',
@@ -1155,6 +1531,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'muslim',
@@ -1162,6 +1539,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'muslim',
@@ -1169,6 +1547,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the mosque',
   },
   {
     section: 'muslim',
@@ -1176,6 +1555,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'muslim',
@@ -1183,6 +1563,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'muslim',
@@ -1190,6 +1571,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'muslim',
@@ -1197,6 +1579,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'muslim',
@@ -1204,6 +1587,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'muslim',
@@ -1211,6 +1595,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'muslim',
@@ -1218,6 +1603,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'atm',
@@ -1225,6 +1611,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'atm',
@@ -1232,6 +1619,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Network Supported',
     isEditable: 'TRUE',
+    helpText: '',
   },
   {
     section: 'atm',
@@ -1239,6 +1627,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'restaurant',
@@ -1246,6 +1635,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'restaurant',
@@ -1253,6 +1643,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the restaurant',
   },
   {
     section: 'restaurant',
@@ -1260,6 +1651,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'museum',
@@ -1267,6 +1659,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'museum',
@@ -1274,6 +1667,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the museum',
   },
   {
     section: 'museum',
@@ -1281,6 +1675,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'museum',
@@ -1288,6 +1683,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'museum',
@@ -1295,6 +1691,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'museum',
@@ -1302,6 +1699,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
   {
     section: 'park',
@@ -1309,6 +1707,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   },
   {
     section: 'park',
@@ -1316,6 +1715,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the park',
   },
   {
     section: 'park',
@@ -1323,6 +1723,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   },
   {
     section: 'park',
@@ -1330,6 +1731,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   },
   {
     section: 'park',
@@ -1337,6 +1739,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   },
   {
     section: 'park',
@@ -1344,6 +1747,7 @@ export const amenityParameters = [
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   },
 ];
 
@@ -1354,54 +1758,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'school',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the school',
   }, {
     section: 'school',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'school',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }, {
     section: 'school',
     keyName: 'student:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: 'Number of students at last count enrolled in this school.',
   }, {
     section: 'school',
     keyName: 'personnel:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: 'Number of staff (full-time and part-time) working in this school.',
   }, {
     section: 'school',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'school',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'school',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   hotel: [{
     section: 'hotel',
@@ -1409,54 +1822,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'hotel',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the hotel',
   }, {
     section: 'hotel',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'hotel',
     keyName: 'stars',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Stars',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hotel',
     keyName: 'beds',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of beds',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hotel',
     keyName: 'rooms',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of rooms',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hotel',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'hotel',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'hotel',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   veterinary: [{
     section: 'veterinary',
@@ -1464,36 +1886,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'veterinary',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the facility',
   }, {
     section: 'veterinary',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'veterinary',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'veterinary',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'veterinary',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   hindu: [{
     section: 'hindu',
@@ -1501,54 +1929,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'hindu',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the temple',
   }, {
     section: 'hindu',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'hindu',
     keyName: 'religion',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hindu',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'hindu',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'hindu',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'hindu',
     keyName: 'facility:drinking_water',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hindu',
     keyName: 'facility:toilet',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   storage_tank: [{
     section: 'storage_tank',
@@ -1556,30 +1993,35 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: 'Water Storage Tank',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'storage_tank',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the storage tank',
   }, {
     section: 'storage_tank',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'storage_tank',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'storage_tank',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }],
   water_tap: [{
     section: 'water_tap',
@@ -1587,30 +2029,35 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: 'Water Storage Tank',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'water_tap',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the tap (if any)',
   }, {
     section: 'water_tap',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'water_tap',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'water_tap',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }],
   water_well: [{
     section: 'water_well',
@@ -1618,30 +2065,35 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: 'Water Storage Tank',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'water_well',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the well (if any)',
   }, {
     section: 'water_well',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'water_well',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'water_well',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }],
   police: [{
     section: 'police',
@@ -1649,36 +2101,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: 'Police',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'police',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the police station',
   }, {
     section: 'police',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'police',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'police',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'police',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   hospital: [{
     section: 'hospital',
@@ -1686,90 +2144,105 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the hospital',
   }, {
     section: 'hospital',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'hospital',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }, {
     section: 'hospital',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'hospital',
     keyName: 'phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'hospital',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'hospital',
     keyName: 'emergency',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Emergency Service',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'facility:icu',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'ICU',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'facility:nicu',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'NICU',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'facility:operating_theatre',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operating Theatre',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'facility:x-ray',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'X-Ray',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'facility:ambulance',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Ambulance Service',
     isEditable: 'TRUE',
+    helpText: 'Does the hospital have its own ambulance that can be used during emergencies?',
   }, {
     section: 'hospital',
     keyName: 'personnel:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of Staff',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'hospital',
     keyName: 'capacity:beds',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of Beds',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   clinic: [{
     section: 'clinic',
@@ -1777,48 +2250,56 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'clinic',
     keyName: 'healthcare',
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'clinic',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the clinic',
   }, {
     section: 'clinic',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'clinic',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'clinic',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'clinic',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'clinic',
     keyName: 'healthcare:speciality',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Specialisation',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   health_post: [{
     section: 'health_post',
@@ -1826,42 +2307,49 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'health_post',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the health post',
   }, {
     section: 'health_post',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'health_post',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'health_post',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'health_post',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'health_post',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }],
   pharmacy: [{
     section: 'pharmacy',
@@ -1869,36 +2357,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'pharmacy',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the pharmacy',
   }, {
     section: 'pharmacy',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'pharmacy',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'pharmacy',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'pharmacy',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   dentist: [{
     section: 'dentist',
@@ -1906,73 +2400,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'dentist',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the dental clinic',
   }, {
     section: 'dentist',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'dentist',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'dentist',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'dentist',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
-  }],
-  Veterinarians: [{
-    section: 'Veterinarians',
-    keyName: 'amenity',
-    isVisibleOnPopup: 'FALSE',
-    keyLabel: '',
-    isEditable: 'FALSE',
-  }, {
-    section: 'Veterinarians',
-    keyName: 'name',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Name',
-    isEditable: 'TRUE',
-  }, {
-    section: 'Veterinarians',
-    keyName: 'name:ne',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'नाम',
-    isEditable: 'TRUE',
-  }, {
-    section: 'Veterinarians',
-    keyName: 'contact:phone',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Phone',
-    isEditable: 'TRUE',
-  }, {
-    section: 'Veterinarians',
-    keyName: 'contact:email',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Email Address',
-    isEditable: 'TRUE',
-  }, {
-    section: 'Veterinarians',
-    keyName: 'opening_hours',
-    isVisibleOnPopup: 'TRUE',
-    keyLabel: 'Opening Hours',
-    isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   government: [{
     section: 'government',
@@ -1980,36 +2443,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'government',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the facility',
   }, {
     section: 'government',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'government',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'government',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'government',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   ngo: [{
     section: 'ngo',
@@ -2017,36 +2486,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'ngo',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the NGO',
   }, {
     section: 'ngo',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'ngo',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'ngo',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'ngo',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   bank: [{
     section: 'bank',
@@ -2054,54 +2529,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'bank',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the bank',
   }, {
     section: 'bank',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'bank',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'bank',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'bank',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'bank',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }, {
     section: 'bank',
     keyName: 'nrb_class',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Bank Classfication',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'bank',
     keyName: 'atm',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'ATM Available',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   fuel: [{
     section: 'fuel',
@@ -2109,36 +2593,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'fuel',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the fuel station',
   }, {
     section: 'fuel',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'fuel',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'fuel',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'fuel',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   radio: [{
     section: 'radio',
@@ -2146,48 +2636,56 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'radio',
     keyName: 'studio',
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'radio',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the radio station',
   }, {
     section: 'radio',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'radio',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'radio',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'radio',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'radio',
     keyName: 'frequency',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Frequency',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   television: [{
     section: 'television',
@@ -2195,42 +2693,49 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'television',
     keyName: 'studio',
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'television',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the TV station',
   }, {
     section: 'television',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'television',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'television',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'television',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   newspaper: [{
     section: 'newspaper',
@@ -2238,36 +2743,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'newspaper',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the newspaper',
   }, {
     section: 'newspaper',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'newspaper',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'newspaper',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'newspaper',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   college: [{
     section: 'college',
@@ -2275,54 +2786,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'college',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the college',
   }, {
     section: 'college',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'college',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }, {
     section: 'college',
     keyName: 'student:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'college',
     keyName: 'personnel:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'college',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'college',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'college',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   university: [{
     section: 'university',
@@ -2330,54 +2850,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'university',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the university',
   }, {
     section: 'university',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'university',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }, {
     section: 'university',
     keyName: 'student:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'university',
     keyName: 'personnel:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'university',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'university',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'university',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   kindergarten: [{
     section: 'kindergarten',
@@ -2385,54 +2914,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'kindergarten',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the kindergarten',
   }, {
     section: 'kindergarten',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'kindergarten',
     keyName: 'operator:type',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Operator Type',
     isEditable: 'TRUE',
+    helpText: 'Is this facility operated by the government, private sector, community or other entities?',
   }, {
     section: 'kindergarten',
     keyName: 'student:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of students',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'kindergarten',
     keyName: 'personnel:count',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Number of employees',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'kindergarten',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'kindergarten',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'kindergarten',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }],
   buddhist: [{
     section: 'buddhist',
@@ -2440,54 +2978,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'buddhist',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the monastery',
   }, {
     section: 'buddhist',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'buddhist',
     keyName: 'religion',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'buddhist',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'buddhist',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'buddhist',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'buddhist',
     keyName: 'facility:drinking_water',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'buddhist',
     keyName: 'facility:toilet',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   christian: [{
     section: 'christian',
@@ -2495,54 +3042,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'christian',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the church',
   }, {
     section: 'christian',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'christian',
     keyName: 'religion',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'christian',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'christian',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'christian',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'christian',
     keyName: 'facility:drinking_water',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'christian',
     keyName: 'facility:toilet',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   muslim: [{
     section: 'muslim',
@@ -2550,54 +3106,63 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '-',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'muslim',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the mosque',
   }, {
     section: 'muslim',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'muslim',
     keyName: 'religion',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Religion',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'muslim',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }, {
     section: 'muslim',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone Number',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'muslim',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'muslim',
     keyName: 'facility:drinking_water',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Drinking Water',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'muslim',
     keyName: 'facility:toilet',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Toilet',
     isEditable: 'TRUE',
+    helpText: '',
   }],
   atm: [{
     section: 'atm',
@@ -2605,18 +3170,21 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'atm',
     keyName: 'network',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Network Supported',
     isEditable: 'TRUE',
+    helpText: '',
   }, {
     section: 'atm',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   restaurant: [{
     section: 'restaurant',
@@ -2624,18 +3192,21 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'restaurant',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the restaurant',
   }, {
     section: 'restaurant',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }],
   museum: [{
     section: 'museum',
@@ -2643,36 +3214,42 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'museum',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the museum',
   }, {
     section: 'museum',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'museum',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'museum',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'museum',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
   park: [{
     section: 'park',
@@ -2680,37 +3257,54 @@ export const tagMapper = {
     isVisibleOnPopup: 'FALSE',
     keyLabel: '',
     isEditable: 'FALSE',
+    helpText: '',
   }, {
     section: 'park',
     keyName: 'name',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Name',
     isEditable: 'TRUE',
+    helpText: 'Name of the park',
   }, {
     section: 'park',
     keyName: 'name:ne',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'नाम',
     isEditable: 'TRUE',
+    helpText: 'नेपालीमा नाम',
   }, {
     section: 'park',
     keyName: 'contact:phone',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Phone',
     isEditable: 'TRUE',
+    helpText: 'Telephone number associated with this facility. Should be in international format eg. <country code>-<area code>-<local number>.',
   }, {
     section: 'park',
     keyName: 'contact:email',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Email Address',
     isEditable: 'TRUE',
+    helpText: 'Email address of the facility that is intended for public use.',
   }, {
     section: 'park',
     keyName: 'opening_hours',
     isVisibleOnPopup: 'TRUE',
     keyLabel: 'Opening Hours',
     isEditable: 'TRUE',
+    helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
   }],
+};
+
+export const tagUnmapper = (obj) => {
+  const finalArray = [];
+  Object.keys(obj).forEach((item) => {
+    obj[item].forEach((tag) => {
+      finalArray.push(tag);
+    });
+  });
+
+  return finalArray;
 };
 
 export const tagToPopup = (type, tags, id) => {
@@ -2726,17 +3320,18 @@ export const tagToPopup = (type, tags, id) => {
     let newString = '';
     currentAmenityKeys.forEach((item) => {
       if (item.isVisibleOnPopup === 'TRUE') {
-        // console.log(item.keyName, tags[item.keyName]);
         if (item.keyName === 'name') {
-          newString = `<div class="custom-popup-header pb-3"><h5><b>${tags[item.keyName] === undefined ? '-' : tags[item.keyName]}</b></h5></div><div class="custom-popup-content">`;
+          newString = `<div class="custom-popup-header"><span class="amenity-name"><b>${tags[item.keyName] === undefined ? '-' : tags[item.keyName]}</b></span><br/>`;
+        } else if (item.keyName === 'name:ne') {
+          newString = `<span class="amenity-nepali-name">${tags[item.keyName] === undefined ? '-' : tags[item.keyName]}</span></div><div class="custom-popup-content"><table class="table table-striped"><thead></thead><tbody>`; //eslint-disable-line
         } else {
-          newString = `<span class>${item.keyLabel}</span><br/><span><b>${tags[item.keyName] === undefined ? '-' : item === 'contact:email' ? tags[item.keyName] : toTitleCase(tags[item.keyName])}</b></span><br/><br/>`; //eslint-disable-line
+          newString = `<tr><td class="td-hoverable" title="${item.helpText}">${item.keyLabel}</td><td><b>${tags[item.keyName] === undefined ? '-' : item === 'contact:email' ? tags[item.keyName] : toTitleCase(tags[item.keyName])}</b></td></tr>`; //eslint-disable-line
         }
       }
       str += newString;
     });
 
-    str += `</div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
+    str += `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
     return str;
   } else {
     return '<span>Details coming soon</span>';
