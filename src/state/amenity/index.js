@@ -53,6 +53,7 @@ const HAS_LOADED = 'HAS_LOADED';
 const DOWNLOAD_LINKS_GENERATED = 'DOWNLOAD_LINKS_GENERATED';
 const DOWNLOAD_LINKS_GENERATING = 'DOWNLOAD_LINKS_GENERATING';
 const EDIT_LOCATION = 'EDIT_LOCATION';
+const RESET_EDIT_LOCATION = 'RESET_EDIT_LOCATION';
 
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
@@ -84,6 +85,8 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, { ...state, downloads: { success: 1, data: { csvlink: action.payload.csvlink, geojsonlink: action.payload.geojsonlink } } });
     case EDIT_LOCATION:
       return Object.assign({}, state, { ...state, stateBeforeEdit: action.payload });
+    case RESET_EDIT_LOCATION:
+      return Object.assign({}, state, { ...state, stateBeforeEdit: undefined });
     default: return state;
   }
 }
@@ -100,6 +103,12 @@ export function saveEditState(editState) {
   return {
     type: EDIT_LOCATION,
     payload: editState,
+  };
+}
+
+export function removeEditState() {
+  return {
+    type: RESET_EDIT_LOCATION,
   };
 }
 

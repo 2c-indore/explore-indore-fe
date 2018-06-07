@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import L from 'leaflet';
 import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
+import cloneDeep from 'lodash.clonedeep';
 import 'leaflet-boundary-canvas';
 import 'leaflet.markercluster';
 import 'leaflet-search';
 import 'leaflet-easybutton';
 import * as topojson from 'topojson-client';
 // import boundary from '../../../static/boundary';
-import { tagToPopup, nester, amenityParameters } from '../../../static/map-utils';
+import { tagToPopup } from '../../../static/map-utils';
 import SearchAmenity from './search-amenity';
 
 import './styles.scss';
 import './leaflet-search.scss';
 
-console.log(JSON.stringify(nester(amenityParameters)));
+// console.log(JSON.stringify(nester(amenityParameters)));
 // console.log('nested', JSON.stringify(nester(amenityParameters)));
 
 
@@ -91,6 +92,14 @@ class Map extends Component {
   }
 
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.stateBeforeEdit === undefined) {
+      return false;
+    }
+
+    return true;
+  }
+
   componentDidUpdate(prevProps, prevState) {
     // console.log('prevProps', prevProps);
     if (this.props.geometries !== null && this.props.geometries.success === 1) {
@@ -118,6 +127,7 @@ class Map extends Component {
   onEdit(data) {
     // console.log(this.props);
     this.props.saveEditState({ amenityData: data, type: this.props.type });
+
 
     this.props.history.push({ pathname: '/edit', state: { amenityData: data, type: this.props.type } });
   }
@@ -265,9 +275,11 @@ class Map extends Component {
     if (this.props.stateBeforeEdit !== undefined) {
       const { coordinates } = this.props.stateBeforeEdit.amenityData.geometry;
 
+      const coordinatesClone = cloneDeep(coordinates);
       setTimeout(() => {
-        this.map.flyTo(L.latLng(coordinates[1], coordinates[0]), 18);
+        this.map.flyTo(L.latLng(coordinatesClone[1], coordinatesClone[0]), 18);
       }, 100);
+
       // this.map.flyTo()
     }
 

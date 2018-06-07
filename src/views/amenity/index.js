@@ -9,7 +9,7 @@ import objectWalk from 'object-walk';
 import cloneDeep from 'lodash.clonedeep';
 import ReactLoading from 'react-loading';
 import { Steps } from 'intro.js-react';
-import { initializeView, updateView, updateState, updateType, downloadData, saveEditState } from '../../state/amenity';
+import { initializeView, updateView, updateState, updateType, downloadData, saveEditState, removeEditState } from '../../state/amenity';
 import Filters from './filters';
 import Insights from './insights';
 import Map from './map';
@@ -105,6 +105,8 @@ class Amenity extends Component {
 
 
   onFilterChange(parameterName,value) { //eslint-disable-line
+
+    this.props.removeEditState();
 
     const stateClone = cloneDeep(this.state);
 
@@ -209,6 +211,7 @@ class Amenity extends Component {
           <div className="col-md-9 p-0 map">
             {geometries.success === 1 && <Map
               saveEditState={this.props.saveEditState}
+              removeEditState={this.props.removeEditState}
               stateBeforeEdit={this.props.amenity.stateBeforeEdit}
               geometries={geometries}
               height={`${this.state.height}`}
@@ -266,5 +269,5 @@ const mapStateToProps = state => ({
 
 
 export default withRouter(connect(mapStateToProps, {
-  initializeView, updateView, updateState, updateType, downloadData, saveEditState,
+  initializeView, updateView, updateState, updateType, downloadData, saveEditState, removeEditState,
 })((Amenity)));
