@@ -169,9 +169,7 @@ class EditForm extends Component {
           <div>
             <br />
             <span className="light-text "> { loggedInStateText }
-              <span>
-                <span style={{ cursor: 'pointer' }} onClick={loggedInStateAction}> <b> { loggedInStateLinkText } </b> </span>
-              </span>
+              <span style={{ cursor: 'pointer' }} onClick={loggedInStateAction}> <b> { loggedInStateLinkText } </b> </span>
             </span>
           </div>
         }
