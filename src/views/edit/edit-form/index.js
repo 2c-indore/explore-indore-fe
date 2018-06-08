@@ -69,10 +69,12 @@ class EditForm extends Component {
         this.setState({
           loggedInUser: userDetails.osm.user['0'].$,
         });
+      },(err)=>{
+        throw err;
+        this.osmLogout();
       })
       .catch((err) => {
         throw err;
-        this.osmLogout();
       });
   }
 
