@@ -26,7 +26,7 @@ class Edit extends Component {
             <EditMap data={amenityData} type={type} />
           </div>
 
-          <div className="col-md-3 pl-2 pr-0">
+          <div className="col-md-3 pl-0 pr-0">
             <EditForm data={amenityData} type={type} />
           </div>
         </div>

@@ -166,10 +166,17 @@ class EditForm extends Component {
       <div style={{ minHeight: '90vh', maxHeight: '90vh', overflowY: 'auto' }}>
         {
           this.state.loggedInUser !== undefined &&
-          <div style={{ 'padding': '20px','background-color' : '#eee'}}>
-            <span className="light-text "> { loggedInStateText }
-              <span style={{ cursor: 'pointer' }} onClick={loggedInStateAction}> <b> { loggedInStateLinkText } </b> </span>
-            </span>
+          <div style={{ padding: '20px', 'background-color': '#eee' }}>
+            <small>
+              <span className="light-text ">
+                { loggedInStateText }
+              <span //eslint-disable-line
+                style={{ cursor: 'pointer' }}
+                onClick={loggedInStateAction}
+              > <b> { loggedInStateLinkText } </b>
+              </span>
+              </span>
+            </small>
           </div>
         }
         <div >
@@ -178,7 +185,7 @@ class EditForm extends Component {
           const hint = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].helpText;
           if (item !== 'changesetComment' && item !== 'disabled') {
           return (
-            <div>
+            <div className="pl-2">
               <i className="fas float-right help-icon fa-question-circle" title={hint === '' ? 'No description available' : hint} />
               <TextField
                 key={item}
@@ -197,9 +204,11 @@ class EditForm extends Component {
           return null;
         }
       })}
-          <TextField onChange={this.onTextFieldChange} name="changesetComment" value={this.state.changesetComment} fullWidth floatingLabelText="Comments (if any)" />
+          <div className="pl-2">
+            <TextField onChange={this.onTextFieldChange} name="changesetComment" value={this.state.changesetComment} fullWidth floatingLabelText="Comments (if any)" />
+          </div>
         </div>
-        <div className="pr-2">
+        <div className="pr-2 pl-2">
           <RaisedButton disabled={this.state.disabled} className="my-2 " label="Submit changes" fullWidth primary onClick={() => this.onBeforeSubmit()} />
           <ConfirmationDialog
             title="Confirm data submission"
