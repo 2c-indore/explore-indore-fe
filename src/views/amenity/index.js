@@ -33,7 +33,19 @@ const steps = [
   {
     element: '.map',
     position: 'top',
-    intro: 'Choosing an amenity will cause the map to populate those amenities within Pokhara',
+    intro: 'Choosing an amenity will cause the map to populate those amenities within Pokhara. Click on any marker to view and/or edit details.',
+    disableInteraction: true,
+  },
+  {
+    element: '.search-bar',
+    position: 'top',
+    intro: 'Search for a particular amenity by entering text in this box.',
+    disableInteraction: true,
+  },
+  {
+    element: '.download-icon',
+    position: 'top',
+    intro: 'Download geographic data shown in the map by clicking on this button.',
     disableInteraction: true,
   },
   {
@@ -53,7 +65,7 @@ const steps = [
 
   {
     element: '.shareButton',
-    intro: 'Found an interesting insight? You can also share your results using the share button.',
+    intro: 'Found an interesting insight? Share your results using the share button.',
     position: 'right',
     disableInteraction: true,
 

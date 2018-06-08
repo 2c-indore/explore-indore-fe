@@ -92,14 +92,6 @@ class Map extends Component {
   }
 
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.stateBeforeEdit === undefined) {
-      return false;
-    }
-
-    return true;
-  }
-
   componentDidUpdate(prevProps, prevState) {
     // console.log('prevProps', prevProps);
     if (this.props.geometries !== null && this.props.geometries.success === 1) {
@@ -153,6 +145,7 @@ class Map extends Component {
       suggestions.push({ name: item.properties.tags.name, coordinates: item.geometry.coordinates });
     });
 
+    console.log(suggestions);
     this.setState({ suggestions });
   }
 

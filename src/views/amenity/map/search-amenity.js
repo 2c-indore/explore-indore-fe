@@ -19,8 +19,9 @@ class SearchAmenity extends Component {
 
     return (
       <div
+        className="search-bar"
         style={{
-           zIndex: 1199,
+           zIndex: 11999,
           position: 'absolute',
           top: '15px',
           right: '15px',
