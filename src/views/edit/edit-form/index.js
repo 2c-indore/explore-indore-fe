@@ -67,7 +67,7 @@ class EditForm extends Component {
     auth.login()
       .then((userDetails) => {
         this.setState({
-          loggedInUser: userDetails.osm.user['0'].$
+          loggedInUser: userDetails.osm.user['0'].$,
         });
       })
       .catch((err) => {
@@ -166,8 +166,7 @@ class EditForm extends Component {
       <div style={{ minHeight: '90vh', maxHeight: '90vh', overflowY: 'auto' }}>
         {
           this.state.loggedInUser !== undefined &&
-          <div>
-            <br />
+          <div style={{ 'margin-top': '20px' }}>
             <span className="light-text "> { loggedInStateText }
               <span style={{ cursor: 'pointer' }} onClick={loggedInStateAction}> <b> { loggedInStateLinkText } </b> </span>
             </span>
