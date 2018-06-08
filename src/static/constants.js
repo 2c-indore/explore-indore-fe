@@ -103,6 +103,11 @@ export const sidebarMenuItems = [
         label: 'Banks',
       },
       {
+        type: 'cooperative',
+        route: '/cooperative',
+        label: 'Co-operatives',
+      },
+      {
         type: 'atm',
         route: '/atm',
         label: 'ATMs',
