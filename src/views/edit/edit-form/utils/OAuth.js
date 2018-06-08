@@ -37,7 +37,7 @@ module.exports = class OsmAuth {
         if (err) reject(err);
 
         if (!response) {
-          throw 'No response!';
+          reject('No response!');
         }
         const xmlText = new XMLSerializer().serializeToString(response);
 
