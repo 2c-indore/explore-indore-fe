@@ -86,6 +86,9 @@ module.exports = class OsmAuth {
           resolve(res);
         }, (err) => {
           reject(err);
+        })
+        .catch((err)=>{
+          reject(err);
         });
     });
   }
