@@ -12,6 +12,8 @@ import OsmAuth from './utils/OAuth';
 
 import './styles.scss';
 
+const auth = new OsmAuth();
+
 class EditForm extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +28,8 @@ class EditForm extends Component {
     this.checkForDisabled = this.checkForDisabled.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onBeforeSubmit = this.onBeforeSubmit.bind(this);
+    this.osmLogin = this.osmLogin.bind(this);
+    this.osmLogout = this.osmLogout.bind(this);
   }
 
   componentWillMount() {
@@ -42,12 +46,40 @@ class EditForm extends Component {
       amenityId: this.props.data.properties.id,
     });
 
+    if (auth.isLoggedIn()) {
+      this.osmLogin();
+    } else {
+      this.setState({
+        loggedInUser: null,
+      });
+    }
+
     const filteredState = {};
     tagMapper[this.props.type].forEach((item) => {
       filteredState[item.keyName] = tags[item.keyName];
     });
 
     this.filteredState = filteredState;
+  }
+
+
+  osmLogin() {
+    auth.login()
+      .then((userDetails) => {
+        this.setState({
+          loggedInUser: userDetails.osm.user['0'].$
+        });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  osmLogout() {
+    auth.logout();
+    this.setState({
+      loggedInUser: null,
+    });
   }
 
   checkForDisabled(type, item) { //eslint-disable-line
@@ -95,6 +127,7 @@ class EditForm extends Component {
     delete stateClone.amenityType;
     delete stateClone.isConfirmationOpen;
     delete stateClone.isDataSubmitted;
+    delete stateClone.loggedInUser;
 
     const finalObj = {
       amenityId: this.state.amenityId, amenityType: this.state.amenityType, data: stateClone, changesetComment: this.state.changesetComment,
@@ -102,12 +135,11 @@ class EditForm extends Component {
     console.log(finalObj);
 
     // code to call the OSM API for editing.
-    const auth = new OsmAuth();
     auth.getFeature(finalObj.amenityType, finalObj.amenityId)
       .then((response) => {
         const cleanedResponse = auth.cleanseData(response, finalObj.amenityType);
         const appliedChanges = auth.applyChanges(finalObj.data, cleanedResponse, finalObj.amenityType);
-        return auth.createChangeset(appliedChanges, finalObj.changeSetComment);
+        return auth.createChangeset(appliedChanges, finalObj.changesetComment);
       })
       .then((response) => {
         const xml = auth.applyChangeset(response.changeset, response.appliedChanges, finalObj.amenityType);
@@ -118,6 +150,7 @@ class EditForm extends Component {
           isDataSubmitted: true,
           disabled: true,
         });
+        this.osmLogin();
         // alert('');
       })
       .catch((err) => {
@@ -126,9 +159,22 @@ class EditForm extends Component {
   }
 
   render() {
+    const loggedInStateText = this.state.loggedInUser == null ? 'You are not logged in to OSM currently.' : `You are logged in as ${this.state.loggedInUser.display_name}.`;
+    const loggedInStateLinkText = this.state.loggedInUser == null ? 'Click here to login' : 'Click here to logout';
+    const loggedInStateAction = this.state.loggedInUser == null ? this.osmLogin : this.osmLogout;
     return (
       <div style={{ minHeight: '90vh', maxHeight: '90vh', overflowY: 'auto' }}>
-
+        {
+          this.state.loggedInUser !== undefined &&
+          <div>
+            <br />
+            <span className="light-text "> { loggedInStateText }
+              <span>
+                <span style={{ cursor: 'pointer' }} onClick={loggedInStateAction}> <b> { loggedInStateLinkText } </b> </span>
+              </span>
+            </span>
+          </div>
+        }
         <div >
           {Object.keys(this.filteredState).map((item) => {
             const label = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].keyLabel;

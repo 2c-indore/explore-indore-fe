@@ -74,6 +74,26 @@ module.exports = class OsmAuth {
     });
   }
 
+  login() {
+    const options = {
+      method: 'GET',
+      path: '/api/0.6/user/details',
+    };
+
+    return new Promise((resolve, reject) => {
+      this.xhr(options)
+        .then((res) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  logout() {
+    this.auth.logout();
+  }
+
   cleanseData(parsedData, featureType) {
     const deleteProps = ['changeset', 'timestamp', 'uid', 'user'];
 
