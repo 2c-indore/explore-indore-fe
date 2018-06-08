@@ -39,7 +39,7 @@ const steps = [
   {
     element: '.search-bar',
     position: 'top',
-    intro: 'Search for a particular amenity by entering text in this box.',
+    intro: 'Search for a particular facility by entering its name in this box. Note that it only searches the current view and not the entire database. ',
     disableInteraction: true,
   },
   {
