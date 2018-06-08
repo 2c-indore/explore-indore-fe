@@ -38,18 +38,18 @@ module.exports = class OsmAuth {
 
         if (!response) {
           reject('No response!');
+        }else{
+          const xmlText = new XMLSerializer().serializeToString(response);
+          const parser = new XmlJsonParser(xmlText);
+          parser.toJSON()
+            .then((parsedjson) => {
+              resolve(parsedjson);
+            })
+            .catch((error) => {
+              reject(error);
+            });
         }
-        const xmlText = new XMLSerializer().serializeToString(response);
-
-        const parser = new XmlJsonParser(xmlText);
-
-        parser.toJSON()
-          .then((parsedjson) => {
-            resolve(parsedjson);
-          })
-          .catch((error) => {
-            reject(error);
-          });
+        
       });
     });
   }
