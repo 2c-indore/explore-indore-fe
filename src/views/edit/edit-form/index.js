@@ -74,7 +74,9 @@ class EditForm extends Component {
         this.osmLogout();
       })
       .catch((err) => {
-        throw err;
+        // throw err;
+        console.log("Eror aayo",err);
+        this.osmLogout();
       });
   }
 
