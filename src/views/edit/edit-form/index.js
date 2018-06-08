@@ -166,7 +166,7 @@ class EditForm extends Component {
       <div style={{ minHeight: '90vh', maxHeight: '90vh', overflowY: 'auto' }}>
         {
           this.state.loggedInUser !== undefined &&
-          <div style={{ 'margin-top': '20px' }}>
+          <div style={{ 'padding': '20px','background-color' : '#eee'}}>
             <span className="light-text "> { loggedInStateText }
               <span style={{ cursor: 'pointer' }} onClick={loggedInStateAction}> <b> { loggedInStateLinkText } </b> </span>
             </span>
