@@ -10,6 +10,7 @@ export const varToTitle = {
   government: 'Government Offices',
   ngo: 'NGOs',
   bank: 'Banks',
+  cooperative : 'Co-operatives',
   fuel: 'Fuel Stations',
   radio: 'FM Stations',
   television: 'TV Stations',
