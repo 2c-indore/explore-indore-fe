@@ -78,6 +78,7 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, { ...state, geometries: { success: 0 } });
 
     case LOAD_GEOMETRIES:
+      // console.log('INLOAD', action.payload);
       return Object.assign({}, state, { ...state, geometries: { success: 1, data: action.payload.geometries } });
     case DOWNLOAD_LINKS_GENERATING:
       return Object.assign({}, state, { ...state, downloads: { success: 0 } });

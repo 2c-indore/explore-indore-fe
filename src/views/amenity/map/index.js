@@ -83,7 +83,7 @@ class Map extends Component {
       });
 
       // console.log(this.props.geometries.data);
-      this.addBaseLayer(this.props.geometries.data.boundary);
+      this.addBaseLayer(this.props.geometries.data.boundaryWithWards);
       this.addPois(this.props.geometries.data.pois);
       this.addSearchControl(this.props.geometries.data.pois);
       // this.addWardBoundaries(this.props.geometries.data.boundary);
@@ -188,6 +188,13 @@ class Map extends Component {
 
     baseLayer.name = 'overlay';
     this.map.fitBounds(L.geoJson(data).getBounds());
+
+    L.geoJson(data).setStyle({
+      fillOpacity: 0,
+      weight: 1.3,
+      dashArray: '2,5',
+      // color: '#333',
+    }).addTo(this.map);
   }
 
 
