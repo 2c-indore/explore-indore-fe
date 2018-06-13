@@ -193,7 +193,7 @@ class Map extends Component {
       fillOpacity: 0,
       weight: 1.3,
       dashArray: '2,5',
-      // color: '#333',
+      color: '#9e9e9e',
     }).addTo(this.map);
   }
 
