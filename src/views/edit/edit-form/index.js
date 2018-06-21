@@ -186,12 +186,12 @@ class EditForm extends Component {
           </div>
         }
         <div >
-          {Object.keys(this.filteredState).map((item) => {
+          {Object.keys(this.filteredState).map((item,index) => {
             const label = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].keyLabel;
           const hint = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].helpText;
           if (item !== 'changesetComment' && item !== 'disabled') {
           return (
-            <div key={shortid.generate()} className="pl-2">
+            <div key={index} className="pl-2">
               <i className="fas float-right help-icon fa-question-circle" title={hint === '' ? 'No description available' : hint} />
               <TextField
                 key={item}
