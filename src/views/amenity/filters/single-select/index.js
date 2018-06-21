@@ -25,7 +25,11 @@ class SingleSelect extends Component {
       <div className="single-select">
         <p className="filter-label">{config.label}</p>
         <SelectField
+          // errorText=" "
+          // errorStyle={{ color: '#3590f3' }}
+          iconStyle={{ fill: '#3590f3' }}
           fullWidth
+          maxHeight={300}
           onChange={this.onChange}
           value={currentState[config.parameter_name]}
         >

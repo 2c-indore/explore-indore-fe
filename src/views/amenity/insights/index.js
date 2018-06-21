@@ -95,11 +95,13 @@ class Insights extends Component {
             className=" px-3"
             style={{ marginBottom: '20px' }}
           >
-            <Timeline style={{ marginBottom: '-5px' }} /> Insights
+            <b>Insights</b>
             <IconButton
               onClick={this.onShareClick}
               style={{ marginTop: '-10px' }}
               className="float-right shareButton"
+              tooltipStyles={{ backgroundColor: '#000' }}
+              tooltip={<span style={{ fontSize: '0.8rem' }}>Share results</span>}
             ><Share />
             </IconButton>
           </h5>
@@ -120,3 +122,6 @@ class Insights extends Component {
 }
 
 export default Insights;
+
+
+// <Timeline style={{ marginBottom: '-5px' }} />

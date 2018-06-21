@@ -9,7 +9,7 @@ import objectWalk from 'object-walk';
 import cloneDeep from 'lodash.clonedeep';
 import ReactLoading from 'react-loading';
 import { Steps } from 'intro.js-react';
-import { initializeView, updateView, updateState, updateType, downloadData, saveEditState, removeEditState } from '../../state/amenity';
+import { initializeView, updateView, updateState, updateType, getStateFromParameters, downloadData, saveEditState, removeEditState } from '../../state/amenity';
 import Filters from './filters';
 import Insights from './insights';
 import Map from './map';
@@ -20,37 +20,37 @@ import './introjs.scss';
 const steps = [
   {
     element: '.hamburger',
-    intro: 'You can choose an amenity of your choice from the menu provided.',
+    intro: 'You can choose categories from this menu.',
     position: 'right',
     disableInteraction: true,
   },
   {
     element: '.currentAmenity',
     position: 'left',
-    intro: 'The title will reflect the amenity you select.',
+    intro: 'The title will always reflect the specific category you are currently seeing in the map.',
     disableInteraction: true,
   },
   {
     element: '.map',
     position: 'top',
-    intro: 'Choosing an amenity will cause the map to populate those amenities within Pokhara. Click on any marker to view and/or edit details.',
+    intro: 'Once a category is chosen the map will display all the locations that fall under this category. Click on any location marker to view and/or edit details.',
     disableInteraction: true,
   },
   {
     element: '.search-bar',
     position: 'top',
-    intro: 'Search for a particular facility by entering its name in this box. Note that it only searches the current view and not the entire database. ',
+    intro: 'Search within the chosen category by entering its name in this search box. Note: search is limited to the chosen category and not the entire database.',
     disableInteraction: true,
   },
   {
     element: '.download-icon',
     position: 'top',
-    intro: 'Download geographic data shown in the map by clicking on this button.',
+    intro: 'Download data displayed in the map by clicking this download button.',
     disableInteraction: true,
   },
   {
     element: '.insights',
-    intro: 'View statistics for that amenity in the insights section.',
+    intro: 'Statistics for selected and filtered categories will be displayed through the insights section.',
     position: 'right',
     disableInteraction: true,
 
@@ -65,7 +65,7 @@ const steps = [
 
   {
     element: '.shareButton',
-    intro: 'Found an interesting insight? Share your results using the share button.',
+    intro: 'Found something interesting? Share your results using the share button.',
     position: 'right',
     disableInteraction: true,
 
@@ -83,6 +83,7 @@ class Amenity extends Component {
 
 
     this.onFilterChange = this.onFilterChange.bind(this);
+    this.onResetFilter = this.onResetFilter.bind(this);
     this.onExit = this.onExit.bind(this);
     this.onDownloadClick = this.onDownloadClick.bind(this);
     this.onUpdateDimensions = this.onUpdateDimensions.bind(this);
@@ -106,6 +107,9 @@ class Amenity extends Component {
       ...nextProps.amenity.state,
     });
     // }
+
+
+    // this.defaultFilters = cloneDeep()
   }
 
   onUpdateDimensions() {
@@ -131,6 +135,29 @@ class Amenity extends Component {
     this.setState({
       [parameterName]: value,
     });
+  }
+
+  onResetFilter(params) {
+    // this.prop(params);
+    const newState = getStateFromParameters(params.data);
+    console.log(newState);
+
+    this.setState((oldState) => {
+      return {
+        ...oldState, ...newState,
+      };
+    }, () => {
+      const stateClone = cloneDeep(this.state);
+
+      delete stateClone.isDialogOpen;
+      delete stateClone.height;
+
+      this.props.updateView({ ...stateClone, type: this.props.amenity.type });
+      this.props.updateState({ ...stateClone });
+    });
+
+    // this.props.updateView({ ...newState });
+    // this.props.updateState({ ...newState });
   }
 
   onDownloadClick() {
@@ -207,7 +234,7 @@ class Amenity extends Component {
       return (
         <div className="amenity row m-0">
           <div style={{
-             position: 'absolute', zIndex: '1000000000000000', top: '13px', right: '100px',
+             position: 'absolute', zIndex: '1199', top: '13px', right: '100px',
             }}
           >
             <FlatButton label="how to use" onClick={() => this.setState((oldState) => { return { isHelpOpen: true }; })} />
@@ -247,7 +274,7 @@ class Amenity extends Component {
           </div>
           <div className="col-md-3 p-0 controls" style={{ minHeight: this.state.height, maxHeight: this.state.height }}>
             <Insights type={this.props.amenity.type} currentState={this.props.amenity.state} insights={insights} />
-            <Filters parameters={parameters} currentState={this.props.amenity.state} onChange={this.onFilterChange} />
+            <Filters onResetFilter={this.onResetFilter} parameters={parameters} currentState={this.props.amenity.state} onChange={this.onFilterChange} />
           </div>
           <Dialog actions={actions} open={this.state.isDialogOpen} onRequestClose={() => { this.setState({ isDialogOpen: false }); }} title="Download Data" >
             {downloads.success === 0 &&
@@ -257,8 +284,8 @@ class Amenity extends Component {
               <div>
                 <p>Please use the links below to download data in the format that you want:</p>
                 <br />
-                <a href={`http://preparepokhara.org/${downloads.data.csvlink}`} target="_blank">Download as CSV</a> <br />
-                <a href={`http://preparepokhara.org/${downloads.data.geojsonlink}`} target="_blank">Download as GeoJSON</a> <br />
+                <a href={`http://preparepokhara.org/${downloads.data.csvlink}`} onClick={() => { this.setState({ isDialogOpen: false }); }} target="_blank">Download as CSV</a> <br />
+                <a href={`http://preparepokhara.org/${downloads.data.geojsonlink}`} onClick={() => { this.setState({ isDialogOpen: false }); }} target="_blank">Download as GeoJSON</a> <br />
               </div>
             }
           </Dialog>

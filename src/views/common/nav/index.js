@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import qs from 'qs';
 import AppBar from 'material-ui/AppBar';
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
@@ -12,7 +13,7 @@ import { withRouter } from 'react-router-dom';
 import { sidebarMenuItems, varToTitle } from '../../../static/constants';
 
 
-import { initializeView } from '../../../state/amenity';
+import { initializeView, removeEditState } from '../../../state/amenity';
 
 import './styles.scss';
 
@@ -21,18 +22,18 @@ const HamburgerIcon = ({ onClick }) => {
 };
 
 const DrawerMenu = ({
-  open, onRequestChange, menuItems, history, initView,
+  open, onRequestChange, menuItems, history, initView, removeEditStateFromMap,
 }) => {
   // console.log(history);
   return (
     <Drawer docked={false} open={open} onRequestChange={onRequestChange}>
       <List>
-        <Subheader>Select an amenity</Subheader>
+        <Subheader style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>Select a category</Subheader>
         {menuItems.map((category) => {
           const subItems = [];
           category.children.forEach((item) => {
             subItems.push(<ListItem
-              onClick={() => { history.push(`/amenities${item.route}`); onRequestChange(item.type); initView(item.type); }}
+              onClick={() => { removeEditStateFromMap(); history.push(`/amenities${item.route}`); onRequestChange(item.type); initView(item.type); }}
               style={history.location.pathname === item.route ? { color: '#3590F3' } : {}}
               key={shortid.generate()}
               primaryText={item.label}
@@ -66,6 +67,20 @@ class Nav extends Component {
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
 
+  getNavTitle(currentPathName) { //eslint-disable-line
+    let finalArray;
+
+    if (currentPathName.length === 3 && currentPathName[1] === 'amenities') {
+      finalArray = [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'];
+    } else if (currentPathName.length === 3 && currentPathName[1] === 'share') {
+      const amenityType = qs.parse(window.atob(currentPathName[2])).type;
+      finalArray = [`${varToTitle[amenityType]}`, 'in', 'Pokhara Lekhnath Metropolitan'];
+    } else {
+      finalArray = ['Prepare', 'Pokhara'];
+    }
+    return finalArray;
+  }
+
   toggleDrawer(type) {
     this.setState({
       isDrawerOpen: !this.state.isDrawerOpen,
@@ -76,8 +91,11 @@ class Nav extends Component {
 
   render() {
     const currentPathName = this.props.history.location.pathname.split('/');
-    const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
+
+
+    // const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
+    const navbarTitle = this.getNavTitle(currentPathName);
 
     return (
       <div>
@@ -88,7 +106,7 @@ class Nav extends Component {
           iconElementLeft={<HamburgerIcon onClick={this.toggleDrawer} />}
           iconElementRight={
             <div style={{ paddingTop: '5px' }}>
-              {currentPathName[1] === 'edit' && <FlatButton onClick={() => { console.log('props at navbar', this.props); this.props.history.push(`/amenities/${this.props.amenity.type}`); }} label="Go Back" />}
+              {currentPathName[1] === 'edit' && <FlatButton onClick={() => { this.props.history.push(`/amenities/${this.props.amenity.type}`); }} label="Go Back" />}
               <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />
             </div>
           }
@@ -97,6 +115,7 @@ class Nav extends Component {
           open={this.state.isDrawerOpen}
           onRequestChange={this.toggleDrawer}
           menuItems={sidebarMenuItems}
+          removeEditStateFromMap={this.props.removeEditState}
           history={this.props.history}
           initView={this.props.initializeView}
         />
@@ -112,7 +131,7 @@ const mapStateToProps = state => ({
 
 
 export default withRouter(connect(mapStateToProps, {
-  initializeView,
+  initializeView, removeEditState,
 })((Nav)));
 
 // export default withRouter(Nav);

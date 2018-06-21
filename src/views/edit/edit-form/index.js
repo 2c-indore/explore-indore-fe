@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import cloneDeep from 'lodash.clonedeep';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
+import shortid from 'shortid';
 
 import ConfirmationDialog from '../../common/confirmation-dialog';
 
@@ -69,13 +70,13 @@ class EditForm extends Component {
         this.setState({
           loggedInUser: userDetails.osm.user['0'].$,
         });
-      },(err)=>{
+      }, (err) => {
         throw err;
         this.osmLogout();
       })
       .catch((err) => {
         // throw err;
-        console.log("Eror aayo",err);
+        console.log('Eror aayo', err);
         this.osmLogout();
       });
   }
@@ -171,7 +172,7 @@ class EditForm extends Component {
       <div style={{ minHeight: '90vh', maxHeight: '90vh', overflowY: 'auto' }}>
         {
           this.state.loggedInUser !== undefined &&
-          <div style={{ padding: '20px', 'background-color': '#eee' }}>
+          <div style={{ padding: '20px', backgroundColor: '#eee' }}>
             <small>
               <span className="light-text ">
                 { loggedInStateText }
@@ -190,7 +191,7 @@ class EditForm extends Component {
           const hint = tagMapper[this.props.type].filter((tag) => { return tag.keyName === item; })[0].helpText;
           if (item !== 'changesetComment' && item !== 'disabled') {
           return (
-            <div className="pl-2">
+            <div key={shortid.generate()} className="pl-2">
               <i className="fas float-right help-icon fa-question-circle" title={hint === '' ? 'No description available' : hint} />
               <TextField
                 key={item}

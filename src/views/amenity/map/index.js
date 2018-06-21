@@ -8,15 +8,19 @@ import 'leaflet.markercluster';
 import 'leaflet-search';
 import 'leaflet-easybutton';
 import * as topojson from 'topojson-client';
+import baseBoundary from '../../../static/pokhara-boundary';
 // import boundary from '../../../static/boundary';
-import { tagToPopup } from '../../../static/map-utils';
+import {
+  // amenityParameters,
+  // nester,
+  tagToPopup,
+} from '../../../static/map-utils';
 import SearchAmenity from './search-amenity';
 
 import './styles.scss';
 import './leaflet-search.scss';
 
 // console.log(JSON.stringify(nester(amenityParameters)));
-// console.log('nested', JSON.stringify(nester(amenityParameters)));
 
 
 const color = '#3590F3';
@@ -127,12 +131,16 @@ class Map extends Component {
   onSearchSelect(coordinates, name) {
     // c(onsole.log(coordinates);
 
-    if (this.highlighLayer) {
-      this.map.removeLayer(this.highlightLayer);
-    } else {
-      const highlight = L.circle(L.latLng(coordinates[1], coordinates[0]), { radius: 30, fillColor: color, weight: 0 }).addTo(this.map);
-      this.highlightLayer = L.layerGroup([highlight]).addTo(this.map);
-    }
+    this.clearHighlightLayers(this.map);
+
+    // if (this.highlightLayer) {
+    //   this.map.removeLayer(this.highlightLayer);
+    // }
+
+    const highlight = L.circle(L.latLng(coordinates[1], coordinates[0]), { radius: 30, fillColor: color, weight: 1 });
+    this.highlightLayer = L.layerGroup([highlight]).addTo(this.map);
+    this.highlightLayer.name = 'highlight';
+    // }
     // this.map.setZoom(16);
     setTimeout(() => {
       this.map.flyTo(L.latLng(coordinates[1], coordinates[0]), 18);
@@ -145,7 +153,6 @@ class Map extends Component {
       suggestions.push({ name: item.properties.tags.name, coordinates: item.geometry.coordinates });
     });
 
-    console.log(suggestions);
     this.setState({ suggestions });
   }
 
@@ -165,20 +172,34 @@ class Map extends Component {
     this.map = map;
 
     this.map.fitBounds(L.geoJson(data).getBounds());
-    this.map.setZoom(11.5);
+
+
+    // this.map.setZoom(11.5);
 
     L.tileLayer(osmURL, { opacity: 0.3 }).addTo(this.map);
+
+
+    L.TileLayer.boundaryCanvas(osmURL, {
+      boundary: baseBoundary,
+      opacity: 0.5,
+    }).addTo(map);
+
     L.control.scale().addTo(map);
 
     map.addControl(L.control.zoom({ position: 'topleft' }));
-    L.easyButton('<div class="download-icon"><i class="fas fa-download"></i></div>', () => {
-      onDownload();
-    }, 'Download this data').addTo(map);
+
+    if (this.props.geometries.data.pois.features.length > 0) {
+      L.easyButton('<div class="download-icon"><i class="fas fa-download"></i></div>', () => {
+        onDownload();
+      }, 'Download this data').addTo(this.map);
+    }
+
     L.control.attribution({ prefix: 'Map designed by <a href="www.kathmandulivinglabs.org" target="_blank" rel="noopener noreferrer">Kathmandu Living Labs</a> | &copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> Contributors' }).addTo(this.map); //eslint-disable-line
   }
 
 
   addBaseLayer(data) { //eslint-disable-line
+
 
     const baseLayer = L.TileLayer.boundaryCanvas(osmURL, {
       boundary: data,
@@ -193,7 +214,7 @@ class Map extends Component {
       fillOpacity: 0,
       weight: 1.3,
       dashArray: '2,5',
-      color: '#9e9e9e',
+      color: '#333',
     }).addTo(this.map);
   }
 
@@ -220,7 +241,7 @@ class Map extends Component {
 
     // const wardboundary = topojson.feature(data, data.objects.pokhara_boundary);
     const { type } = this.props;
-    const { onEdit, map } = this;
+    const { onEdit, map, clearHighlightLayers } = this;
 
     const dataLayer = L.geoJson(null, {
       style: geoJsonStyle,
@@ -246,6 +267,13 @@ class Map extends Component {
           const point = map.latLngToContainerPoint(layer._latlng);
           const newPoint = L.point([point.x - 10, point.y - 100]);
           const newLatLng = map.containerPointToLatLng(newPoint);
+
+
+          clearHighlightLayers(map);
+          //
+          // const highlight = L.circle(layer._latlng, { radius: 50, fillColor: color, weight: 1 });
+          // const highlightLayer = L.layerGroup([highlight]).addTo(map);
+          // highlightLayer.name = 'highlight';
 
           map.panTo(newLatLng);
         });
@@ -287,6 +315,14 @@ class Map extends Component {
     // this.setState({ suggestions: suggestionsArray });
 
     // const searchLayer = L.geoJson(data);
+  }
+
+  clearHighlightLayers(map) { // eslint-disable-line
+    Object.keys(map._layers).forEach((maplayer, i) => {
+      if (map._layers[maplayer].name === 'highlight') {
+        map.removeLayer(map._layers[maplayer]);
+      }
+    });
   }
 
   render() {

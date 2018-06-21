@@ -39,7 +39,10 @@ class About extends Component {
              in keeping both yourself and your neighbors safe.
           </p>
 
+          <p className="light-text">Also try our new tourism app: <a href="https://play.google.com/store/apps/details?id=org.kathmandulivinglabs.preparepokhara">Explore Pokhara</a>.</p>
+
           <br />
+
 
           <NavLink to="/amenities/hospital"><RaisedButton primary label="Get Started" /></NavLink>
 

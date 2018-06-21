@@ -13,7 +13,7 @@ const initialState = {
 
 
 // function to generate state object from parameters
-const getStateFromParameters = (parameters) => {
+export const getStateFromParameters = (parameters) => {
   const stateObject = {};
   Object.keys(parameters).forEach((item) => {
     if (parameters[item].type === 'single-select') {
@@ -162,7 +162,7 @@ export function hasLoaded() {
 export function initializeView(type) {
   return (dispatch) => {
     dispatch(isLoading());
-    axios.get(`http://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
+    axios.get(`https://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
       // console.log(response.data);
       dispatch(updateType(type));
       dispatch(loadState(response.data));
@@ -200,7 +200,7 @@ export function loadingGeometries() {
 export function updateView(parameters) {
   return (dispatch) => {
     dispatch(loadingGeometries());
-    axios.get('http://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
+    axios.get('https://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
     });
@@ -211,7 +211,7 @@ export function updateView(parameters) {
 export function downloadData(parameters) {
   return (dispatch) => {
     dispatch(loadingLinks());
-    axios.get('http://preparepokhara.org/api/v2/features/download', { params: parameters }).then((response) => {
+    axios.get('https://preparepokhara.org/api/v2/features/download', { params: parameters }).then((response) => {
       dispatch(loadedLinks(response.data));
     });
   };
