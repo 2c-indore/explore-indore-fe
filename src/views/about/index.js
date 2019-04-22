@@ -63,7 +63,7 @@ class About extends Component {
           Ministry of Federal Affairs and Local Development <br />
           Pokhara Lekhnath Metropolitan<br />
           New Road, Pokhara 9, Kaski<br />
-            <a href="http://pokharalekhnathmun.gov.np/">pokharalekhnathmun.gov.np</a><br />
+            <a target="_blank" rel="noopener noreferrer" href="http://pokharalekhnathmun.gov.np/">pokharalekhnathmun.gov.np</a><br />
           </p>
         </div>
 
@@ -77,7 +77,7 @@ class About extends Component {
         1474, Lamtangin Marga <br />
         Chundevi, Kathmandu, Nepal <br />
         contact@kathmandulivinglabs.org<br />
-            <a href="http://kathmandulivinglabs.org">kathmandulivinglabs.org</a><br />
+            <a target="_blank" rel="noopener noreferrer" href="http://kathmandulivinglabs.org">kathmandulivinglabs.org</a><br />
           </p>
         </div>
 
@@ -92,7 +92,7 @@ class About extends Component {
           US Department of State<br />
           American Red Cross Building 2025 E St. NW<br />
           hiu_info@state.gov<br />
-            <a href="https://secondarycities.state.gov/">secondarycities.state.gov</a><br />
+            <a target="_blank" rel="noopener noreferrer" href="https://secondarycities.state.gov/">secondarycities.state.gov</a><br />
           </p>
         </div>
 
