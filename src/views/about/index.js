@@ -53,7 +53,7 @@ class About extends Component {
         </div>
 
         <div className="col-lg-4 col-md-6 col-sm-12 my-3">
-          <a href="http://pokharalekhnathmun.gov.np/" target="_blank" rel="noopener noreferrer">
+          <a href="http://www.pokharamun.gov.np/" target="_blank" rel="noopener noreferrer">
             <img src="/assets/gon_logo.png" style={{ maxWidth: '300px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5" />
           </a>
           <br />
@@ -63,7 +63,7 @@ class About extends Component {
           Ministry of Federal Affairs and Local Development <br />
           Pokhara Lekhnath Metropolitan<br />
           New Road, Pokhara 9, Kaski<br />
-            <a target="_blank" rel="noopener noreferrer" href="http://pokharalekhnathmun.gov.np/">pokharalekhnathmun.gov.np</a><br />
+            <a target="_blank" rel="noopener noreferrer" href="http://www.pokharamun.gov.np/">www.pokharamun.gov.np</a><br />
           </p>
         </div>
 
