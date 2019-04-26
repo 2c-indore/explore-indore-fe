@@ -76,7 +76,7 @@ class Nav extends Component {
       const amenityType = qs.parse(window.atob(currentPathName[2])).type;
       finalArray = [`${varToTitle[amenityType]}`, 'in', 'Pokhara Lekhnath Metropolitan'];
     } else {
-      finalArray = ['Prepare', 'Pokhara'];
+      finalArray = ['Explore', 'Pokhara'];
     }
     return finalArray;
   }

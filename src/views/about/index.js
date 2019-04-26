@@ -19,7 +19,7 @@ class About extends Component {
       <div className="about p-5 row m-0">
         <div className="col-lg-6 my-3">
 
-          <h1><b>Prepare</b> Pokhara</h1>
+          <h1><b>Explore</b> Pokhara</h1>
           <h5>Bringing data, people and technology together.</h5>
 
           <br />
@@ -32,7 +32,7 @@ class About extends Component {
           </p>
 
           <p className="light-text ">
-            Prepare Pokhara app is the answer to these questions and more. Kathmandu Living Labs,
+            Explore Pokhara app is the answer to these questions and more. Kathmandu Living Labs,
             the local partner of the Secondary Cities initiative, has been spearheading the ground effort to
              produce robust geospatial data for Pokhara for the past one and a half years.
              It is hoped that the critical infrastructure information made open here plays an integral part
