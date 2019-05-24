@@ -18,9 +18,20 @@ class SingleSelect extends Component {
     this.props.onChange(this.props.config.parameter_name, newValue);
   }
 
+  toTitleCase(str) { //eslint-disable-line
+    return str.replace(
+      /\w\S*/g,
+      (txt) => {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      } //eslint-disable-line
+    );
+  }
+
+
   render() {
     // console.log(this.props);
     const { config, currentState } = this.props;
+    console.log('config', config, currentState);
     return (
       <div className="single-select">
         <p className="filter-label">{config.label}</p>
@@ -34,7 +45,7 @@ class SingleSelect extends Component {
           value={currentState[config.parameter_name]}
         >
           {config.options.map((item) => {
-          return <MenuItem key={shortid.generate()} value={item.value} primaryText={item.label} />;
+          return <MenuItem key={shortid.generate()} value={item.value} primaryText={this.toTitleCase(item.label)} />;
         })}
         </SelectField>
       </div>

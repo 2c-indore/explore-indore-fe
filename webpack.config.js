@@ -48,7 +48,7 @@ module.exports = removeEmpty({
     ],
   },
 
-  devtool: ifDevelopment('eval-source-map', 'source-map'),
+  devtool: ifDevelopment('source-map', 'source-map'),
 
   devServer: ifDevelopment({
     host: '0.0.0.0',
@@ -74,7 +74,7 @@ module.exports = removeEmpty({
 
     ifProduction(
       new ExtractTextPlugin('[name]-bundle-[hash].css'),
-      new ExtractTextPlugin('[name]-bundle.css')
+      new ExtractTextPlugin('[name]-bundle.css'),
     ),
   ]),
 });

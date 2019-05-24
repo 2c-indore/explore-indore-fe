@@ -14,8 +14,8 @@ import './index.scss';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#3590F3',
-    accent1Color: '#3590F3',
+    primary1Color: '#3590f3',
+    accent1Color: '#3590f3',
   },
   appBar: {
     color: "#fff",

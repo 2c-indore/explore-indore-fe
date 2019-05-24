@@ -34,7 +34,7 @@ const DrawerMenu = ({
           category.children.forEach((item) => {
             subItems.push(<ListItem
               onClick={() => { removeEditStateFromMap(); history.push(`/amenities${item.route}`); onRequestChange(item.type); initView(item.type); }}
-              style={history.location.pathname === item.route ? { color: '#3590F3' } : {}}
+              style={history.location.pathname === item.route ? { color: '#3590f3' } : {}}
               key={shortid.generate()}
               primaryText={item.label}
             />);
@@ -71,12 +71,12 @@ class Nav extends Component {
     let finalArray;
 
     if (currentPathName.length === 3 && currentPathName[1] === 'amenities') {
-      finalArray = [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'];
+      finalArray = [`${varToTitle[currentPathName[2]]}`, 'in', 'Indore Municipal Corporation'];
     } else if (currentPathName.length === 3 && currentPathName[1] === 'share') {
       const amenityType = qs.parse(window.atob(currentPathName[2])).type;
-      finalArray = [`${varToTitle[amenityType]}`, 'in', 'Pokhara Lekhnath Metropolitan'];
+      finalArray = [`${varToTitle[amenityType]}`, 'in', 'Indore Municipal Corporation'];
     } else {
-      finalArray = ['Explore', 'Pokhara'];
+      finalArray = ['Explore', 'Indore'];
     }
     return finalArray;
   }

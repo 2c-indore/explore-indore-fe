@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import shortid from 'shortid';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Dialog from 'material-ui/Dialog';
-import Timeline from 'material-ui/svg-icons/action/timeline';
+// import Timeline from 'material-ui/svg-icons/action/timeline';
 import Share from 'material-ui/svg-icons/social/share';
 import IconButton from 'material-ui/IconButton';
 import qs from 'qs';
@@ -14,7 +14,7 @@ import Chart from './chart';
 import './styles.scss';
 
 const InsightItem = ({ config }) => {
-  const chartValue = isNaN(((Number(config.value) / Number(config.max_value)) * 100).toFixed(0)) ? 0 : ((Number(config.value) / Number(config.max_value)) * 100).toFixed(0);
+  const chartValue = isNaN(((Number(config.value) / Number(config.max_value)) * 100).toFixed(0)) ? 0 : ((Number(config.value) / Number(config.max_value)) * 100).toFixed(0); //eslint-disable-line
   return (
     <div className="pt-3">
       <p className="insight-title" >{config.insight_title}</p>
@@ -107,8 +107,9 @@ class Insights extends Component {
           </h5>
 
           <div className="insights p-3">
+
+            {console.log('insightdata', data)}
             {Object.keys(data).map((item) => {
-            // console.log('item', item);
               return <InsightItem key={shortid.generate()} config={data[item]} />;
           })}
           </div>

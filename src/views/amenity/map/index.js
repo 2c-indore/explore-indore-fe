@@ -8,7 +8,8 @@ import 'leaflet.markercluster';
 import 'leaflet-search';
 import 'leaflet-easybutton';
 import * as topojson from 'topojson-client';
-import baseBoundary from '../../../static/pokhara-boundary';
+// import baseBoundary from '../../../static/pokhara-boundary';
+import baseBoundary from '../../../static/indore-boundary';
 // import boundary from '../../../static/boundary';
 import {
   // amenityParameters,
@@ -23,7 +24,7 @@ import './leaflet-search.scss';
 // console.log(JSON.stringify(nester(amenityParameters)));
 
 
-const color = '#3590F3';
+const color = '#3590f3';
 
 const osmURL = 'https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=52ce8b5b94d44030a0c6208707611a06';
 
@@ -163,7 +164,7 @@ class Map extends Component {
     const map = L.map(this.node, {    //eslint-disable-line
       zoomSnap: 0.25,
       attributionControl: false,
-      maxBounds: L.geoJson(data).getBounds().pad(0.4),
+      maxBounds: L.geoJson(data).getBounds().pad(0.8),
       minZoom: 9,
       // maxZoom: 14,
       // scrollWheelZoom: false,oo
@@ -171,6 +172,8 @@ class Map extends Component {
     });
     this.map = map;
 
+
+    console.log('Map Data', data);
     this.map.fitBounds(L.geoJson(data).getBounds());
 
 
@@ -224,7 +227,9 @@ class Map extends Component {
     const addIcon = (type) => { //eslint-disable-line
     // console.log('addIcon', type, mapProjectToIcon[type]);
       const icon = new L.LeafIcon({
-        iconUrl: `/assets/${this.props.type}.png`,
+        // iconUrl: `/assets/${this.props.type}.png`,
+        iconUrl: '/assets/hospital.png',
+        // iconSize: [25.6, 41.4],
       });
 
       return icon;
@@ -250,6 +255,7 @@ class Map extends Component {
       },
       onEachFeature(feature, layer) {
         const { tags } = layer.feature.properties;
+        console.log(layer.feature);
         const id = layer.feature.id.split('/')[1];
         const popupOptions = {
           className: 'custom',

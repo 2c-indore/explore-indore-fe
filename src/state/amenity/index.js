@@ -94,6 +94,13 @@ export default function reducer(state = initialState, action = {}) {
 
 // Action Creators
 export function loadState(parameters) {
+  console.log('parameters', parameters.parameters);
+
+  // const parameterObject = {};
+  // parameters.filters.forEach((item, i) => {
+  //   parameterObject[i] = item;
+  // });
+
   return {
     type: LOAD_STATE,
     payload: getStateFromParameters(parameters.parameters),
@@ -160,10 +167,13 @@ export function hasLoaded() {
 }
 
 export function initializeView(type) {
+  console.log('type', type);
   return (dispatch) => {
     dispatch(isLoading());
-    axios.get(`https://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
-      // console.log(response.data);
+    // axios.get(`http://192.168.10.72:5080/api/amenities/data?type=${type}`).then((response) => {
+    axios.get(`http://159.65.10.210:5080/api/amenities/data?type=${type}`).then((response) => {
+    // axios.get(`https://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
+      console.log('data', response.data);
       dispatch(updateType(type));
       dispatch(loadState(response.data));
       dispatch(loadParameters(response.data));
@@ -200,7 +210,8 @@ export function loadingGeometries() {
 export function updateView(parameters) {
   return (dispatch) => {
     dispatch(loadingGeometries());
-    axios.get('https://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
+    // axios.get('https://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
+    axios.get('http://159.65.10.210:5080/api/amenities/data', { params: parameters }).then((response) => {
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
     });

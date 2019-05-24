@@ -268,7 +268,7 @@ class Amenity extends Component {
                 width: '100%',
               }}
                 className="d-flex flex-column align-items-center p-5"
-              >Updating map, please wait...<br /> <ReactLoading type="bars" color="#3590F3" />
+              >Updating map, please wait...<br /> <ReactLoading type="bars" color="#3590f3" />
               </div>
                                        }
           </div>
@@ -278,7 +278,7 @@ class Amenity extends Component {
           </div>
           <Dialog actions={actions} open={this.state.isDialogOpen} onRequestClose={() => { this.setState({ isDialogOpen: false }); }} title="Download Data" >
             {downloads.success === 0 &&
-            <div className="m-0"> Please wait, generating download links.. <br /> <br />  <ReactLoading type="bars" color="#3590F3" /></div>}
+            <div className="m-0"> Please wait, generating download links.. <br /> <br />  <ReactLoading type="bars" color="#3590f3" /></div>}
             {downloads.success === 1 &&
 
               <div>
@@ -297,7 +297,7 @@ class Amenity extends Component {
         </div>
       );
     } else {
-      return <div className="d-flex justify-content-center m-5"> <ReactLoading type="bars" color="#3590F3" /></div>;
+      return <div className="d-flex justify-content-center m-5"> <ReactLoading type="bars" color="#3590f3" /></div>;
     }
   }
 }
