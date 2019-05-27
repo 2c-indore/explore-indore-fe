@@ -227,9 +227,10 @@ class Map extends Component {
     const addIcon = (type) => { //eslint-disable-line
     // console.log('addIcon', type, mapProjectToIcon[type]);
       const icon = new L.LeafIcon({
-        // iconUrl: `/assets/${this.props.type}.png`,
-        iconUrl: '/assets/hospital.png',
-        // iconSize: [25.6, 41.4],
+        iconUrl: `/assets/${this.props.type}.png`,
+        // iconUrl: '/assets/hospital.png',
+        iconSize: [50, 50],
+        // iconOffset: [0, -64],
       });
 
       return icon;
