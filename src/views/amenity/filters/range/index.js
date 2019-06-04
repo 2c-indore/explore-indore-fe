@@ -31,12 +31,12 @@ class RangeSlider extends Component {
   }
 
   componentWillUpdate() {
-    console.log('update');
+    // console.log('update');
   }
   //
   onChange(newValue) {
     const { config } = this.props;
-    console.log(newValue, 'newValue');
+    // console.log(newValue, 'newValue');
     this.props.onChange(config.parameter_name, newValue);
   }
 

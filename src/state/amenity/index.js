@@ -14,6 +14,10 @@ const initialState = {
   parameters: null,
   downloads: { success: 0 },
   stateBeforeEdit: undefined,
+  notif: {
+    isOpen: false,
+    message: '',
+  },
 };
 
 
@@ -62,6 +66,8 @@ const RESET_EDIT_LOCATION = 'RESET_EDIT_LOCATION';
 export const AUTH_USER = 'AUTH_USER';
 const DEAUTH_USER = 'DEAUTH_USER';
 const FETCH_USER = 'FETCH_USER'; // fetch user profile
+const ADD_NOTIF = 'ADD_NOTIF'; // fetch user profile
+const CLOSE_NOTIF = 'CLOSE_NOTIF'; // fetch user profile
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
@@ -78,6 +84,11 @@ export default function reducer(state = initialState, action = {}) {
 
       return Object.assign({}, state, { ...state, auth: { ...state.auth, ...action.payload } });
 
+    case ADD_NOTIF:
+      return Object.assign({}, state, { ...state, notif: { isOpen: true, message: action.message } });
+
+    case CLOSE_NOTIF:
+      return Object.assign({}, state, { ...state, notif: { isOpen: false, message: '' } });
 
     case IS_LOADING:
       return Object.assign({}, state, { ...state, loading: true });
@@ -137,6 +148,26 @@ export function editData(id, data) {
 }
 
 
+export function addNotif(message) {
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    dispatch({
+      type: ADD_NOTIF,
+      message,
+    });
+  };
+}
+
+export function closeNotif() {
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    dispatch({
+      type: CLOSE_NOTIF,
+    });
+  };
+}
+
+
 export function authenticateUser(user, history) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/api/users/authenticate`, user).then((response) => {
@@ -147,9 +178,41 @@ export function authenticateUser(user, history) {
         history.go(-1);
         dispatch(fetchUser());
         dispatch({ type: AUTH_USER });
+        dispatch(addNotif(response.data.message));
+
+        setTimeout(() => {
+          dispatch(closeNotif());
+        }, 100);
+      } else {
+        dispatch(addNotif(response.data.message));
       }
       // localStorage.setItem('role', response.data.role);
     }).catch((error) => {
+      dispatch(addNotif('There was an error'));
+      // Silent
+    });
+  };
+}
+
+export function addNewUser(user, history) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/api/admin/users/create`, user, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+      console.log(response);
+
+      if (response.data.success === 1) {
+        localStorage.setItem('token', response.data.token);
+        history.go(-1);
+        dispatch(addNotif(response.data.message));
+
+        // dispatch(fetchUser());
+        // dispatch({ type: AUTH_USER });
+      } else {
+        dispatch(addNotif(response.data.message));
+      }
+      // localStorage.setItem('role', response.data.role);
+    }).catch((error) => {
+      dispatch(addNotif('There was an error. Try again.'));
+
       // Silent
     });
   };
@@ -158,6 +221,8 @@ export function authenticateUser(user, history) {
 export function deauthenticateUser() {
   return (dispatch) => {
     localStorage.removeItem('token');
+    dispatch(addNotif('You have logged out successfully.'));
+
     dispatch({ type: DEAUTH_USER });
   };
 }

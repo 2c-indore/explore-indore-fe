@@ -141,7 +141,7 @@ class Amenity extends Component {
   onResetFilter(params) {
     // this.prop(params);
     const newState = getStateFromParameters(params.data);
-    console.log(newState);
+    // console.log(newState);
 
     this.setState((oldState) => {
       return {

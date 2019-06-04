@@ -89,7 +89,7 @@ class Map extends Component {
 
       // console.log(this.props.geometries.data);
       this.addBaseLayer(this.props.geometries.data.boundaryWithWards);
-      console.log('insideMap>>>>>>>>>>>', this.props.isLoggedIn);
+      // console.log('insideMap>>>>>>>>>>>', this.props.isLoggedIn);
       this.addPois(this.props.geometries.data.pois, this.props.isLoggedIn);
       this.addSearchControl(this.props.geometries.data.pois);
       // this.addWardBoundaries(this.props.geometries.data.boundary);

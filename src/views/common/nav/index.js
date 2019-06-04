@@ -99,7 +99,7 @@ class Nav extends Component {
     // const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
     const navbarTitle = this.getNavTitle(currentPathName);
-    const { isLoggedIn } = this.props.amenity.auth;
+    const { isLoggedIn, role } = this.props.amenity.auth;
 
     const text = isLoggedIn ? this.props.amenity.auth.name : 'You are not logged in';
     return (
@@ -120,11 +120,13 @@ class Nav extends Component {
                   onClick={this.handleOpenMenu}
                   label={text}
                 />)}
+                menuStyle={{ minWidth: '180px' }}
                 open={this.state.openMenu}
                 onRequestChange={this.handleOnRequestChange}
               >
 
                 { !isLoggedIn && <MenuItem onClick={() => { this.props.history.push('/login'); }} primaryText="Login" />}
+                {role === 'admin' && <MenuItem onClick={() => { this.props.history.push('/add-user'); }} primaryText="Add new user" />}
                 { isLoggedIn && <MenuItem onClick={() => { this.props.deauthenticateUser(); }} primaryText="Logout" />}
               </IconMenu>
             </div>

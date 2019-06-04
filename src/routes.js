@@ -8,9 +8,11 @@ import './index.less';
 
 import Amenity from './views/amenity';
 import Login from './views/login';
+import AddUser from './views/add-user';
 import Edit from './views/edit';
 import About from './views/about';
 import Nav from './views/common/nav';
+import Notification from './views/common/notification';
 
 //
 ReactGA.initialize('MUHAJAHSG');
@@ -41,8 +43,10 @@ class Root extends Component {
       <HashRouter history={history}>
         <div>
           <Nav />
+          <Notification />
           <Switch>
             <Route exact path="/login" render={() => { return <Login />; }} />
+            <Route exact path="/add-user" render={() => { return <AddUser />; }} />
             <Route exact path="/" render={() => { return <About />; }} />
             <Route exact path="/amenities/:amenity" component={Amenity} />
             <Route exact path="/edit" component={Edit} />

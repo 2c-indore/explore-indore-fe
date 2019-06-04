@@ -108,7 +108,7 @@ class Insights extends Component {
 
           <div className="insights p-3">
 
-            {console.log('insightdata', data)}
+            {/* console.log('insightdata', data) */}
             {Object.keys(data).map((item) => {
               return <InsightItem key={shortid.generate()} config={data[item]} />;
           })}

@@ -31,7 +31,7 @@ class SingleSelect extends Component {
   render() {
     // console.log(this.props);
     const { config, currentState } = this.props;
-    console.log('config', config, currentState);
+    // console.log('config', config, currentState);
     return (
       <div className="single-select">
         <p className="filter-label">{config.label}</p>

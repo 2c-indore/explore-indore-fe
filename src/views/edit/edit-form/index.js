@@ -42,7 +42,7 @@ class EditForm extends Component {
     });
 
     // set Amenity type and its Id on state variables
-    console.log('dataprops', this.props);
+    // console.log('dataprops', this.props);
 
     this.setState({
       amenityType: this.props.type,

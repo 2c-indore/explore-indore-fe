@@ -6,26 +6,27 @@ import { withRouter,
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import validator from 'validator';
-// import ReactLoading from 'react-loading';
+import ReactLoading from 'react-loading';
 
 import { connect } from 'react-redux';
-import { authenticateUser } from '../../state/amenity';
+import { addNewUser } from '../../state/amenity';
 import './styles.scss'; //eslint-disable-line
 // import BarChart from '../charts/bar';
 
 
-class Login extends Component {
+class AddUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // isLoggingIn: false,
+      isAddingUser: false,
+      name: '',
       email: '',
-      password: '',
+      confirmEmail: '',
       errors: {},
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onClickLogin = this.onClickLogin.bind(this);
+    this.onClickAddUser = this.onClickAddUser.bind(this);
   }
 
   onChange(e) {
@@ -36,7 +37,7 @@ class Login extends Component {
     });
   }
 
-  onClickLogin() {
+  onClickAddUser() {
     const errors = {};
 
     // console.log(validator)
@@ -47,19 +48,25 @@ class Login extends Component {
       if (errors.email) { delete errors.email; }  //eslint-disable-line
     }
 
+
     if (!validator.isEmail(this.state.email)) {
       errors.email = 'This is not a valid email';
     } else { //eslint-disable-line
       if (errors.email) { delete errors.email; }  //eslint-disable-line
     }
 
-
-    if (validator.isEmpty(this.state.password)) {
-      errors.password = 'This field cannot be empty. ';
+    if (!validator.isEmail(this.state.confirmEmail)) {
+      errors.confirmEmail = 'This is not a valid email';
     } else { //eslint-disable-line
-      if (errors.password) { delete errors.password; }  //eslint-disable-line
+      if (errors.confirmEmail) { delete errors.confirmEmail; }  //eslint-disable-line
     }
 
+
+    if (this.state.email !== this.state.confirmEmail) {
+      errors.confirmEmail = 'The email addresses you entered do not match. ';
+    } else { //eslint-disable-line
+      if (errors.confirmEmail) { delete errors.confirmEmail; }  //eslint-disable-line
+    }
 
     if (Object.keys(errors).length > 0) {
       this.setState({
@@ -67,25 +74,37 @@ class Login extends Component {
       });
     } else {
       this.setState({
-        // isLoggingIn: true,
+        isAddingUser: true,
       });
       // console.log('Cleared for login', this.props);
-      this.props.authenticateUser({ email: this.state.email, password: this.state.password }, this.props.history);
+      this.props.addNewUser({ email: this.state.email, name: this.state.name }, this.props.history);
     }
   }
 
   render() {
     return (
       <div className="row py-5 m-0">
-        <div className="col-md-6 offset-md-3 col-4 offset-4 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
-          <h3>Login</h3>
+        <div className="col-4 offset-4 col-md-6 offset-md-3 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
+          <h3>Add new user</h3>
 
-          {
+          {!this.state.isAddingUser &&
             <div>
-              <p>Please provide us with your credentials</p>
+              <p>Please enter details below</p>
               <br />
               <TextField
-                hintText="Enter your email"
+                hintText="Enter name"
+                type="text"
+                name="name"
+                errorText={this.state.errors.name ? this.state.errors.name : null}
+
+                value={this.state.name}
+                onChange={this.onChange}
+                fullWidth
+              />
+
+
+              <TextField
+                hintText="Enter email"
                 type="text"
                 name="email"
                 errorText={this.state.errors.email ? this.state.errors.email : null}
@@ -94,21 +113,26 @@ class Login extends Component {
                 onChange={this.onChange}
                 fullWidth
               />
+
+
               <TextField
-                hintText="Enter your password"
-                value={this.state.password}
-                errorText={this.state.errors.password ? this.state.errors.password : null}
-                type="password"
-                name="password"
+                hintText="Re-enter email"
+                type="text"
+                name="confirmEmail"
+                errorText={this.state.errors.confirmEmail ? this.state.errors.confirmEmail : null}
+
+                value={this.state.confirmEmail}
                 onChange={this.onChange}
                 fullWidth
               />
+
+
               <br />
               <br />
-              <RaisedButton onClick={this.onClickLogin} label="Login" primary fullWidth />
+              <RaisedButton onClick={this.onClickAddUser} label="Add new user" primary fullWidth />
             </div>}
 
-          {/* this.state.isLoggingIn &&
+          {this.state.isAddingUser &&
             <div>
               <br />
               <p>Please wait while we log you in.</p>
@@ -117,7 +141,7 @@ class Login extends Component {
                 <ReactLoading type="bars" color="#3590f3" />
               </div>
             </div>
-          */}
+          }
         </div>
       </div>
     );
@@ -130,7 +154,7 @@ const mapStateToProps = state => ({
 
 
 export default withRouter(connect(mapStateToProps, {
-  authenticateUser,
-})((Login)));
+  addNewUser,
+})((AddUser)));
 
-// export default withRouter(Login);
+// export default withRouter(AddUser);

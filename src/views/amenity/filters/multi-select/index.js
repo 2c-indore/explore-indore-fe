@@ -20,7 +20,7 @@ class MultiSelect extends Component {
 
   render() {
     const { config, currentState } = this.props;
-    console.log('MULTICONFIG', config, currentState);
+    // console.log('MULTICONFIG', config, currentState);
     return (
       <div className="multi-select">
         <p className="filter-label pt-3">{config.label}</p>
