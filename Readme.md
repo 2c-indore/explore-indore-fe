@@ -10,6 +10,8 @@ Use the following steps to get started with the dev version of the application:
 3. Start development server: `npm run start`
 4. The app will be running at `http://localhost:3000`
 
+Note: Some of the dependencies are a little old, as a result, there might be weird looking messages when running `npm install`. We will be fixing them at a later date. 
+
 
 ### Contributing guide
 We will be using the git-flow based model to manage changes to the app.
