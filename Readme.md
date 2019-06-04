@@ -6,11 +6,12 @@ Front end repository for Explore Indore (Explore Pokhara clone). Currently the d
 Use the following steps to get started with the dev version of the application:
 
 1. Clone this repository using the command line: `git clone https://github.com/2c-indore/explore-indore-fe.git`
-2. Install dependencies: `npm install`
-3. Start development server: `npm run start`
-4. The app will be running at `http://localhost:3000`
+2. Switch to `develop` branch: `git checkout develop`
+3. Install dependencies: `npm install`
+4. Start development server: `npm run start`
+5. The app will be running at `http://localhost:3000`
 
-Note: Some of the dependencies are a little old, as a result, there might be weird looking messages when running `npm install`. We will be fixing them at a later date. 
+Note: Some of the dependencies are a little old, as a result, there might be weird looking messages when running `npm install`. We will be fixing them at a later date.
 
 
 ### Contributing guide
