@@ -89,7 +89,8 @@ class Map extends Component {
 
       // console.log(this.props.geometries.data);
       this.addBaseLayer(this.props.geometries.data.boundaryWithWards);
-      this.addPois(this.props.geometries.data.pois);
+      console.log('insideMap>>>>>>>>>>>', this.props.isLoggedIn);
+      this.addPois(this.props.geometries.data.pois, this.props.isLoggedIn);
       this.addSearchControl(this.props.geometries.data.pois);
       // this.addWardBoundaries(this.props.geometries.data.boundary);
     // this.addBoundaries();
@@ -109,7 +110,7 @@ class Map extends Component {
       });
 
       this.addBaseLayer(this.props.geometries.data.boundary);
-      this.addPois(this.props.geometries.data.pois);
+      this.addPois(this.props.geometries.data.pois, this.props.isLoggedIn);
       if (prevProps.geometries.data.pois.features.length !== this.props.geometries.data.pois.features.length) {
         this.addSearchControl(this.props.geometries.data.pois);
       }
@@ -173,7 +174,7 @@ class Map extends Component {
     this.map = map;
 
 
-    console.log('Map Data', data);
+    // console.log('Map Data', data);
     this.map.fitBounds(L.geoJson(data).getBounds());
 
 
@@ -222,7 +223,7 @@ class Map extends Component {
   }
 
 
-  addPois(data) {
+  addPois(data, isLoggedIn) {
     // const { map } = this;
     const addIcon = (type) => { //eslint-disable-line
     // console.log('addIcon', type, mapProjectToIcon[type]);
@@ -256,8 +257,8 @@ class Map extends Component {
       },
       onEachFeature(feature, layer) {
         const { tags } = layer.feature.properties;
-        console.log(layer.feature);
-        const id = layer.feature.id.split('/')[1];
+        // console.log('id', layer.feature);
+        const { id } = layer.feature;
         const popupOptions = {
           className: 'custom',
           minWidth: 250,
@@ -266,7 +267,7 @@ class Map extends Component {
           border: 'none',
           autopan: true,
         };
-        const str = tagToPopup(type, tags, id);
+        const str = tagToPopup(type, tags, id, isLoggedIn);
         layer.bindPopup(str, popupOptions);
         layer.on('click', () => {
           layer.openPopup();

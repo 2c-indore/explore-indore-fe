@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import WebFont from 'webfontloader';
 
-import { AUTH_USER } from './state/amenity';
+import { AUTH_USER, fetchUser } from './state/amenity';
 
 import Routes from './routes';
 import reducers from './global-reducers';
@@ -33,6 +33,7 @@ const store = createStore(reducers, {}, compose(
 const token = localStorage.getItem('token');
 if (token) {
   // const role = localStorage.getItem('role');
+  store.dispatch(fetchUser());
   store.dispatch({ type: AUTH_USER });
 }
 

@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const ROOT_URL = 'http://159.65.10.210:5080';
+
 const initialState = {
   auth: {
     isLoggedIn: false,
@@ -59,6 +61,7 @@ const EDIT_LOCATION = 'EDIT_LOCATION';
 const RESET_EDIT_LOCATION = 'RESET_EDIT_LOCATION';
 export const AUTH_USER = 'AUTH_USER';
 const DEAUTH_USER = 'DEAUTH_USER';
+const FETCH_USER = 'FETCH_USER'; // fetch user profile
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
@@ -69,7 +72,12 @@ export default function reducer(state = initialState, action = {}) {
     case AUTH_USER:
       return Object.assign({}, state, { ...state, auth: { ...state.auth, isLoggedIn: true } });
     case DEAUTH_USER:
-      return Object.assign({}, state, { ...state, auth: { ...state.auth, isLoggedIn: false } });
+      return Object.assign({}, state, { ...state, auth: { isLoggedIn: false } });
+
+    case FETCH_USER:
+
+      return Object.assign({}, state, { ...state, auth: { ...state.auth, ...action.payload } });
+
 
     case IS_LOADING:
       return Object.assign({}, state, { ...state, loading: true });
@@ -103,13 +111,43 @@ export default function reducer(state = initialState, action = {}) {
 
 
 // Action Creators
+export function fetchUser(history) {
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    axios.get(`${ROOT_URL}/api/users/profile`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+      dispatch({
+        type: FETCH_USER,
+        payload: response.data.data,
+      });
+    }).catch((error) => {
+      // silent
+    });
+  };
+}
+
+export function editData(id, data) {
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    axios.put(`${ROOT_URL}/api/amenities/update/${id}`, data, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      // silent
+    });
+  };
+}
+
+
 export function authenticateUser(user, history) {
   return (dispatch) => {
-    axios.post('http://159.65.10.210:5080/api/users/authenticate', user).then((response) => {
-      console.log(response);
-      localStorage.setItem('token', response.data.token);
-      history.go(-1);
-      dispatch({ type: AUTH_USER });
+    axios.post(`${ROOT_URL}/api/users/authenticate`, user).then((response) => {
+      // console.log(response);
+
+      if (response.data.success === 1) {
+        localStorage.setItem('token', response.data.token);
+        history.go(-1);
+        dispatch(fetchUser());
+        dispatch({ type: AUTH_USER });
+      }
       // localStorage.setItem('role', response.data.role);
     }).catch((error) => {
       // Silent
@@ -126,7 +164,7 @@ export function deauthenticateUser() {
 
 
 export function loadState(parameters) {
-  console.log('parameters', parameters.parameters);
+  // console.log('parameters', parameters.parameters);
 
   // const parameterObject = {};
   // parameters.filters.forEach((item, i) => {
@@ -200,13 +238,13 @@ export function hasLoaded() {
 }
 
 export function initializeView(type) {
-  console.log('type', type);
+  // console.log('type', type);
   return (dispatch) => {
     dispatch(isLoading());
     // axios.get(`http://192.168.10.72:5080/api/amenities/data?type=${type}`).then((response) => {
-    axios.get(`http://159.65.10.210:5080/api/amenities/data?type=${type}`).then((response) => {
+    axios.get(`${ROOT_URL}/api/amenities/data?type=${type}`).then((response) => {
     // axios.get(`https://preparepokhara.org/api/v2/features?type=${type}`).then((response) => {
-      console.log('data', response.data);
+      // console.log('data', response.data);
       dispatch(updateType(type));
       dispatch(loadState(response.data));
       dispatch(loadParameters(response.data));
@@ -244,7 +282,7 @@ export function updateView(parameters) {
   return (dispatch) => {
     dispatch(loadingGeometries());
     // axios.get('https://preparepokhara.org/api/v2/features', { params: parameters }).then((response) => {
-    axios.get('http://159.65.10.210:5080/api/amenities/data', { params: parameters }).then((response) => {
+    axios.get(`${ROOT_URL}/api/amenities/data`, { params: parameters }).then((response) => {
       dispatch(loadInsights(response.data));
       dispatch(loadGeometries(response.data));
     });
@@ -255,7 +293,7 @@ export function updateView(parameters) {
 export function downloadData(parameters) {
   return (dispatch) => {
     dispatch(loadingLinks());
-    axios.get('https://preparepokhara.org/api/v2/features/download', { params: parameters }).then((response) => {
+    axios.get(`${ROOT_URL}/api/amenities/download`, { params: parameters }).then((response) => {
       dispatch(loadedLinks(response.data));
     });
   };

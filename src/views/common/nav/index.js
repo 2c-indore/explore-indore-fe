@@ -95,12 +95,13 @@ class Nav extends Component {
   render() {
     const currentPathName = this.props.history.location.pathname.split('/');
 
-
+    console.log(currentPathName, 'currentPathName');
     // const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
     const navbarTitle = this.getNavTitle(currentPathName);
     const { isLoggedIn } = this.props.amenity.auth;
-    const text = isLoggedIn ? 'You are logged in' : 'You are not logged in';
+
+    const text = isLoggedIn ? this.props.amenity.auth.name : 'You are not logged in';
     return (
       <div>
         <AppBar
@@ -111,15 +112,14 @@ class Nav extends Component {
           iconElementRight={
             <div style={{ paddingTop: '5px' }}>
               {currentPathName[1] === 'edit' && <FlatButton onClick={() => { this.props.history.push(`/amenities/${this.props.amenity.type}`); }} label="Go Back" />}
-              <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />
-              { isLoggedIn && <FlatButton onClick={() => { this.props.deauthenticateUser(); }} label="Logout" />}
+              {currentPathName[1] !== '' && <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />}
 
               <IconMenu
-                iconButtonElement={<FlatButton icon={<KADown />}
+                iconButtonElement={(<FlatButton icon={<KADown />}
                   labelPosition="before"
                   onClick={this.handleOpenMenu}
                   label={text}
-                />}
+                />)}
                 open={this.state.openMenu}
                 onRequestChange={this.handleOnRequestChange}
               >

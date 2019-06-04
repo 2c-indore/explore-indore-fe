@@ -2826,8 +2826,8 @@ export const tagUnmapper = (obj) => {
   return finalArray;
 };
 
-export const tagToPopup = (type, tags, id) => {
-  console.log('Type', type);
+export const tagToPopup = (type, tags, id, isLoggedIn) => {
+  // console.log('id', id);
   const currentAmenityKeys = tagMapper[type];
 
 
@@ -2853,7 +2853,7 @@ export const tagToPopup = (type, tags, id) => {
       str += newString;
     });
 
-    // str += `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
+    str += isLoggedIn ? `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>` : '';
     str += '</tbody></table></div>';
     return str;
   } else {

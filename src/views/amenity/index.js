@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import { connect } from 'react-redux';
 import qs from 'qs';
@@ -234,10 +235,10 @@ class Amenity extends Component {
       return (
         <div className="amenity row m-0">
           <div style={{
-             position: 'absolute', zIndex: '1199', top: '13px', right: '100px',
+             position: 'absolute', zIndex: '1199', top: '76px', left: '55px',
             }}
           >
-            <FlatButton label="how to use" onClick={() => this.setState((oldState) => { return { isHelpOpen: true }; })} />
+            <RaisedButton label="how to use" onClick={() => this.setState((oldState) => { return { isHelpOpen: true }; })} />
           </div>
           <Steps
             enabled={this.state.isHelpOpen}
@@ -253,6 +254,7 @@ class Amenity extends Component {
               removeEditState={this.props.removeEditState}
               stateBeforeEdit={this.props.amenity.stateBeforeEdit}
               geometries={geometries}
+              isLoggedIn={this.props.amenity.auth.isLoggedIn}
               height={`${this.state.height}`}
               type={this.props.amenity.type}
               onDownload={this.onDownloadClick}
