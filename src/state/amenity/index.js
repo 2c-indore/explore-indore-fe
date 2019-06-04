@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 const initialState = {
+  auth: {
+    isLoggedIn: false,
+  },
   loading: true,
   type: '',
   insights: null,
@@ -54,14 +57,20 @@ const DOWNLOAD_LINKS_GENERATED = 'DOWNLOAD_LINKS_GENERATED';
 const DOWNLOAD_LINKS_GENERATING = 'DOWNLOAD_LINKS_GENERATING';
 const EDIT_LOCATION = 'EDIT_LOCATION';
 const RESET_EDIT_LOCATION = 'RESET_EDIT_LOCATION';
-
+export const AUTH_USER = 'AUTH_USER';
+const DEAUTH_USER = 'DEAUTH_USER';
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
 
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    // do reducer stuff
+    // do reducer stuff••
+    case AUTH_USER:
+      return Object.assign({}, state, { ...state, auth: { ...state.auth, isLoggedIn: true } });
+    case DEAUTH_USER:
+      return Object.assign({}, state, { ...state, auth: { ...state.auth, isLoggedIn: false } });
+
     case IS_LOADING:
       return Object.assign({}, state, { ...state, loading: true });
     case HAS_LOADED:
@@ -92,7 +101,30 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
+
 // Action Creators
+export function authenticateUser(user, history) {
+  return (dispatch) => {
+    axios.post('http://159.65.10.210:5080/api/users/authenticate', user).then((response) => {
+      console.log(response);
+      localStorage.setItem('token', response.data.token);
+      history.go(-1);
+      dispatch({ type: AUTH_USER });
+      // localStorage.setItem('role', response.data.role);
+    }).catch((error) => {
+      // Silent
+    });
+  };
+}
+
+export function deauthenticateUser() {
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({ type: DEAUTH_USER });
+  };
+}
+
+
 export function loadState(parameters) {
   console.log('parameters', parameters.parameters);
 
@@ -106,6 +138,7 @@ export function loadState(parameters) {
     payload: getStateFromParameters(parameters.parameters),
   };
 }
+
 
 export function saveEditState(editState) {
   return {

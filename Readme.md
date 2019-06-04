@@ -1,0 +1,24 @@
+## Explore Indore
+Front end repository for Explore Indore (Explore Pokhara clone). Currently the dev version of the app is hosted [here](http://exploreindore.klldev.org).
+
+### Getting Started
+Use the following steps to get started with the dev version of the application:
+
+1. Clone this repository using the command line: `git clone https://github.com/2c-indore/explore-indore-fe.git`
+2. Install dependencies: `npm install`
+3. Start development server: `npm run start`
+4. The app will be running at `http://localhost:3000`
+
+
+### Contributing guide
+We will be using the git-flow based model to manage changes to the app.
+
+1. We wiil be maintaining two core branches, `master` and `develop` with `master` containing the last release, and `develop` containing the latest stable version.
+2. All core contributors are required to work on the `develop` branch.
+3. Depending on the nature of the work, branch types can be of two types, `feature/feature-name` and `hotfix/hotfix-name` which upon completion of work should be merged to the develop branch.
+4. You can learn more about gitflow in this excellent [stackoverflow answer](https://softwareengineering.stackexchange.com/questions/255404/how-to-use-github-branches-and-automatic-releases-for-version-management).
+
+
+### Bugs and feature requests
+
+We will be using Github issues to solicit and work on issues and feature requests. To submit an issue or feature request, head over to  

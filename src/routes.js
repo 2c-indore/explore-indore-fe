@@ -7,6 +7,7 @@ import './index.scss';
 import './index.less';
 
 import Amenity from './views/amenity';
+import Login from './views/login';
 import Edit from './views/edit';
 import About from './views/about';
 import Nav from './views/common/nav';
@@ -41,6 +42,7 @@ class Root extends Component {
         <div>
           <Nav />
           <Switch>
+            <Route exact path="/login" render={() => { return <Login />; }} />
             <Route exact path="/" render={() => { return <About />; }} />
             <Route exact path="/amenities/:amenity" component={Amenity} />
             <Route exact path="/edit" component={Edit} />

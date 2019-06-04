@@ -8,12 +8,15 @@ import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 import Hamburger from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
+
+import MenuItem from 'material-ui/MenuItem';
+import IconMenu from 'material-ui/IconMenu';
+
+import KADown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import { List, ListItem } from 'material-ui/List';
 import { withRouter } from 'react-router-dom';
 import { sidebarMenuItems, varToTitle } from '../../../static/constants';
-
-
-import { initializeView, removeEditState } from '../../../state/amenity';
+import { initializeView, removeEditState, deauthenticateUser } from '../../../state/amenity';
 
 import './styles.scss';
 
@@ -96,7 +99,8 @@ class Nav extends Component {
     // const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
     const navbarTitle = this.getNavTitle(currentPathName);
-
+    const { isLoggedIn } = this.props.amenity.auth;
+    const text = isLoggedIn ? 'You are logged in' : 'You are not logged in';
     return (
       <div>
         <AppBar
@@ -108,6 +112,21 @@ class Nav extends Component {
             <div style={{ paddingTop: '5px' }}>
               {currentPathName[1] === 'edit' && <FlatButton onClick={() => { this.props.history.push(`/amenities/${this.props.amenity.type}`); }} label="Go Back" />}
               <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />
+              { isLoggedIn && <FlatButton onClick={() => { this.props.deauthenticateUser(); }} label="Logout" />}
+
+              <IconMenu
+                iconButtonElement={<FlatButton icon={<KADown />}
+                  labelPosition="before"
+                  onClick={this.handleOpenMenu}
+                  label={text}
+                />}
+                open={this.state.openMenu}
+                onRequestChange={this.handleOnRequestChange}
+              >
+
+                { !isLoggedIn && <MenuItem onClick={() => { this.props.history.push('/login'); }} primaryText="Login" />}
+                { isLoggedIn && <MenuItem onClick={() => { this.props.deauthenticateUser(); }} primaryText="Logout" />}
+              </IconMenu>
             </div>
           }
         />
@@ -126,12 +145,13 @@ class Nav extends Component {
 
 const mapStateToProps = state => ({
   amenity: state.amenity,
+  auth: state.auth,
 
 });
 
 
 export default withRouter(connect(mapStateToProps, {
-  initializeView, removeEditState,
+  initializeView, removeEditState, deauthenticateUser,
 })((Nav)));
 
 // export default withRouter(Nav);
