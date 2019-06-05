@@ -14,6 +14,7 @@ import Edit from './views/edit';
 import About from './views/about';
 import Nav from './views/common/nav';
 import Notification from './views/common/notification';
+import ManageUsers from './views/manage-users';
 
 //
 ReactGA.initialize('MUHAJAHSG');
@@ -48,6 +49,7 @@ class Root extends Component {
           <Switch>
             <Route exact path="/login" render={() => { return <Login />; }} />
             <Route exact path="/add-user" render={() => { return <AddUser />; }} />
+            <Route exact path="/manage-users" render={() => { return <ManageUsers />; }} />
             <Route exact path="/reset-password" render={() => { return <ResetPassword />; }} />
             <Route exact path="/" render={() => { return <About />; }} />
             <Route exact path="/amenities/:amenity" component={Amenity} />

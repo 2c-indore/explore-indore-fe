@@ -66,6 +66,7 @@ const RESET_EDIT_LOCATION = 'RESET_EDIT_LOCATION';
 export const AUTH_USER = 'AUTH_USER';
 const DEAUTH_USER = 'DEAUTH_USER';
 const FETCH_USER = 'FETCH_USER'; // fetch user profile
+const FETCH_USERLIST = 'FETCH_USERLIST'; // fetch user profile
 const ADD_NOTIF = 'ADD_NOTIF'; // fetch user profile
 const CLOSE_NOTIF = 'CLOSE_NOTIF'; // fetch user profile
 // const UPDATE_INSIGHTS_AND_MAPS = 'UPDATE_INSIGHTS_AND_MAP';
@@ -77,13 +78,15 @@ export default function reducer(state = initialState, action = {}) {
     // do reducer stuff••
     case AUTH_USER:
       return Object.assign({}, state, { ...state, auth: { ...state.auth, isLoggedIn: true } });
+
     case DEAUTH_USER:
       return Object.assign({}, state, { ...state, auth: { isLoggedIn: false } });
 
     case FETCH_USER:
-
       return Object.assign({}, state, { ...state, auth: { ...state.auth, ...action.payload } });
 
+    case FETCH_USERLIST:
+      return Object.assign({}, state, { ...state, auth: { ...state.auth, userList: action.payload } });
     case ADD_NOTIF:
       return Object.assign({}, state, { ...state, notif: { isOpen: true, message: action.message } });
 
@@ -136,6 +139,22 @@ export function fetchUser(history) {
   };
 }
 
+
+export function fetchUserList(history) {
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    axios.get(`${ROOT_URL}/api/admin/users`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+      console.log(response);
+      dispatch({
+        type: FETCH_USERLIST,
+        payload: response.data.data,
+      });
+    }).catch((error) => {
+      // silent
+    });
+  };
+}
+
 export function editData(id, data) {
   return (dispatch) => {
     // const token = localStorage.getItem('token');
@@ -167,6 +186,53 @@ export function closeNotif() {
   };
 }
 
+export function toggleAdminPrivileges(id) {
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    axios.put(`${ROOT_URL}/api/admin/users/toggleadmin/${id}`, null, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+      console.log(response);
+      if (response.data.success === 1) {
+        // localStorage.setItem('token', response.data.token);
+        dispatch(fetchUserList());
+        dispatch(addNotif(response.data.message));
+
+        // dispatch(fetchUser());
+        // dispatch({ type: AUTH_USER });
+      } else {
+        dispatch(addNotif(response.data.message));
+      }
+    }).catch((error) => {
+      // silent
+    });
+  };
+}
+
+export function deleteUser(id) {
+  console.log('DELETE >>', id);
+  return (dispatch) => {
+    // const token = localStorage.getItem('token');
+    axios({
+      method: 'delete',
+      url: `${ROOT_URL}/api/admin/users/delete/${id}`,
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    }).then((response) => {
+      // console.log(response);
+      if (response.data.success === 1) {
+        // localStorage.setItem('token', response.data.token);
+        dispatch(fetchUserList());
+        dispatch(addNotif(response.data.message));
+
+        // dispatch(fetchUser());
+        // dispatch({ type: AUTH_USER });
+      } else {
+        dispatch(addNotif(response.data.message));
+      }
+    }).catch((error) => {
+      // silent
+    });
+  };
+}
+
 
 export function authenticateUser(user, history) {
   return (dispatch) => {
@@ -176,7 +242,7 @@ export function authenticateUser(user, history) {
       if (response.data.success === 1) {
         localStorage.setItem('token', response.data.token);
         // console.log(JSON.stringify(history.location.state));
-        if (history.location.state.fromReset) {
+        if (history.location.state) {
           history.push('/');
         } else {
           history.go(-1);
@@ -223,12 +289,13 @@ export function addNewUser(user, history) {
   };
 }
 
-export function deauthenticateUser() {
+export function deauthenticateUser(history) {
   return (dispatch) => {
     localStorage.removeItem('token');
     dispatch(addNotif('You have logged out successfully.'));
 
     dispatch({ type: DEAUTH_USER });
+    history.push('/');
   };
 }
 

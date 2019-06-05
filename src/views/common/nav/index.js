@@ -8,15 +8,21 @@ import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 import Hamburger from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
+import Divider from 'material-ui/Divider';
 
-import MenuItem from 'material-ui/MenuItem';
+// import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 
 import KADown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+import Manage from 'material-ui/svg-icons/action/supervisor-account';
+import Add from 'material-ui/svg-icons/social/person-add';
+import Reset from 'material-ui/svg-icons/navigation/refresh';
+import Change from 'material-ui/svg-icons/action/exit-to-app';
 import { List, ListItem } from 'material-ui/List';
 import { withRouter } from 'react-router-dom';
 import { sidebarMenuItems, varToTitle } from '../../../static/constants';
 import { initializeView, removeEditState, deauthenticateUser, fetchUser } from '../../../state/amenity';
+
 
 import './styles.scss';
 
@@ -117,22 +123,30 @@ class Nav extends Component {
               {currentPathName[1] === 'edit' && <FlatButton onClick={() => { this.props.history.push(`/amenities/${this.props.amenity.type}`); }} label="Go Back" />}
               {currentPathName[1] !== '' && <FlatButton onClick={() => { this.props.history.push('/about'); }} label="About" />}
 
-              <IconMenu
-                iconButtonElement={(<FlatButton icon={<KADown />}
-                  labelPosition="before"
-                  onClick={this.handleOpenMenu}
-                  label={text}
-                />)}
-                menuStyle={{ minWidth: '180px' }}
-                open={this.state.openMenu}
-                onRequestChange={this.handleOnRequestChange}
-              >
+              { !isLoggedIn && <FlatButton onClick={() => { this.props.history.push('/login'); }} label="Login" />}
+              {isLoggedIn &&
+                <IconMenu
+                  iconButtonElement={(<FlatButton icon={<KADown />}
+                    labelPosition="before"
+                    onClick={this.handleOpenMenu}
+                    label={text}
+                  />)}
+                  menuStyle={{ minWidth: '180px' }}
+                  open={this.state.openMenu}
+                  onRequestChange={this.handleOnRequestChange}
+                >
+                  <List>
 
-                { !isLoggedIn && <MenuItem onClick={() => { this.props.history.push('/login'); }} primaryText="Login" />}
-                {role === 'admin' && <MenuItem onClick={() => { this.props.history.push('/add-user'); }} primaryText="Add new user" />}
-                { isLoggedIn && <MenuItem onClick={() => { this.props.history.push('/reset-password'); }} primaryText="Reset Password" />}
-                { isLoggedIn && <MenuItem onClick={() => { this.props.deauthenticateUser(); }} primaryText="Logout" />}
-              </IconMenu>
+                    <Subheader>Admin Settings</Subheader>
+                    {role === 'admin' && <ListItem leftIcon={<Manage />} onClick={() => { this.props.history.push('/manage-users'); }} primaryText="Manage users" />}
+                    {role === 'admin' && <ListItem leftIcon={<Add />} onClick={() => { this.props.history.push('/add-user'); }} primaryText="Add new user" />}
+                    <Divider />
+                    <Subheader>Account Settings</Subheader>
+                    { isLoggedIn && <ListItem leftIcon={<Reset />} onClick={() => { this.props.history.push('/reset-password'); }} primaryText="Reset Password" />}
+                    { isLoggedIn && <ListItem leftIcon={<Change />} onClick={() => { this.props.deauthenticateUser(this.props.history); }} primaryText="Logout" />}
+                  </List>
+                </IconMenu>
+            }
             </div>
           }
         />
