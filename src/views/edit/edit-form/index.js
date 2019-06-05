@@ -143,7 +143,7 @@ class EditForm extends Component {
       // changesetComment: this.state.changesetComment,
     };
 
-    console.log(finalObj);
+    // console.log(finalObj);
 
     this.setState({
       disabled: true,

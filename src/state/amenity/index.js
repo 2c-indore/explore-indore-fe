@@ -140,7 +140,7 @@ export function editData(id, data) {
   return (dispatch) => {
     // const token = localStorage.getItem('token');
     axios.put(`${ROOT_URL}/api/amenities/update/${id}`, data, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
-      console.log(response);
+      // console.log(response);
     }).catch((error) => {
       // silent
     });
@@ -175,7 +175,12 @@ export function authenticateUser(user, history) {
 
       if (response.data.success === 1) {
         localStorage.setItem('token', response.data.token);
-        history.go(-1);
+        // console.log(JSON.stringify(history.location.state));
+        if (history.location.state.fromReset) {
+          history.push('/');
+        } else {
+          history.go(-1);
+        }
         dispatch(fetchUser());
         dispatch({ type: AUTH_USER });
         dispatch(addNotif(response.data.message));
@@ -197,7 +202,7 @@ export function authenticateUser(user, history) {
 export function addNewUser(user, history) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/api/admin/users/create`, user, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
-      console.log(response);
+      // console.log(response);
 
       if (response.data.success === 1) {
         localStorage.setItem('token', response.data.token);
@@ -224,6 +229,31 @@ export function deauthenticateUser() {
     dispatch(addNotif('You have logged out successfully.'));
 
     dispatch({ type: DEAUTH_USER });
+  };
+}
+
+export function resetPassword(data, history) {
+  return (dispatch) => {
+    axios.put(`${ROOT_URL}/api/users/password/reset`, data, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+      // console.log(response);
+
+      if (response.data.success === 1) {
+        localStorage.setItem('token', response.data.token);
+        dispatch(deauthenticateUser());
+        history.push({ pathname: '/login', state: { fromReset: true } });
+        dispatch(addNotif(response.data.message));
+
+        // dispatch(fetchUser());
+        // dispatch({ type: AUTH_USER });
+      } else {
+        dispatch(addNotif(response.data.message));
+      }
+      // localStorage.setItem('role', response.data.role);
+    }).catch((error) => {
+      dispatch(addNotif('There was an error. Try again.'));
+
+      // Silent
+    });
   };
 }
 

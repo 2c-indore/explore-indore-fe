@@ -9,6 +9,7 @@ import './index.less';
 import Amenity from './views/amenity';
 import Login from './views/login';
 import AddUser from './views/add-user';
+import ResetPassword from './views/reset-password';
 import Edit from './views/edit';
 import About from './views/about';
 import Nav from './views/common/nav';
@@ -47,6 +48,7 @@ class Root extends Component {
           <Switch>
             <Route exact path="/login" render={() => { return <Login />; }} />
             <Route exact path="/add-user" render={() => { return <AddUser />; }} />
+            <Route exact path="/reset-password" render={() => { return <ResetPassword />; }} />
             <Route exact path="/" render={() => { return <About />; }} />
             <Route exact path="/amenities/:amenity" component={Amenity} />
             <Route exact path="/edit" component={Edit} />

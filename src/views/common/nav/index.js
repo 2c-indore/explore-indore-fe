@@ -16,7 +16,7 @@ import KADown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import { List, ListItem } from 'material-ui/List';
 import { withRouter } from 'react-router-dom';
 import { sidebarMenuItems, varToTitle } from '../../../static/constants';
-import { initializeView, removeEditState, deauthenticateUser } from '../../../state/amenity';
+import { initializeView, removeEditState, deauthenticateUser, fetchUser } from '../../../state/amenity';
 
 import './styles.scss';
 
@@ -69,6 +69,9 @@ class Nav extends Component {
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
+  componentWillMount() {
+    this.props.fetchUser();
+  }
 
   getNavTitle(currentPathName) { //eslint-disable-line
     let finalArray;
@@ -95,7 +98,7 @@ class Nav extends Component {
   render() {
     const currentPathName = this.props.history.location.pathname.split('/');
 
-    console.log(currentPathName, 'currentPathName');
+    // console.log(currentPathName, 'currentPathName');
     // const navbarTitle = (currentPathName.length === 3 && currentPathName[1] === 'amenities') ? [`${varToTitle[currentPathName[2]]}`, 'in', 'Pokhara Lekhnath Metropolitan'] : ['Prepare', 'Pokhara'];
     // console.log('titke', currentPathName, currentPathName.split('/'), navbarTitle);
     const navbarTitle = this.getNavTitle(currentPathName);
@@ -127,6 +130,7 @@ class Nav extends Component {
 
                 { !isLoggedIn && <MenuItem onClick={() => { this.props.history.push('/login'); }} primaryText="Login" />}
                 {role === 'admin' && <MenuItem onClick={() => { this.props.history.push('/add-user'); }} primaryText="Add new user" />}
+                { isLoggedIn && <MenuItem onClick={() => { this.props.history.push('/reset-password'); }} primaryText="Reset Password" />}
                 { isLoggedIn && <MenuItem onClick={() => { this.props.deauthenticateUser(); }} primaryText="Logout" />}
               </IconMenu>
             </div>
@@ -153,7 +157,7 @@ const mapStateToProps = state => ({
 
 
 export default withRouter(connect(mapStateToProps, {
-  initializeView, removeEditState, deauthenticateUser,
+  initializeView, removeEditState, deauthenticateUser, fetchUser,
 })((Nav)));
 
 // export default withRouter(Nav);

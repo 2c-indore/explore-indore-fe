@@ -42,7 +42,7 @@ class RangeSlider extends Component {
 
   render() {
     const { config, currentState } = this.props;
-    console.log('rangeconfig', config);
+    // console.log('rangeconfig', config);
     const defaultValue = [Number(currentState[config.parameter_name].low), Number(currentState[config.parameter_name].high)];
     const marks = {
       [this.state.minValue]: this.state.minValue,

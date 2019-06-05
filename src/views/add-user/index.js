@@ -6,7 +6,7 @@ import { withRouter,
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import validator from 'validator';
-import ReactLoading from 'react-loading';
+// import ReactLoading from 'react-loading';
 
 import { connect } from 'react-redux';
 import { addNewUser } from '../../state/amenity';
@@ -18,7 +18,7 @@ class AddUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAddingUser: false,
+      // isAddingUser: false,
       name: '',
       email: '',
       confirmEmail: '',
@@ -74,7 +74,7 @@ class AddUser extends Component {
       });
     } else {
       this.setState({
-        isAddingUser: true,
+        // isAddingUser: true,
       });
       // console.log('Cleared for login', this.props);
       this.props.addNewUser({ email: this.state.email, name: this.state.name }, this.props.history);
@@ -87,7 +87,7 @@ class AddUser extends Component {
         <div className="col-4 offset-4 col-md-6 offset-md-3 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
           <h3>Add new user</h3>
 
-          {!this.state.isAddingUser &&
+          {
             <div>
               <p>Please enter details below</p>
               <br />
@@ -132,7 +132,7 @@ class AddUser extends Component {
               <RaisedButton onClick={this.onClickAddUser} label="Add new user" primary fullWidth />
             </div>}
 
-          {this.state.isAddingUser &&
+          {/* this.state.isAddingUser &&
             <div>
               <br />
               <p>Please wait while we log you in.</p>
@@ -141,7 +141,7 @@ class AddUser extends Component {
                 <ReactLoading type="bars" color="#3590f3" />
               </div>
             </div>
-          }
+          */}
         </div>
       </div>
     );
