@@ -86,7 +86,7 @@ class ResetPassword extends Component {
   render() {
     return (
       <div className="row py-5 m-0">
-        <div className="col-4 offset-4 col-md-6 offset-md-3 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
+        <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
           <h3>Reset Password</h3>
 
           {
@@ -94,7 +94,7 @@ class ResetPassword extends Component {
               <p>Please enter details below</p>
               <br />
               <TextField
-                hintText="Enter old password"
+                hintText="Old password"
                 type="password"
                 name="oldPassword"
                 errorText={this.state.errors.oldPassword ? this.state.errors.oldPassword : null}
@@ -106,7 +106,7 @@ class ResetPassword extends Component {
 
 
               <TextField
-                hintText="Enter new password"
+                hintText="New password"
                 type="password"
                 name="newPassword"
                 errorText={this.state.errors.newPassword ? this.state.errors.newPassword : null}

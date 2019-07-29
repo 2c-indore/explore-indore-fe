@@ -2835,7 +2835,9 @@ export const tagToPopup = (type, tags, id, isLoggedIn) => {
     const toTitleCase = (str) => {
       // String(str);
       // console.log('STR', str);
-      return str.toString().replace(/\w\S*/g, (txt) => { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+      // return str.toString().replace(/\w\S*/g, (txt) => { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+      return  str;
+    
     };
 
     let str = '';

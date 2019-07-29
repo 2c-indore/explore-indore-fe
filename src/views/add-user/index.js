@@ -22,6 +22,8 @@ class AddUser extends Component {
       name: '',
       email: '',
       confirmEmail: '',
+      organization_name:'',
+      referred_by: '',
       errors: {},
     };
 
@@ -77,14 +79,20 @@ class AddUser extends Component {
         // isAddingUser: true,
       });
       // console.log('Cleared for login', this.props);
-      this.props.addNewUser({ email: this.state.email, name: this.state.name }, this.props.history);
+      this.props.addNewUser(
+        { 
+          email: this.state.email, 
+          name: this.state.name, 
+          organization_name: this.state.organization_name, 
+          referred_by: this.state.referred_by 
+        }, this.props.history);
     }
   }
 
   render() {
     return (
       <div className="row py-5 m-0">
-        <div className="col-4 offset-4 col-md-6 offset-md-3 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
+        <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 p-5 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
           <h3>Add new user</h3>
 
           {
@@ -122,6 +130,30 @@ class AddUser extends Component {
                 errorText={this.state.errors.confirmEmail ? this.state.errors.confirmEmail : null}
 
                 value={this.state.confirmEmail}
+                onChange={this.onChange}
+                fullWidth
+              />
+
+              <TextField
+                hintText="Name of organization"
+                type="text"
+                name="organization_name"
+                errorText={this.state.errors.organization_name ? this.state.errors.organization_name : null}
+
+                value={this.state.organization_name}
+                onChange={this.onChange}
+                fullWidth
+              />
+
+
+              
+              <TextField
+                hintText="Referred by"
+                type="text"
+                name="referred_by"
+                errorText={this.state.errors.referred_by ? this.state.errors.referred_by : null}
+
+                value={this.state.referred_by}
                 onChange={this.onChange}
                 fullWidth
               />

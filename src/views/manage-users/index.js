@@ -83,8 +83,8 @@ class Login extends Component { // eslint-disable-line
     const { onToggle, onDelete } = this;
     return (
 
-      <div className="row py-5 m-0">
-        <div className="col-md-10 offset-md-1 col-12 offset-1 py-5 px-0 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
+      <div className="row py-5 m-0 " style={{overflowY:"auto"}}>
+        <div className="col-md-10 offset-md-1 col-12 py-5 px-0 text-center" style={{ border: '1px solid #e5e5e5', borderRadius: '15px' }}>
           {userList === undefined &&
             <h2>Fetching data..</h2>
           }

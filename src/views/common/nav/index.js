@@ -137,7 +137,7 @@ class Nav extends Component {
                 >
                   <List>
 
-                    <Subheader>Admin Settings</Subheader>
+                  {role === 'admin' && <Subheader>Admin Settings</Subheader>}
                     {role === 'admin' && <ListItem leftIcon={<Manage />} onClick={() => { this.props.history.push('/manage-users'); }} primaryText="Manage users" />}
                     {role === 'admin' && <ListItem leftIcon={<Add />} onClick={() => { this.props.history.push('/add-user'); }} primaryText="Add new user" />}
                     <Divider />
