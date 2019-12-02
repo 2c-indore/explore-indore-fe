@@ -158,7 +158,7 @@ export function fetchUserList(history) {
 export function editData(id, data) {
   return (dispatch) => {
     // const token = localStorage.getItem('token');
-    axios.put(`${ROOT_URL}/api/amenities/update/${id}`, data, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
+    axios.put(`http://159.65.10.210:5080/api/amenities/update/${id}`, data, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
       // console.log(response);
     }).catch((error) => {
       // silent
@@ -458,18 +458,6 @@ export function downloadData(parameters) {
     const { isHelpOpen, ...noIsHelpOpen } = parameters;
     axios.get('http://159.65.10.210:5080/api/amenities/download', { params: { ...noIsHelpOpen } }).then((response) => {
       dispatch(loadedLinks(response.data));
-    });
-  };
-}
-
-
-export function editData(id, data) {
-  return (dispatch) => {
-    // const token = localStorage.getItem('token');
-    axios.put(`http://159.65.10.210:5080/api/amenities/update/${id}`, data, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).then((response) => {
-      // console.log(response);
-    }).catch((error) => {
-      // silent
     });
   };
 }

@@ -3320,7 +3320,7 @@ export const tagMapper = {
       section: 'private_schools',
       keyName: 'website',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Phone number',
+      keyLabel: 'Website',
       isEditable: 'TRUE',
       helpText: 'Website of the facility',
     },
@@ -3458,8 +3458,7 @@ export const tagToPopup = (type, tags, id, isLoggedIn) => {
       // String(str);
       // console.log('STR', str);
       // return str.toString().replace(/\w\S*/g, (txt) => { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
-      return  str;
-    
+      return str;
     };
 
     let str = '';
@@ -3477,11 +3476,7 @@ export const tagToPopup = (type, tags, id, isLoggedIn) => {
       str += newString;
     });
 
-<<<<<<< HEAD
-    str += isLoggedIn ? `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>` : '';
-=======
     str += `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
->>>>>>> master
     str += '</tbody></table></div>';
     return str;
   } else {

@@ -255,13 +255,9 @@ class Map extends Component {
       },
       onEachFeature(feature, layer) {
         const { tags } = layer.feature.properties;
-<<<<<<< HEAD
-        // console.log('id', layer.feature);
-=======
         console.log('>>>>>>>>>>', layer.feature);
 
 
->>>>>>> master
         const { id } = layer.feature;
         const popupOptions = {
           className: 'custom',
