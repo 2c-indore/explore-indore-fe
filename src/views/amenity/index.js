@@ -281,13 +281,15 @@ class Amenity extends Component {
           <Dialog actions={actions} open={this.state.isDialogOpen} onRequestClose={() => { this.setState({ isDialogOpen: false }); }} title="Download Data" >
             {downloads.success === 0 &&
             <div className="m-0"> Please wait, generating download links.. <br /> <br />  <ReactLoading type="bars" color="#3590f3" /></div>}
+            {console.log('Mi donloads', downloads)}
             {downloads.success === 1 &&
+
 
               <div>
                 <p>Please use the links below to download data in the format that you want:</p>
                 <br />
-                <a href={`http://preparepokhara.org/${downloads.data.csvlink}`} onClick={() => { this.setState({ isDialogOpen: false }); }} target="_blank">Download as CSV</a> <br />
-                <a href={`http://preparepokhara.org/${downloads.data.geojsonlink}`} onClick={() => { this.setState({ isDialogOpen: false }); }} target="_blank">Download as GeoJSON</a> <br />
+                <a href={`http://159.65.10.210:5081/${downloads.data.csvlink}`} onClick={() => { this.setState({ isDialogOpen: false }); }} target="_blank">Download as CSV</a> <br />
+                <a href={`http://159.65.10.210:5081/${downloads.data.geojsonlink}`} onClick={() => { this.setState({ isDialogOpen: false }); }} target="_blank">Download as GeoJSON</a> <br />
               </div>
             }
           </Dialog>

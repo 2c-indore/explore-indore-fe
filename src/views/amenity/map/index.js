@@ -123,10 +123,8 @@ class Map extends Component {
   }
 
   onEdit(data) {
-    // console.log(this.props);
+    console.log(this.props);
     this.props.saveEditState({ amenityData: data, type: this.props.type });
-
-
     this.props.history.push({ pathname: '/edit', state: { amenityData: data, type: this.props.type } });
   }
 
@@ -230,7 +228,7 @@ class Map extends Component {
       const icon = new L.LeafIcon({
         iconUrl: `/assets/${this.props.type}.png`,
         // iconUrl: '/assets/hospital.png',
-        iconSize: [50, 50],
+        iconSize: [30, 42],
         // iconOffset: [0, -64],
       });
 
@@ -257,7 +255,13 @@ class Map extends Component {
       },
       onEachFeature(feature, layer) {
         const { tags } = layer.feature.properties;
+<<<<<<< HEAD
         // console.log('id', layer.feature);
+=======
+        console.log('>>>>>>>>>>', layer.feature);
+
+
+>>>>>>> master
         const { id } = layer.feature;
         const popupOptions = {
           className: 'custom',
@@ -288,7 +292,10 @@ class Map extends Component {
         layer.on('mouseover', () => {
           layer.bindTooltip(tags.name === undefined ? '<i>(name unavailable)</i><br/><span class="leaflet-tooltip-text">Click icon for more details</span>' : `${tags.name}<br/><span class="leaflet-tooltip-text">Click icon for more details</span>`, { direction: 'top' }).openTooltip(); //eslint-disable-line
         });
-        $('body').on('click', `#popup-btn-${id}`, () => { onEdit(layer.feature); });
+        $('body').on('click', `#popup-btn-${id}`, () => {
+          // console.log('EDITWA CLICK HOIGAWA', layer.feature);
+          onEdit(layer.feature);
+        });
       },
     });
 

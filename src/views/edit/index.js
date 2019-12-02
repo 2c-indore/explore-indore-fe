@@ -61,5 +61,3 @@ const mapStateToProps = state => ({
 export default withRouter(connect(mapStateToProps, {
   editData,
 })((Edit)));
-
-// export default Edit;

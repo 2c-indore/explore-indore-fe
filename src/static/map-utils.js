@@ -1831,6 +1831,7 @@ export const amenityParameters = [
   },
 ];
 
+
 export const tagMapper = {
   public_hospitals: [
     {
@@ -1865,13 +1866,6 @@ export const tagMapper = {
       keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
-    }, {
-      section: 'public_hospitals',
-      keyName: 'operator_type',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Operator type',
-      isEditable: 'TRUE',
-      helpText: 'Is this facility operated by the government, private sector, community or other entities?',
     },
     {
       section: 'public_hospitals',
@@ -1887,7 +1881,7 @@ export const tagMapper = {
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'OPD',
       isEditable: 'TRUE',
-      helpText: '',
+      helpText: 'Is there Out Patient Department (OPD) in this facility or not?',
     },
 
     {
@@ -1896,7 +1890,7 @@ export const tagMapper = {
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'IPD',
       isEditable: 'TRUE',
-      helpText: '',
+      helpText: 'Is there In Patient Department (IPD) in this facility or not?',
     },
 
     {
@@ -1905,7 +1899,7 @@ export const tagMapper = {
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Radiology Labs',
       isEditable: 'TRUE',
-      helpText: '',
+      helpText: 'Is there radiology lab in the facility',
     },
 
     {
@@ -1914,7 +1908,7 @@ export const tagMapper = {
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Pathology Labs',
       isEditable: 'TRUE',
-      helpText: '',
+      helpText: 'Is there pathology lab in the facility?',
     },
 
     {
@@ -1923,7 +1917,7 @@ export const tagMapper = {
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Fixed Day Service',
       isEditable: 'TRUE',
-      helpText: '',
+      helpText: 'Are sevices provided in this hospital are fixed day or not?',
     },
     {
       section: 'public_hospitals',
@@ -1931,7 +1925,7 @@ export const tagMapper = {
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Delivery Service',
       isEditable: 'TRUE',
-      helpText: '',
+      helpText: 'Is delivery service available in this facility?',
     },
     {
       section: 'public_hospitals',
@@ -1964,6 +1958,14 @@ export const tagMapper = {
       keyLabel: 'Website',
       isEditable: 'TRUE',
       helpText: 'Website of the facility',
+    },
+    {
+      section: 'public_hospitals',
+      keyName: 'type',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Type of Hospital',
+      isEditable: 'TRUE',
+      helpText: 'What type of Public Hospital is it',
     },
 
 
@@ -2002,14 +2004,15 @@ export const tagMapper = {
       keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
-    }, {
-      section: 'private_hospitals',
-      keyName: 'operator_type',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Operator type',
-      isEditable: 'TRUE',
-      helpText: 'Is this facility operated by the government, private sector, community or other entities?',
     },
+    // {
+    //   section: 'private_hospitals',
+    //   keyName: 'operator_type',
+    //   isVisibleOnPopup: 'TRUE',
+    //   keyLabel: 'Operator type',
+    //   isEditable: 'TRUE',
+    //   helpText: 'Is this facility operated by the government, private sector, community or other entities?',
+    // },
     {
       section: 'private_hospitals',
       keyName: 'personnel_count',
@@ -2105,6 +2108,23 @@ export const tagMapper = {
     },
     {
       section: 'private_hospitals',
+      keyName: 'ot',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Operating Theater',
+      isEditable: 'TRUE',
+      helpText: '',
+    },
+
+    {
+      section: 'private_hospitals',
+      keyName: 'blood_bank',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Blood bank',
+      isEditable: 'TRUE',
+      helpText: '',
+    },
+    {
+      section: 'private_hospitals',
       keyName: 'address',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Address',
@@ -2126,22 +2146,6 @@ export const tagMapper = {
       keyLabel: 'Mobile number',
       isEditable: 'TRUE',
       helpText: 'Mobile number of the facility (if available)',
-    },
-    {
-      section: 'private_hospitals',
-      keyName: 'website',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Website',
-      isEditable: 'TRUE',
-      helpText: 'Website of the facility',
-    },
-    {
-      section: 'private_hospitals',
-      keyName: 'email',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Email',
-      isEditable: 'TRUE',
-      helpText: 'Email of the facility',
     },
 
 
@@ -2179,13 +2183,6 @@ export const tagMapper = {
       keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
-    }, {
-      section: 'public_clinics',
-      keyName: 'operator_type',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Operator type',
-      isEditable: 'TRUE',
-      helpText: 'Is this facility operated by the government, private sector, community or other entities?',
     },
     {
       section: 'public_clinics',
@@ -2194,62 +2191,6 @@ export const tagMapper = {
       keyLabel: 'Number of employees',
       isEditable: 'TRUE',
       helpText: 'Number of staff (full-time and part-time) working in this facility.',
-    },
-    {
-      section: 'public_clinics',
-      keyName: 'radiology_labs',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Radiology Labs',
-      isEditable: 'TRUE',
-      helpText: '',
-    },
-
-    {
-      section: 'public_clinics',
-      keyName: 'pathology_labs',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Pathology Labs',
-      isEditable: 'TRUE',
-      helpText: '',
-    },
-
-    {
-      section: 'public_clinics',
-      keyName: 'ventilator',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Ventilator Service',
-      isEditable: 'TRUE',
-      helpText: '',
-    },
-
-    // to be checked
-    {
-      section: 'public_clinics',
-      keyName: 'blood_bank',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Blood bank',
-      isEditable: 'TRUE',
-      helpText: '',
-    },
-
-    // to be checked
-    {
-      section: 'public_clinics',
-      keyName: 'operation_theatre',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Operation Theater',
-      isEditable: 'TRUE',
-      helpText: '',
-    },
-
-
-    {
-      section: 'public_clinics',
-      keyName: 'ambulance',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Ambulance Service',
-      isEditable: 'TRUE',
-      helpText: '',
     },
     {
       section: 'public_clinics',
@@ -2282,6 +2223,30 @@ export const tagMapper = {
       keyLabel: 'Website',
       isEditable: 'TRUE',
       helpText: 'Website of the facility',
+    },
+    {
+      section: 'public_clinics',
+      keyName: 'email',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Email',
+      isEditable: 'TRUE',
+      helpText: 'Email of the facility',
+    },
+    {
+      section: 'public_clinics',
+      keyName: 'facilities',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Facilities',
+      isEditable: 'TRUE',
+      helpText: 'Facilities available in the facility',
+    },
+    {
+      section: 'public_clinics',
+      keyName: 'other_facilities',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Other facilities',
+      isEditable: 'TRUE',
+      helpText: 'Secondary facilities available in the facility',
     },
 
 
@@ -2320,13 +2285,14 @@ export const tagMapper = {
       keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
-    }, {
+    },
+    {
       section: 'private_clinics',
-      keyName: 'operator_type',
+      keyName: 'operator',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Operator type',
+      keyLabel: 'Operated by',
       isEditable: 'TRUE',
-      helpText: 'Is this facility operated by the government, private sector, community or other entities?',
+      helpText: 'Who operates this facility?',
     },
     {
       section: 'private_clinics',
@@ -2346,7 +2312,7 @@ export const tagMapper = {
     },
     {
       section: 'private_clinics',
-      keyName: 'phone',
+      keyName: 'phonenumber',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Phone number',
       isEditable: 'TRUE',
@@ -2376,6 +2342,14 @@ export const tagMapper = {
       keyLabel: 'Email',
       isEditable: 'TRUE',
       helpText: 'Email address of the facility',
+    },
+    {
+      section: 'private_clinics',
+      keyName: 'facilities',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Facilities',
+      isEditable: 'TRUE',
+      helpText: 'Facilities available in the facility',
     },
 
   ],
@@ -2414,7 +2388,7 @@ export const tagMapper = {
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
     }, {
       section: 'dentists',
-      keyName: 'operator_type',
+      keyName: 'operator',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Operator type',
       isEditable: 'TRUE',
@@ -2430,15 +2404,7 @@ export const tagMapper = {
     },
     {
       section: 'dentists',
-      keyName: 'address',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Address',
-      isEditable: 'TRUE',
-      helpText: 'Address of the facility.',
-    },
-    {
-      section: 'dentists',
-      keyName: 'phone',
+      keyName: 'phonenumber',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Phone number',
       isEditable: 'TRUE',
@@ -2469,7 +2435,17 @@ export const tagMapper = {
       isEditable: 'TRUE',
       helpText: 'Email address of the facility',
     },
+    {
+      section: 'dentists',
+      keyName: 'rate_list',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Availibility of rate list',
+      isEditable: 'TRUE',
+      helpText: 'IS rate list for facilities avaiable in the facility',
+    },
   ],
+
+
   veterinaries: [
     {
       section: 'veterinaries',
@@ -2514,11 +2490,11 @@ export const tagMapper = {
     },
     {
       section: 'veterinaries',
-      keyName: 'phone',
+      keyName: 'mobile',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Phone number',
+      keyLabel: 'Mobile number',
       isEditable: 'TRUE',
-      helpText: 'Phone number of the facility',
+      helpText: 'Mobile number of the facility',
     },
   ],
   anganwadi: [
@@ -2563,14 +2539,7 @@ export const tagMapper = {
       isEditable: 'TRUE',
       helpText: 'Address of the facility.',
     },
-    {
-      section: 'anganwadi',
-      keyName: 'phone',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Phone number',
-      isEditable: 'TRUE',
-      helpText: 'Phone number of the facility',
-    },
+
     {
       section: 'anganwadi',
       keyName: 'mobile',
@@ -2588,17 +2557,20 @@ export const tagMapper = {
       helpText: 'Number of staff (full-time and part-time) working in this facility.',
     },
   ],
-  blood_banks: [
+
+
+  pharmacies: [
     {
-      section: 'blood_banks',
+      section: 'pharmacies',
       keyName: 'amenity',
       isVisibleOnPopup: 'FALSE',
       keyLabel: '-',
       isEditable: 'FALSE',
       helpText: '',
     },
+
     {
-      section: 'blood_banks',
+      section: 'pharmacies',
       keyName: 'name',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Name of the facility',
@@ -2606,7 +2578,77 @@ export const tagMapper = {
       helpText: 'Name of the facility',
     },
     {
-      section: 'blood_banks',
+      section: 'pharmacies',
+      keyName: 'name_hindi',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'नाम',
+      isEditable: 'TRUE',
+      helpText: 'हिंदी में नाम',
+    },
+    {
+      section: 'pharmacies',
+      keyName: 'phone',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Phone number',
+      isEditable: 'TRUE',
+      helpText: 'Phone number of the facility',
+    }, {
+      section: 'pharmacies',
+      keyName: 'email',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Email',
+      isEditable: 'TRUE',
+      helpText: 'Email address of the facility.',
+    },
+    {
+      section: 'pharmacies',
+      keyName: 'mobile',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Mobile number',
+      isEditable: 'TRUE',
+      helpText: 'Mobile number of the facility',
+    },
+    {
+      section: 'pharmacies',
+      keyName: 'opening_hours',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Opening Hours',
+      isEditable: 'TRUE',
+      helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+    },
+
+    {
+      section: 'pharmacies',
+      keyName: 'address',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Address',
+      isEditable: 'TRUE',
+      helpText: 'Address of the facility.',
+    },
+
+  ],
+
+
+  atms: [
+    {
+      section: 'atms',
+      keyName: 'amenity',
+      isVisibleOnPopup: 'FALSE',
+      keyLabel: '-',
+      isEditable: 'FALSE',
+      helpText: '',
+    },
+
+    {
+      section: 'atms',
+      keyName: 'name',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Name of the facility',
+      isEditable: 'TRUE',
+      helpText: 'Name of the facility',
+    },
+    {
+      section: 'atms',
       keyName: 'name_hindi',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'नाम',
@@ -2615,80 +2657,207 @@ export const tagMapper = {
     },
 
     {
-      section: 'blood_banks',
+      section: 'atms',
       keyName: 'opening_hours',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
     },
+
     {
-      section: 'blood_banks',
-      keyName: 'address',
+      section: 'atms',
+      keyName: 'number_of_machines',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Address',
+      keyLabel: 'Number of machines',
       isEditable: 'TRUE',
-      helpText: 'Address of the facility.',
+      helpText: 'What are the number of machines within this ATM facility?.',
     },
+
     {
-      section: 'blood_banks',
+      section: 'atms',
+      keyName: 'atm_guard',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'ATM Guard',
+      isEditable: 'TRUE',
+      helpText: 'Does this ATM have a security personnel assigned?',
+    },
+
+
+    {
+      section: 'atms',
+      keyName: 'cash_in_support',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Cash in support?',
+      isEditable: 'TRUE',
+      helpText: 'Does this ATM provide a cash-in (depost) facility?',
+    },
+
+
+    {
+      section: 'atms',
+      keyName: 'withdraw_limit',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Withdraw limit',
+      isEditable: 'TRUE',
+      helpText: 'What is the one time wihdrawal liit for this ATM?',
+    },
+
+
+    {
+      section: 'atms',
       keyName: 'phone',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Phone number',
       isEditable: 'TRUE',
       helpText: 'Phone number of the facility',
+    }, {
+      section: 'atms',
+      keyName: 'email',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Email',
+      isEditable: 'TRUE',
+      helpText: 'Email address of the facility.',
     },
     {
-      section: 'blood_banks',
+      section: 'atms',
       keyName: 'mobile',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Mobile number',
       isEditable: 'TRUE',
       helpText: 'Mobile number of the facility',
     },
+
+
+  ],
+
+
+  public_washrooms: [
     {
-      section: 'blood_banks',
-      keyName: 'personnel_count',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Number of employees',
-      isEditable: 'TRUE',
-      helpText: 'Number of staff (full-time and part-time) working in this facility.',
-    }, {
-      section: 'blood_banks',
-      keyName: 'transfusion',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Transfusion?',
-      isEditable: 'TRUE',
-      helpText: 'Is transfusion available?',
-    }, {
-      section: 'blood_banks',
-      keyName: 'platelets',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Platelets?',
-      isEditable: 'TRUE',
-      helpText: 'Are platelets available?',
+      section: 'public_washrooms',
+      keyName: 'amenity',
+      isVisibleOnPopup: 'FALSE',
+      keyLabel: '-',
+      isEditable: 'FALSE',
+      helpText: '',
     },
 
     {
-      section: 'blood_banks',
-      keyName: 'blood_packs',
+      section: 'public_washrooms',
+      keyName: 'name',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Blood packs?',
+      keyLabel: 'Name of the facility',
       isEditable: 'TRUE',
-      helpText: 'Are blood packs available?',
+      helpText: 'Name of the facility',
+    },
+    {
+      section: 'public_washrooms',
+      keyName: 'name_hindi',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'नाम',
+      isEditable: 'TRUE',
+      helpText: 'हिंदी में नाम',
+    },
+
+    {
+      section: 'public_washrooms',
+      keyName: 'paid',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Paid?',
+      isEditable: 'TRUE',
+      helpText: 'Does one have to pay a certain fee to use this facility?',
+    },
+
+    {
+      section: 'public_washrooms',
+      keyName: 'staff_onsite',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Staff onsite?',
+      isEditable: 'TRUE',
+      helpText: 'Is there staff on site?',
+    },
+
+    {
+      section: 'public_washrooms',
+      keyName: 'cleanliness_schedule',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Cleanliness schedule',
+      isEditable: 'TRUE',
+      helpText: 'How often does this facility get cleaned?',
+    },
+
+    {
+      section: 'public_washrooms',
+      keyName: 'seperate_washroom',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Gender segregated?',
+      isEditable: 'TRUE',
+      helpText: 'Are there separete facilities for men and women?',
+    },
+
+
+    {
+      section: 'public_washrooms',
+      keyName: 'construction_material',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Construction material',
+      isEditable: 'TRUE',
+      helpText: 'What is the construction material used?',
+    },
+
+    {
+      section: 'public_washrooms',
+      keyName: 'water_supply',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Water supply',
+      isEditable: 'TRUE',
+      helpText: 'How is the water supply (yes=24 hr, no=not available, irregular)?',
+    },
+
+
+    {
+      section: 'public_washrooms',
+      keyName: 'opening_hours',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Opening Hours',
+      isEditable: 'TRUE',
+      helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+    },
+
+    {
+      section: 'public_washrooms',
+      keyName: 'address',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Address',
+      isEditable: 'TRUE',
+      helpText: 'Address of the facility.',
+    },
+
+  ],
+
+  public_waste_bins: [
+    {
+      section: 'public_waste_bins',
+      keyName: 'dustbins',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is this a waste basket or a recycling basket?',
+      isEditable: 'FALSE',
+      helpText: 'Is this a waste basket or a recycling basket?',
     },
   ],
-  mental_health_centers: [
+
+  fuel_stations: [
     {
-      section: 'mental_health_centers',
+      section: 'fuel_stations',
       keyName: 'amenity',
       isVisibleOnPopup: 'FALSE',
       keyLabel: '-',
       isEditable: 'FALSE',
       helpText: '',
     },
+
     {
-      section: 'mental_health_centers',
+      section: 'fuel_stations',
       keyName: 'name',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Name of the facility',
@@ -2696,7 +2865,7 @@ export const tagMapper = {
       helpText: 'Name of the facility',
     },
     {
-      section: 'mental_health_centers',
+      section: 'fuel_stations',
       keyName: 'name_hindi',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'नाम',
@@ -2705,31 +2874,423 @@ export const tagMapper = {
     },
 
     {
-      section: 'mental_health_centers',
+      section: 'fuel_stations',
+      keyName: 'fuel_operator',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Fuel Operator',
+      isEditable: 'TRUE',
+      helpText: 'Who operates this station?',
+    },
+
+    {
+      section: 'fuel_stations',
+      keyName: 'petrol',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is petrol available?',
+      isEditable: 'TRUE',
+      helpText: 'Is petrol available?',
+    },
+
+    {
+      section: 'fuel_stations',
+      keyName: 'diesel',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is diesel available?',
+      isEditable: 'TRUE',
+      helpText: 'Is diesel available?',
+    },
+    {
+      section: 'fuel_stations',
+      keyName: 'air_filling',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is  air filling available?',
+      isEditable: 'TRUE',
+      helpText: 'Is air filling available?',
+    },
+    {
+      section: 'fuel_stations',
+      keyName: 'nitrogen_filling',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is nitrogen filling available?',
+      isEditable: 'TRUE',
+      helpText: 'Is nitrogen filling available?',
+    },
+
+    {
+      section: 'fuel_stations',
+      keyName: 'cng_gas',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is CNG Gas available?',
+      isEditable: 'TRUE',
+      helpText: 'Is CNG Gas available?',
+    },
+    {
+      section: 'fuel_stations',
+      keyName: 'mechanic',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is mechanic available?',
+      isEditable: 'TRUE',
+      helpText: 'Is mechanic available?',
+    },
+
+
+    {
+      section: 'fuel_stations',
+      keyName: 'fuel_station_staff',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Number of staff members?',
+      isEditable: 'TRUE',
+      helpText: 'Number of staff members?',
+    },
+
+
+    {
+      section: 'fuel_stations',
       keyName: 'opening_hours',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
       helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
     },
+
     {
-      section: 'mental_health_centers',
+      section: 'fuel_stations',
       keyName: 'address',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Address',
       isEditable: 'TRUE',
       helpText: 'Address of the facility.',
     },
+
+
     {
-      section: 'mental_health_centers',
+      section: 'fuel_stations',
+      keyName: 'email',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Email',
+      isEditable: 'TRUE',
+      helpText: 'Email address of the facility.',
+    },
+    {
+      section: 'fuel_stations',
+      keyName: 'mobile',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Mobile number',
+      isEditable: 'TRUE',
+      helpText: 'Mobile number of the facility',
+    },
+
+    {
+      section: 'fuel_stations',
       keyName: 'phone',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Phone number',
       isEditable: 'TRUE',
       helpText: 'Phone number of the facility',
     },
+
+
+  ],
+
+
+  public_schools: [
     {
-      section: 'mental_health_centers',
+      section: 'public_schools',
+      keyName: 'amenity',
+      isVisibleOnPopup: 'FALSE',
+      keyLabel: '-',
+      isEditable: 'FALSE',
+      helpText: '',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'name',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Name of the facility',
+      isEditable: 'TRUE',
+      helpText: 'Name of the facility',
+    },
+    {
+      section: 'public_schools',
+      keyName: 'name_hindi',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'नाम',
+      isEditable: 'TRUE',
+      helpText: 'हिंदी में नाम',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'student_count',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Number of students',
+      isEditable: 'TRUE',
+      helpText: 'Number of students at last count enrolled in this school.',
+    },
+    {
+      section: 'public_schools',
+      keyName: 'personnel_count',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Number of employees',
+      isEditable: 'TRUE',
+      helpText: 'Number of staff (full-time and part-time) working in this school.',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'isced_level',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'International Standard Scale',
+      isEditable: 'TRUE',
+      helpText: 'An international scale of 0-6, which is used to define the level of education. 0 = pre-primary, 1 = till grade 5, 2 = till grade 8, 3 = till grade 10, 4 = till grade 12',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'toiltes_separate_for_boys_girls',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Gender segregated?',
+      isEditable: 'TRUE',
+      helpText: 'Are there separete facilities for men and women?',
+    },
+    {
+      section: 'public_schools',
+      keyName: 'computer_labs',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Are computer labs available?',
+      isEditable: 'TRUE',
+      helpText: 'Are computer labs available?',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'playground',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is playground available?',
+      isEditable: 'TRUE',
+      helpText: 'Is playground available?',
+    },
+
+
+    {
+      section: 'public_schools',
+      keyName: 'library',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is library available?',
+      isEditable: 'TRUE',
+      helpText: 'Is library available?',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'science_labs',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Are science labs available?',
+      isEditable: 'TRUE',
+      helpText: 'Are science labs available?',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'doctor_on_call',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is doctor available on call?',
+      isEditable: 'TRUE',
+      helpText: 'Is doctor available on call?',
+    },
+
+
+    {
+      section: 'public_schools',
+      keyName: 'clinic',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is clinic available?',
+      isEditable: 'TRUE',
+      helpText: 'Is clinic available?',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'opening_hours',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Opening Hours',
+      isEditable: 'TRUE',
+      helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+    },
+
+    {
+      section: 'public_schools',
+      keyName: 'address',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Address',
+      isEditable: 'TRUE',
+      helpText: 'Address of the facility.',
+    },
+
+  ],
+
+
+  private_schools: [
+    {
+      section: 'private_schools',
+      keyName: 'amenity',
+      isVisibleOnPopup: 'FALSE',
+      keyLabel: '-',
+      isEditable: 'FALSE',
+      helpText: '',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'name',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Name of the facility',
+      isEditable: 'TRUE',
+      helpText: 'Name of the facility',
+    },
+    {
+      section: 'private_schools',
+      keyName: 'name_hindi',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'नाम',
+      isEditable: 'TRUE',
+      helpText: 'हिंदी में नाम',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'student_count',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Number of students',
+      isEditable: 'TRUE',
+      helpText: 'Number of students at last count enrolled in this school.',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'affiliation',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Affiliation',
+      isEditable: 'TRUE',
+      helpText: 'Affiliation',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'affiliation_number',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Affiliation number',
+      isEditable: 'TRUE',
+      helpText: 'Affiliations number (if any)',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'annual_average_fee',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Annual average fee',
+      isEditable: 'TRUE',
+      helpText: 'Annual average fee',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'isced_level',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'International Standard Scale',
+      isEditable: 'TRUE',
+      helpText: 'An international scale of 0-6, which is used to define the level of education. 0 = pre-primary, 1 = till grade 5, 2 = till grade 8, 3 = till grade 10, 4 = till grade 12',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'computer_labs',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Are computer labs available?',
+      isEditable: 'TRUE',
+      helpText: 'Are computer labs available?',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'playground',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is playground available?',
+      isEditable: 'TRUE',
+      helpText: 'Is playground available?',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'library',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is library available?',
+      isEditable: 'TRUE',
+      helpText: 'Is library available?',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'science_labs',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Are science labs available?',
+      isEditable: 'TRUE',
+      helpText: 'Are science labs available?',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'doctor_on_call',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is doctor available on call?',
+      isEditable: 'TRUE',
+      helpText: 'Is doctor available on call?',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'clinic',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Is clinic available?',
+      isEditable: 'TRUE',
+      helpText: 'Is clinic available?',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'opening_hours',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Opening Hours',
+      isEditable: 'TRUE',
+      helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+    },
+
+    {
+      section: 'private_schools',
+      keyName: 'address',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Address',
+      isEditable: 'TRUE',
+      helpText: 'Address of the facility.',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'email',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Email',
+      isEditable: 'TRUE',
+      helpText: 'Email address of the facility.',
+    },
+    {
+      section: 'private_schools',
       keyName: 'mobile',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Mobile number',
@@ -2737,41 +3298,46 @@ export const tagMapper = {
       helpText: 'Mobile number of the facility',
     },
     {
-      section: 'mental_health_centers',
-      keyName: 'personnel_count',
+      section: 'private_schools',
+      keyName: 'address',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Number of employees',
+      keyLabel: 'Address',
       isEditable: 'TRUE',
-      helpText: 'Number of staff (full-time and part-time) working in this facility.',
-    }, {
-      section: 'mental_health_centers',
+      helpText: 'Address of the facility.',
+    },
+
+
+    {
+      section: 'private_schools',
+      keyName: 'phone',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Phone number',
+      isEditable: 'TRUE',
+      helpText: 'Phone number of the facility',
+    },
+
+    {
+      section: 'private_schools',
       keyName: 'website',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Website',
+      keyLabel: 'Phone number',
       isEditable: 'TRUE',
-      helpText: 'Website of the facility.',
-    }, {
-      section: 'mental_health_centers',
-      keyName: 'email',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Email',
-      isEditable: 'TRUE',
-      helpText: 'Email address of the facility.',
+      helpText: 'Website of the facility',
     },
 
+
   ],
-  bus_stops: [
+  parks_playgrounds: [
     {
-      section: 'bus_stops',
+      section: 'parks_playgrounds',
       keyName: 'amenity',
       isVisibleOnPopup: 'FALSE',
       keyLabel: '-',
       isEditable: 'FALSE',
       helpText: '',
     },
-
     {
-      section: 'bus_stops',
+      section: 'parks_playgrounds',
       keyName: 'name',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'Name of the facility',
@@ -2779,7 +3345,7 @@ export const tagMapper = {
       helpText: 'Name of the facility',
     },
     {
-      section: 'bus_stops',
+      section: 'parks_playgrounds',
       keyName: 'name_hindi',
       isVisibleOnPopup: 'TRUE',
       keyLabel: 'नाम',
@@ -2788,29 +3354,85 @@ export const tagMapper = {
     },
 
     {
-      section: 'bus_stops',
-      keyName: 'connectivity',
+      section: 'parks_playgrounds',
+      keyName: 'opening_hours',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Connectivity',
+      keyLabel: 'Opening Hours',
       isEditable: 'TRUE',
-      helpText: 'What is the nature of the bus route (local, intercity, interstate)?',
+      helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
     },
     {
-      section: 'bus_stops',
-      keyName: 'phone',
+      section: 'parks_playgrounds',
+      keyName: 'address',
       isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Phone number',
+      keyLabel: 'Address',
       isEditable: 'TRUE',
-      helpText: 'Phone number of the facility',
-    }, {
-      section: 'bus_stops',
-      keyName: 'email',
-      isVisibleOnPopup: 'TRUE',
-      keyLabel: 'Email',
-      isEditable: 'TRUE',
-      helpText: 'Email address of the facility.',
+      helpText: 'Address of the facility.',
     },
-
+    {
+      section: 'parks_playgrounds',
+      keyName: 'park_guard',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Security Guard',
+      isEditable: 'TRUE',
+      helpText: 'Does this facility has security gard in it?',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'playground',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Playground',
+      isEditable: 'TRUE',
+      helpText: 'Does this facility has Playground?',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'dust_bins',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Dust Bins',
+      isEditable: 'TRUE',
+      helpText: 'Are dustbins availbale in this facility?',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'yoga_center',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Yoga Center',
+      isEditable: 'TRUE',
+      helpText: 'Is there yoga center in this fality?',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'benches',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Benches',
+      isEditable: 'TRUE',
+      helpText: 'Are there benches in this facility?',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'swings',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Swings',
+      isEditable: 'TRUE',
+      helpText: 'Are there swings availbale in this facility?',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'drinking_water',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Drinking Water Facility',
+      isEditable: 'TRUE',
+      helpText: 'Is there drinking water facility in this facility',
+    },
+    {
+      section: 'parks_playgrounds',
+      keyName: 'toilets',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Toilets',
+      isEditable: 'TRUE',
+      helpText: 'Are there toilets available in this facility?',
+    },
   ],
 
 };
@@ -2855,7 +3477,11 @@ export const tagToPopup = (type, tags, id, isLoggedIn) => {
       str += newString;
     });
 
+<<<<<<< HEAD
     str += isLoggedIn ? `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>` : '';
+=======
+    str += `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
+>>>>>>> master
     str += '</tbody></table></div>';
     return str;
   } else {

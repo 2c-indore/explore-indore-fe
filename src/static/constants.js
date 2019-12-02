@@ -2,15 +2,25 @@ export const varToTitle = {
   // 'primary-hcs': 'Primary Health Centers',
   public_hospitals: 'Public Hospitals',
   private_hospitals: 'Private Hospitals',
-  public_clinics: 'Public Clinics',
+  public_clinics: 'AYUSH Centres',
   private_clinics: 'Private Clinics',
-  dentists: 'Dentists',
-  veterinaries: 'Veterinaries',
-  patho_radio_labs: 'Pathology/Radiology Labs',
+  dentists: 'Dental Clinics',
+  veterinaries: 'Veterinary Hospitals',
+  patho_radio_labs: 'Laboratories',
   anganwadi: 'Anganwadis',
-  blood_banks: 'Blood Banks',
-  mental_health_centers: 'Mental Health Centers',
-  bus_stops: 'Bus Stops',
+  // blood_banks: 'Blood Banks',
+  // mental_health_centers: 'Mental Health Centers',
+  // bus_stops: 'Bus Stops',
+  pharmacies: 'Pharmacies',
+  public_schools: 'Public Schools',
+  private_schools: 'Private Schools',
+  public_washrooms: 'Public Washrooms',
+  public_waste_bins: 'Public Wastebins',
+  atms: 'ATMs',
+  fuel_stations: 'Fuel Stations',
+  parks_playgrounds: 'Parks / playgrounds',
+
+
   // school: 'Schools',
   // hindu: 'Places of Worship (Hinduism)',
   // police: 'Police Stations',
@@ -49,7 +59,7 @@ export const varToTitle = {
 
 export const sidebarMenuItems = [
   {
-    category: 'Hospitals',
+    category: 'Health Facilities',
     children: [
       {
         type: 'public_hospitals',
@@ -61,16 +71,6 @@ export const sidebarMenuItems = [
         route: '/private_hospitals',
         label: 'Private Hospitals',
       },
-    ],
-  },
-  {
-    category: 'Clinics',
-    children: [
-      {
-        type: 'public_clinics',
-        route: '/public_clinics', // Combines secondary HCS, tertiary HCS, and AYUSH center
-        label: 'Public Clinics and Government Centers',
-      },
       {
         type: 'private_clinics',
         route: '/private_clinics',
@@ -79,22 +79,22 @@ export const sidebarMenuItems = [
       {
         type: 'dentists',
         route: '/dentists',
-        label: 'Dentists',
+        label: 'Dental Clinics',
       },
       {
         type: 'veterinaries',
         route: '/veterinaries',
-        label: 'Veterinaries',
+        label: 'Veterinary Hospitals',
       },
-    ],
-  },
-  {
-    category: 'Others',
-    children: [
+      {
+        type: 'pharmacies',
+        route: '/pharmacies',
+        label: 'Pharmacies',
+      },
       {
         type: 'patho_radio_labs',
         route: '/patho_radio_labs',
-        label: 'Pathology and Radiology Labs',
+        label: 'Laboratories',
       },
       {
         type: 'anganwadi',
@@ -102,22 +102,81 @@ export const sidebarMenuItems = [
         label: 'Anganwadis',
       },
       {
-        type: 'blood_banks',
-        route: '/blood_banks',
-        label: 'Blood Banks',
-      },
-      {
-        type: 'mental_health_centers',
-        route: '/mental_health_centers',
-        label: 'Mental Health Centers',
-      },
-      {
-        type: 'bus_stops',
-        route: '/bus_stops',
-        label: 'Bus Stops',
+        type: 'public_clinics',
+        route: '/public_clinics', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'AYUSH Centres',
       },
     ],
   },
+  {
+    category: 'Public Facilities',
+    children: [
+      {
+        type: 'public_schools',
+        route: '/public_schools', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'Public Schools',
+      },
+      {
+        type: 'private_schools',
+        route: '/private_schools', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'Private Schools',
+      },
+
+      {
+        type: 'public_washrooms',
+        route: '/public_washrooms', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'Public Washrooms',
+      },
+
+      {
+        type: 'public_waste_bins',
+        route: '/public_waste_bins', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'Public Wastebins',
+      },
+
+
+      {
+        type: 'atms',
+        route: '/atms', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'ATMs',
+      },
+
+      {
+        type: 'fuel_stations',
+        route: '/fuel_stations', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'Fuel Stations',
+      },
+
+
+      {
+        type: 'parks_playgrounds',
+        route: '/parks_playgrounds', // Combines secondary HCS, tertiary HCS, and AYUSH center
+        label: 'Parks / playgrounds',
+      },
+    ],
+  },
+  // {
+  //   category: 'Others',
+  //   children: [
+
+
+  //     {
+  //       type: 'blood_banks',
+  //       route: '/blood_banks',
+  //       label: 'Blood Banks',
+  //     },
+  //     {
+  //       type: 'mental_health_centers',
+  //       route: '/mental_health_centers',
+  //       label: 'Mental Health Centers',
+  //     },
+  //     {
+  //       type: 'bus_stops',
+  //       route: '/bus_stops',
+  //       label: 'Bus Stops',
+  //     },
+  //   ],
+  // },
   // {
   //   category: 'Education',
   //   children: [
