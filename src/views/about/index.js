@@ -53,7 +53,7 @@ class About extends Component {
         </div>
 
         <div className="col-lg-4 col-md-6 col-sm-12 my-3">
-          <a href="http://www.pokharamun.gov.np/" target="_blank" rel="noopener noreferrer">
+          <a href="http://www.acropolis.in/" target="_blank" rel="noopener noreferrer">
             <img src="/assets/acropolis.png" style={{ maxWidth: '150px' }} alt="Screenshots of the web and mobile version" className="img-fluid pr-5" />
           </a>
           <br />

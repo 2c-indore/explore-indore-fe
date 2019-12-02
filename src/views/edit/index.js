@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import EditMap from './edit-map';
 import EditForm from './edit-form';
+import { editData } from '../../state/amenity';
+
+
 // import './styles.scss';
 
 class Edit extends Component {
@@ -27,7 +32,7 @@ class Edit extends Component {
           </div>
 
           <div className="col-md-3 pl-0 pr-0">
-            <EditForm data={amenityData} type={type} />
+            <EditForm data={amenityData} type={type} onSubmit={this.props.editData} />
           </div>
         </div>
       );
@@ -48,4 +53,11 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+
+const mapStateToProps = state => ({
+  // amenity: state.amenity,
+});
+
+export default withRouter(connect(mapStateToProps, {
+  editData,
+})((Edit)));
