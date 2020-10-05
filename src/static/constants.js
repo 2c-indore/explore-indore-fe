@@ -109,7 +109,7 @@ export const sidebarMenuItems = [
     ],
   },
   {
-    category: 'Public Facilities',
+    category: 'Other Facilities',
     children: [
       {
         type: 'public_schools',

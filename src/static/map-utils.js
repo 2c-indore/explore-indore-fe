@@ -2251,7 +2251,58 @@ export const tagMapper = {
 
 
   ],
+  patho_radio_labs: [
+    {
+      section: 'patho_radio_labs',
+      keyName: 'amenity',
+      isVisibleOnPopup: 'FALSE',
+      keyLabel: '-',
+      isEditable: 'FALSE',
+      helpText: '',
+    },
+    {
+      section: 'patho_radio_labs',
+      keyName: 'name',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Name of the facility',
+      isEditable: 'TRUE',
+      helpText: 'Name of the facility',
+    },
+    {
+      section: 'patho_radio_labs',
+      keyName: 'name_hindi',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'नाम',
+      isEditable: 'TRUE',
+      helpText: 'हिंदी में नाम',
+    },
 
+    {
+      section: 'patho_radio_labs',
+      keyName: 'opening_hours',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Opening Hours',
+      isEditable: 'TRUE',
+      helpText: 'What are the hours of operation for this facility? For example, Mo-Fr 10:00-17:00.',
+    },
+    {
+      section: 'patho_radio_labs',
+      keyName: 'phonenumber',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Phone number',
+      isEditable: 'TRUE',
+      helpText: 'Phone number of the facility',
+    },
+    {
+      section: 'patho_radio_labs',
+      keyName: 'mobile',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Mobile number',
+      isEditable: 'TRUE',
+      helpText: 'Mobile number of the facility (if available)',
+    },
+
+  ],
   private_clinics: [
     {
       section: 'private_clinics',
@@ -2837,9 +2888,17 @@ export const tagMapper = {
 
   public_waste_bins: [
     {
+      section: 'public_washrooms',
+      keyName: 'name',
+      isVisibleOnPopup: 'TRUE',
+      keyLabel: 'Name of the facility',
+      isEditable: 'TRUE',
+      helpText: 'Name of the facility',
+    },
+    {
       section: 'public_waste_bins',
       keyName: 'dustbins',
-      isVisibleOnPopup: 'TRUE',
+      isVisibleOnPopup: 'FALSE',
       keyLabel: 'Is this a waste basket or a recycling basket?',
       isEditable: 'FALSE',
       helpText: 'Is this a waste basket or a recycling basket?',
@@ -3476,7 +3535,7 @@ export const tagToPopup = (type, tags, id, isLoggedIn) => {
       str += newString;
     });
 
-    str += `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>`;
+    str += isLoggedIn ? `</tbody></table></div><div><button id="popup-btn-${id}" class="popup-btn"><i class="pr-2 fas fa-pencil-alt"></i> <b>EDIT THIS DATA</b></button></div>` : '';
     str += '</tbody></table></div>';
     return str;
   } else {
