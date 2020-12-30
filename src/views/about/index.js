@@ -19,12 +19,19 @@ class About extends Component {
       <div className="about p-5 row m-0">
         <div className="col-lg-6 my-3">
 
-          <h1><b>Explore</b> Indore</h1>
+          <h2><b>Explore</b> Indore</h2>
           <h5>Bringing data, people and technology together.</h5>
+          <br />
+
+          <NavLink to="/amenities/public_hospitals"><RaisedButton primary label="Get Started →" /></NavLink>
+
 
           <br />
           <br />
+          <br />
 
+
+          <h5>About the project</h5>
           <p className="light-text ">
             Do you know where the closest hospital is from your home? Do you know
             where you can easily access an ambulance from during an emergency situation?
@@ -39,12 +46,13 @@ class About extends Component {
              in keeping both yourself and your neighbors safe.
           </p>
 
-          {/* <p className="light-text">Also try our new tourism app: <a href="https://play.google.com/store/apps/details?id=org.kathmandulivinglabs.preparepokhara">Explore Pokhara</a>.</p>
-*/}
+          <p className="light-text">A print-friendly, paper-based version of this app is also available as <a href="https://drive.google.com/file/d/1duriBd8g411UPrvkym8O76Oe2d5vUwoz/view?usp=sharing" target="_blank" rel="noopener noreferrer">The Indore Map Book</a>. Also, try our Explore Indore app on the play store<br />
+            <a href="https://play.google.com/store/apps/details?id=org.kathmandulivinglabs.exploreindore"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="150" height="60" alt="Get it on Google Play" border="0" style={{ marginLeft: '-10px' }} /></a>
+          </p>
+          <p className="light-text" />
+
+
           <br />
-
-
-          <NavLink to="/amenities/public_hospitals"><RaisedButton primary label="Get Started" /></NavLink>
 
 
         </div>
