@@ -1,6 +1,10 @@
-## explore-indore-fe
+## Explore Indore
 
-Front end repository for Explore Indore (Explore Pokhara clone). Currently the dev version of the app is hosted [here](http://exploreindore.klldev.org).
+Do you know where the closest hospital is from your home? Do you know where you can easily access an ambulance from during an emergency situation? Are you prepared?
+
+Explore Indore app is the answer to these questions and more. Acropolis Institute of Technology and Research, the local partner of the Secondary Cities initiative, with help from Kathmandu Living Labs, has been spearheading the ground effort to produce robust geospatial data for Indore for the past one and a half years. It is hoped that the critical infrastructure information made open here plays an integral part in keeping both yourself and your neighbors safe.
+
+This repository contains code for front end application of Explore Indore web application. Currently the version of the app is hosted [here](http://exploreindore.klldev.org).
 
 ### Getting Started
 Use the following steps to get started with the dev version of the application:
